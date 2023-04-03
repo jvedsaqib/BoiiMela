@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "967896864613",
+    "project_id": "gdcboiimela",
+    "storage_bucket": "gdcboiimela.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967896864613:android:82b1dbf5df8f0dea36b38c",
+        "android_client_info": {
+          "package_name": "com.gssproductions.boiimela"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "967896864613-ar9nj6mcinl468n854m555c4l3jl3kl8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBONDdcO79fhaPn71mIrE6gLncKufdkKXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "967896864613-ar9nj6mcinl468n854m555c4l3jl3kl8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
