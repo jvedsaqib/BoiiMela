@@ -44,6 +44,18 @@
         android:layout_marginTop="20dp"
 
         />
+    <TextView
+        android:id="@+id/title_swarnadeep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+        android:text="Swarnadeep_roy"
+        android:textSize="20dp"
+
+        android:layout_below="@id/title_saqib"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+
+        />
 
 </RelativeLayout>
