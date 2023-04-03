@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Saqib Javed"
+        android:text="Gourab Nandi"
         android:textSize="20dp"
 
         android:layout_below="@id/title_swarnadeep"
