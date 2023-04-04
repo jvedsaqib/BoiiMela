@@ -96,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String textGender;
 
                 //validate mobile number
-                String mobileRegex="[6-9][0-9][0]";
+                String mobileRegex="[5-9][0-9][0]";
                 Matcher mobileMatcher;
                 Pattern mobilePattern=Pattern.compile(mobileRegex);
                 mobileMatcher = mobilePattern.matcher(textMobile);
