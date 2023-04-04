@@ -2,4 +2,6 @@
     <string name="app_name">BoiiMela</string>
     <string name="project_name">BoiiMela</string>
     <string name="project_description">Semester 6 project made by Gourab Nandi, Saqib Javed, Swarnadeep Roy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

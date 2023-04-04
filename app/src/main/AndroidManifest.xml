@@ -12,6 +12,9 @@
         android:theme="@style/Theme.BoiiMela"
         tools:targetApi="31">
         <activity
+            android:name=".BaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity

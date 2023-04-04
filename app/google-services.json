@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "967896864613",
+    "firebase_url": "https://gdcboiimela-default-rtdb.firebaseio.com",
     "project_id": "gdcboiimela",
     "storage_bucket": "gdcboiimela.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "967896864613-9mh98sb2jrepj00riek8s3q7and50sji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gssproductions.boiimela",
+            "certificate_hash": "00798ab38e8ceb43f310f169fdf52b8aa617a54f"
+          }
+        },
         {
           "client_id": "967896864613-ar9nj6mcinl468n854m555c4l3jl3kl8.apps.googleusercontent.com",
           "client_type": 3
