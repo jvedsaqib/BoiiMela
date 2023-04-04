@@ -3,6 +3,7 @@ package com.gssproductions.boiimela;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -76,7 +77,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "you are logged in", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, BaseActivity.class));
                 }else {
                     try {
                         throw task.getException();
