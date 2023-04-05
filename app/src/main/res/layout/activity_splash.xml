@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#FFC107"
+    android:background="#82D9FB"
     android:orientation="vertical"
     android:layout_gravity="center"
     android:layout_height="match_parent"
-    tools:context=".splash_activity">
+    tools:context=".SplashActivity">
 
     <TextView
         android:id="@+id/textview1"
