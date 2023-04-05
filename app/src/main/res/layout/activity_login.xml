@@ -59,6 +59,12 @@
             android:padding="6dp"
             android:layout_below="@+id/editText_login_email"/>
 
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="32dp"
+            android:id="@+id/imageView_show_hide_pwd"
+            android:layout_below="@+id/textView_login_pwd"/>
+
         <EditText
             android:id="@+id/editText_login_pwd"
             android:layout_width="match_parent"
@@ -67,6 +73,7 @@
             android:background="@drawable/border"
             android:hint="Enter password"
             android:inputType="textPassword"
+            android:layout_marginStart="30dp"
             android:minHeight="48dp"
             android:padding="6dp"
             android:textSize="15sp" />
