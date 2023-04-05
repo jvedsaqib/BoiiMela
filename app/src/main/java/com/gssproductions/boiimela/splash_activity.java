@@ -20,6 +20,8 @@ public class splash_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        getSupportActionBar().hide();
+
         wel=findViewById(R.id.textview1);
         learning=findViewById(R.id.textview2);
         new Handler().postDelayed(new Runnable() {

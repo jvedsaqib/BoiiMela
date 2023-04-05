@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
 
         Toast.makeText(LoginActivity.this, "you can log in now", Toast.LENGTH_SHORT).show();
 
@@ -77,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "you are logged in", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(LoginActivity.this, BaseActivity.class));
                 }else {
                     try {
                         throw task.getException();
