@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UploadActivity">
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+
+
+
+        />
+
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+
+        android:hint="Title"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+
+        />
+
+    <EditText
+        android:id="@+id/etAuthorName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+
+        android:hint="Author Name"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/etTitle"
+        android:layout_marginTop="20dp"
+
+        />
+
+    <EditText
+        android:id="@+id/etPublisherName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+
+        android:hint="Publisher Name"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/etAuthorName"
+        android:layout_marginTop="20dp"
+
+        />
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
+
+        android:hint="Description"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/etPublisherName"
+        android:layout_marginTop="20dp"
+
+        />
+
+    <Button
+        android:id="@+id/btnSelectImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Select\nImage"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/etDescription"
+        android:layout_alignStart="@id/etDescription"
+        android:layout_marginTop="20dp"
+
+        />
+
+    <Button
+        android:id="@+id/btnUploadData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Upload"
+
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/etDescription"
+        android:layout_alignEnd="@id/etDescription"
+        android:layout_marginTop="20dp"
+
+        />
+
+</RelativeLayout>
