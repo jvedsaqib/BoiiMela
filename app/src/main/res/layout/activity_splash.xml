@@ -33,7 +33,7 @@
         android:id="@+id/textview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="BOIMALA"
+        android:text="BOIIMELA"
         android:textSize="40sp"
         android:textColor="#ffff"
         android:layout_marginTop="5dp"
