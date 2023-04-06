@@ -2,6 +2,7 @@ package com.gssproductions.boiimela;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -53,6 +54,7 @@ public class ChatFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
     }
 
     @Override
