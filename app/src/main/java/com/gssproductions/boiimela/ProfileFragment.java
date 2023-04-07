@@ -1,5 +1,6 @@
 package com.gssproductions.boiimela;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +9,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +21,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+
+   TextView textViewWelcome,textViewFullName,textViewEmail,textViewDoB,textViewGender,textViewmobile;
+    ProgressBar progressBar;
+    String fullName,email,mobile,gender,doB;
+    ImageView imageView;
+    FirebaseAuth authProfile;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,12 +67,67 @@ public class ProfileFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+
+        // --------------
+       /* authProfile =  FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = authProfile.getCurrentUser();
+
+        if(firebaseUser == null){
+                Toast.makeText(UserProfileActivity.this,"something went wrong user details are not right",Toast.LENGTH_LONG).show();
+
+           }else {
+                   progressBar.setVisibility(View.VISIBLE);
+                   showUserProfile(firebaseUser);
+           }
+*/
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_ads, container, false);
+
+        textViewWelcome = view.findViewById(R.id.TextView_show_welcome);
+        textViewFullName= view.findViewById(R.id.textView_show_full_name);
+        textViewEmail= view.findViewById(R.id.textView_show_email);
+        textViewDoB= view.findViewById(R.id.textView_show_dob);
+        textViewGender = view.findViewById(R.id.textView_show_gender);
+        textViewmobile = view.findViewById(R.id.textView_show_mobile);
+        progressBar = view.findViewById(R.id.progressBar);
+        return view;
+
+        /* private void showUserProfile (FirebaseUser firebaseUser){
+            String userID = firebaseUser.getUid();
+            //Extracting user reference from database for " Registered users"
+
+            DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference(Registered user);
+            referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot){
+                        ReaderWriterUserDetails readUserDetails = snapshot.getValue(ReaderWriterUserDetails.class);
+                        if( readUserDetails != null){
+                        fillName = firebaseUser.getDisplayName();
+                        email = firebaseUser.getEmail();
+                        dob =  readUserDetails.dob;
+                        gender =  readUserDetails.gender;
+                        mobile =  readUserDetails.mobile;
+
+                        textViewWelcome.setText("Welcome, " + fullName + "!");
+                        textViewFullName.setText(fullName);
+                        textViewEmail.setText(email);
+                        textViewGender.setText(gender);
+                        textViewDoB.setText(doB);
+                        text.ViewMobile.setText(mobile);
+
+                    }
+                    progressBar.setVisibility(View.GONE);
+                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error){
+                         Toast.makeText(UserProfileActivity.this,"something went wrong!",Toast.LENGTH_LONG).show();
+                    }
+                  });
+     */
     }
 }
