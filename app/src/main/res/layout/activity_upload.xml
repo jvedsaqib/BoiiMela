@@ -19,38 +19,38 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
 
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="100dp"
         android:hint="Title"
 
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-
-        />
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/etAuthorName"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
 
-        android:hint="Author Name"
+        android:layout_below="@id/etTitle"
 
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/etTitle"
         android:layout_marginTop="20dp"
+        android:hint="Author Name"
 
-        />
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/etPublisherName"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
 
-        android:hint="Publisher Name"
+        android:layout_below="@id/etAuthorName"
 
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/etAuthorName"
         android:layout_marginTop="20dp"
+        android:hint="Publisher Name"
 
-        />
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/etDescription"
