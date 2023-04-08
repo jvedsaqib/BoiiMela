@@ -86,7 +86,7 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_my_ads, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         textViewWelcome = view.findViewById(R.id.TextView_show_welcome);
         textViewFullName= view.findViewById(R.id.textView_show_full_name);
@@ -94,10 +94,13 @@ public class ProfileFragment extends Fragment {
         textViewDoB= view.findViewById(R.id.textView_show_dob);
         textViewGender = view.findViewById(R.id.textView_show_gender);
         textViewmobile = view.findViewById(R.id.textView_show_mobile);
-        progressBar = view.findViewById(R.id.progressBar);
+        // progressBar = view.findViewById(R.id.progressBar);
         return view;
 
-        /* private void showUserProfile (FirebaseUser firebaseUser){
+
+    }
+
+    /* private void showUserProfile (FirebaseUser firebaseUser){
             String userID = firebaseUser.getUid();
             //Extracting user reference from database for " Registered users"
 
@@ -129,5 +132,4 @@ public class ProfileFragment extends Fragment {
                     }
                   });
      */
-    }
 }
