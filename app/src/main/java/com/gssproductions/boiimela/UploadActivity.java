@@ -375,6 +375,7 @@ public class UploadActivity extends AppCompatActivity {
 //                                finish();
                             }
                         })
+                        // What?
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
