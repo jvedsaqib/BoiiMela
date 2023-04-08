@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
 
     TextView wel,learning;
 
-    private static int Splash_timeout=5000;
+    private static int Splash_timeout=4000;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

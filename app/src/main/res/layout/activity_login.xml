@@ -88,6 +88,16 @@
             android:layout_marginLeft="70dp"
             android:layout_below="@+id/editText_login_pwd"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password ???"
+            android:id="@+id/button_forgot_password"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginLeft="70dp"
+            android:layout_below="@+id/button_log"/>
+
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
