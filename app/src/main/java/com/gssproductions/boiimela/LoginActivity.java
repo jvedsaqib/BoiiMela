@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,9 +44,19 @@ public class LoginActivity extends AppCompatActivity {
 
         authProfile=FirebaseAuth.getInstance();
 
+        //register
+        TextView textViewRegister =findViewById(R.id.textView_register_link);
+        textViewRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //reset password
-        Button buttonForgotPassword=findViewById(R.id.button_forgot_password);
-        buttonForgotPassword.setOnClickListener(new View.OnClickListener() {
+        TextView textViewForgotPassword=findViewById(R.id.textView_forgot_password_link);
+        textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(LoginActivity.this, "You can reset your password", Toast.LENGTH_SHORT).show();
