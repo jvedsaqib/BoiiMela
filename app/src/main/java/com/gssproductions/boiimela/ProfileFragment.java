@@ -94,7 +94,7 @@ public class ProfileFragment extends Fragment {
         textViewDoB= view.findViewById(R.id.textView_show_dob);
         textViewGender = view.findViewById(R.id.textView_show_gender);
         textViewmobile = view.findViewById(R.id.textView_show_mobile);
-        progressBar = view.findViewById(R.id.progressBar);
+        progressBar = view.findViewById(R.id.progressbar_profile);
         return view;
 
         /* private void showUserProfile (FirebaseUser firebaseUser){
