@@ -8,6 +8,29 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <TextView
+        android:id="@+id/under_construction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Under Construction..."
+        android:textSize="30dp"
+
+        android:layout_centerInParent="true"
+        android:gravity="center"
+
+        />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:src="@drawable/icon_construction"
+        android:layout_below="@id/under_construction"
+        android:layout_centerHorizontal="true"
+
+        />
+
 
 
 </RelativeLayout>
