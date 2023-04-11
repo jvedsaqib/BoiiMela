@@ -272,6 +272,11 @@ public class UploadActivity extends AppCompatActivity {
 
     }
 
+    public void onBackPressed(){
+        startActivity(new Intent(UploadActivity.this, BaseActivity.class));
+        finish();
+    }
+
 
     private void selectImage() {
 

@@ -3,6 +3,7 @@ package com.gssproductions.boiimela;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -12,8 +13,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,9 +30,9 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 public class ProfileFragment extends Fragment {
 
-   TextView textViewWelcome,textViewFullName,textViewEmail,textViewDoB,textViewGender,textViewmobile;
-    ProgressBar progressBar;
-    String fullName,email,mobile,gender,doB;
+    TextView textViewWelcome, textViewFullName, textViewEmail, textViewDoB, textViewGender, textViewmobile;
+    //ProgressBar progressBar;
+    String fullName, email, mobile, gender, doB;
     ImageView imageView;
     FirebaseAuth authProfile;
 
@@ -69,17 +77,17 @@ public class ProfileFragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         // --------------
-       /* authProfile =  FirebaseAuth.getInstance();
+        authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
-        if(firebaseUser == null){
-                Toast.makeText(UserProfileActivity.this,"something went wrong user details are not right",Toast.LENGTH_LONG).show();
+        if (firebaseUser == null) {
+//            Toast.makeText(ProfileFragment.this, "something went wrong user details are not right", Toast.LENGTH_LONG).show();
 
-           }else {
-                   progressBar.setVisibility(View.VISIBLE);
-                   showUserProfile(firebaseUser);
-           }
-*/
+        } else {
+           // progressBar.setVisibility(View.VISIBLE);
+            showUserProfile(firebaseUser);
+        }
+
     }
 
     @Override
@@ -89,47 +97,49 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         textViewWelcome = view.findViewById(R.id.TextView_show_welcome);
-        textViewFullName= view.findViewById(R.id.textView_show_full_name);
-        textViewEmail= view.findViewById(R.id.textView_show_email);
-        textViewDoB= view.findViewById(R.id.textView_show_dob);
+        textViewFullName = view.findViewById(R.id.textView_show_full_name);
+        textViewEmail = view.findViewById(R.id.textView_show_email);
+        textViewDoB = view.findViewById(R.id.textView_show_dob);
         textViewGender = view.findViewById(R.id.textView_show_gender);
         textViewmobile = view.findViewById(R.id.textView_show_mobile);
-        // progressBar = view.findViewById(R.id.progressBar);
+        //progressBar = view.findViewById(R.id.progressbar_profile);
         return view;
 
 
     }
 
-    /* private void showUserProfile (FirebaseUser firebaseUser){
-            String userID = firebaseUser.getUid();
-            //Extracting user reference from database for " Registered users"
+    private void showUserProfile(FirebaseUser firebaseUser) {
+        String userID = firebaseUser.getUid();
+        //Extracting user reference from database for " Registered users"
 
-            DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference(Registered user);
-            referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot){
-                        ReaderWriterUserDetails readUserDetails = snapshot.getValue(ReaderWriterUserDetails.class);
-                        if( readUserDetails != null){
-                        fillName = firebaseUser.getDisplayName();
-                        email = firebaseUser.getEmail();
-                        dob =  readUserDetails.dob;
-                        gender =  readUserDetails.gender;
-                        mobile =  readUserDetails.mobile;
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered Users");
+        referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ReadwriteUserDetails readUserDetails = snapshot.getValue(ReadwriteUserDetails.class);
+                if (readUserDetails != null) {
+                    fullName = firebaseUser.getDisplayName();
+                    email = firebaseUser.getEmail();
+                    doB = readUserDetails.doB;
+                    gender = readUserDetails.gender;
+                    mobile = readUserDetails.mobile;
 
-                        textViewWelcome.setText("Welcome, " + fullName + "!");
-                        textViewFullName.setText(fullName);
-                        textViewEmail.setText(email);
-                        textViewGender.setText(gender);
-                        textViewDoB.setText(doB);
-                        text.ViewMobile.setText(mobile);
+                    textViewWelcome.setText("Welcome, " + fullName + "!");
+                    textViewFullName.setText(fullName);
+                    textViewEmail.setText(email);
+                    textViewGender.setText(gender);
+                    textViewDoB.setText(doB);
+                    textViewmobile.setText(mobile);
 
-                    }
-                    progressBar.setVisibility(View.GONE);
                 }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error){
-                         Toast.makeText(UserProfileActivity.this,"something went wrong!",Toast.LENGTH_LONG).show();
-                    }
-                  });
-     */
+                //progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+              //    Toast.makeText(ProfileFragment.this, "something went wrong!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
 }
