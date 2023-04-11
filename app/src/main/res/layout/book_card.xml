@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="16dp"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/book_thumbnail"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+
+            android:src="@drawable/my_ads_icon"
+            android:elevation="100dp"
+            />
+
+        <TextView
+            android:id="@+id/book_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Title"
+            android:textSize="25dp"
+
+            android:layout_toRightOf="@id/book_thumbnail"
+            android:layout_marginStart="15dp"
+            />
+
+        <TextView
+            android:id="@+id/book_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Author"
+            android:textSize="15dp"
+
+            android:layout_below="@id/book_title"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
+
+            android:layout_toRightOf="@id/book_thumbnail"
+            />
+
+        <TextView
+            android:id="@+id/book_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Price"
+            android:textSize="15dp"
+
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@id/book_author"
+
+            />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

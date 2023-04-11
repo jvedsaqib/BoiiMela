@@ -15,6 +15,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -22,12 +23,12 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.gssproductions.boiimela.databinding.ActivityMainBinding;
 
-public class BaseActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class BaseActivity extends AppCompatActivity {
 
-    public DrawerLayout drawerLayout;
-    public ActionBarDrawerToggle actionBarDrawerToggle;
-
-    NavigationView navigationView;
+//    public DrawerLayout drawerLayout;
+//    public ActionBarDrawerToggle actionBarDrawerToggle;
+//
+//    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +41,28 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         BottomNavigationView bottom_nav =  findViewById(R.id.bottom_nav);
 
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
-
-        navigationView = findViewById(R.id.navmenu);
-        navigationView.setNavigationItemSelectedListener(this);
+//        drawerLayout = findViewById(R.id.drawer_layout);
+//        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close)
+//        {
+//
+//            /** Called when a drawer has settled in a completely closed state. */
+//            public void onDrawerClosed(View view) {
+//                super.onDrawerClosed(view);
+//                drawerLayout.closeDrawer(GravityCompat.START);
+//                // Do whatever you want here
+//            }
+//
+//            /** Called when a drawer has settled in a completely open state. */
+//            public void onDrawerOpened(View drawerView) {
+//                super.onDrawerOpened(drawerView);
+//                drawerLayout.bringToFront();
+//                // Do whatever you want here
+//            }
+//        };
+//
+//
+//        navigationView = findViewById(R.id.navmenu);
+//        navigationView.setNavigationItemSelectedListener(this);
 
 
         bottom_nav.setOnItemSelectedListener(item -> {
@@ -55,17 +73,20 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                     break;
 
                 case R.id.nav_btn_chats:
-                    drawerLayout.closeDrawer(GravityCompat.START, false);
+//                    drawerLayout.close();
+//                    drawerLayout.closeDrawer(GravityCompat.START, false);
                     replaceFragment(new ChatFragment());
                     break;
 
                 case R.id.nav_btn_my_ads:
-                    drawerLayout.closeDrawer(GravityCompat.START, false);
+//                    drawerLayout.close();
+//                    drawerLayout.closeDrawer(GravityCompat.START, false);
                     replaceFragment(new MyAdsFragment());
                     break;
 
                 case R.id.nav_btn_profile:
-                    drawerLayout.closeDrawer(GravityCompat.START, false);
+//                    drawerLayout.close();
+//                    drawerLayout.closeDrawer(GravityCompat.START, false);
                     replaceFragment(new ProfileFragment());
                     break;
             }
@@ -73,11 +94,12 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             return true;
         });
 
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+//        actionBarDrawerToggle.syncState();
+//
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
 
     public void onBackPressed(){
         Toast.makeText(this, "Signed Out right now", Toast.LENGTH_SHORT);
@@ -94,26 +116,26 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)){
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.sign_out:
-                Toast.makeText(this, "Signed Out right now", Toast.LENGTH_SHORT);
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(BaseActivity.this, LoginActivity.class));
-                break;
-            default:
-                Toast.makeText(this, "Default", Toast.LENGTH_SHORT);
-        }
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        if (actionBarDrawerToggle.onOptionsItemSelected(item)){
+//            return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
+//
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//        switch(item.getItemId()){
+//            case R.id.sign_out:
+////                Toast.makeText(this, "Signed Out right now", Toast.LENGTH_SHORT).show();
+//                FirebaseAuth.getInstance().signOut();
+//                startActivity(new Intent(BaseActivity.this, LoginActivity.class));
+//                break;
+//            default:
+////                Toast.makeText(this, "Default", Toast.LENGTH_SHORT).show();
+//        }
+//        drawerLayout.closeDrawer(GravityCompat.START);
+//        return true;
+//    }
 }

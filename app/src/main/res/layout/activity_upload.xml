@@ -12,10 +12,6 @@
 
         >
 
-        <TextView
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            />
 
         <EditText
             android:id="@+id/etTitle"
@@ -156,13 +152,31 @@
 
             />
 
+        <TextView
+            android:id="@+id/photo_select_warning"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+
+            android:text="[Only 3 photos will be uploaded]"
+            android:textColor="@color/black"
+            android:gravity="center"
+
+            android:layout_below="@id/etAddress"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+
+            />
+
+
         <ImageSwitcher
             android:id="@+id/imageView"
             android:layout_width="200dp"
             android:layout_height="250dp"
 
+            android:background="#eeeeff"
+
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/etAddress"
+            android:layout_below="@id/photo_select_warning"
             android:layout_marginTop="20dp"
 
             />
@@ -194,7 +208,6 @@
             android:layout_marginTop="40dp"
 
             />
-
 
 
             <Button
