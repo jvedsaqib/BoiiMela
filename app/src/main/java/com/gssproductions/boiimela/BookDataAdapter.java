@@ -8,11 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -53,8 +57,18 @@ public class BookDataAdapter extends RecyclerView.Adapter<BookDataAdapter.bookDa
         if (bookData.getImgUrl0().isEmpty()) {
             holder.book_thumbnail.setImageResource(R.drawable.icon_upload);
         } else{
-            Picasso.get().load(bookData.getImgUrl0()).resize(256, 256).into(holder.book_thumbnail);
+            Glide.with(context).load(bookData.getImgUrl0()).into(holder.book_thumbnail);
+//            Picasso.get().load(bookData.getImgUrl0()).resize(256, 256).into(holder.book_thumbnail);
         }
+
+        holder.bookDataCardView.setOnClickListener(v -> {
+//            Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
+            AppCompatActivity activity = (AppCompatActivity) context;
+            activity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_layout, new BookFragment(bookData))
+                    .addToBackStack(null).commit();
+        });
 
 //        holder.book_thumbnail.setImageURI();
     }
@@ -69,6 +83,8 @@ public class BookDataAdapter extends RecyclerView.Adapter<BookDataAdapter.bookDa
         TextView book_title, book_author, book_price;
         ImageView book_thumbnail;
 
+        CardView bookDataCardView;
+
         public bookDataViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -77,6 +93,8 @@ public class BookDataAdapter extends RecyclerView.Adapter<BookDataAdapter.bookDa
             book_price = itemView.findViewById(R.id.book_price);
 
             book_thumbnail = itemView.findViewById(R.id.book_thumbnail);
+
+            bookDataCardView = itemView.findViewById(R.id.bookDataCardView);
 
         }
     }

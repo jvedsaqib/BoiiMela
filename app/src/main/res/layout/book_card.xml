@@ -6,6 +6,8 @@
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
     android:layout_margin="16dp"
+    android:id="@+id/bookDataCardView"
+
 
     >
 
@@ -57,7 +59,7 @@
             android:layout_height="wrap_content"
 
             android:text="Price"
-            android:textSize="15dp"
+            android:textSize="25dp"
 
             android:layout_alignParentEnd="true"
             android:layout_alignBottom="@id/book_author"
