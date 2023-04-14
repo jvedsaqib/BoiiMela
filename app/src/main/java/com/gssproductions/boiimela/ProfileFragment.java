@@ -96,18 +96,17 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-//        textViewWelcome = view.findViewById(R.id.TextView_show_welcome);
-//        textViewFullName = view.findViewById(R.id.textView_show_full_name);
-//        textViewEmail = view.findViewById(R.id.textView_show_email);
-//        textViewDoB = view.findViewById(R.id.textView_show_dob);
-//        textViewGender = view.findViewById(R.id.textView_show_gender);
-//        textViewmobile = view.findViewById(R.id.textView_show_mobile);
+        textViewWelcome = view.findViewById(R.id.TextView_show_welcome);
+        textViewFullName = view.findViewById(R.id.textView_show_full_name);
+        textViewEmail = view.findViewById(R.id.textView_show_email);
+        textViewDoB = view.findViewById(R.id.textView_show_dob);
+        textViewGender = view.findViewById(R.id.textView_show_gender);
+        textViewmobile = view.findViewById(R.id.textView_show_mobile);
         //progressBar = view.findViewById(R.id.progressbar_profile);
-        return view;
+      return view;
     }
 
     private void showUserProfile(FirebaseUser firebaseUser) {
