@@ -64,6 +64,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //google
+        Button buttonGoogle=findViewById(R.id.button_google);
+        buttonGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LoginActivity.this,GoogleActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //login
         Button buttonLogin=findViewById(R.id.button_log);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
