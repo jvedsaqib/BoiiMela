@@ -30,6 +30,8 @@ public class BaseActivity extends AppCompatActivity {
 //
 //    NavigationView navigationView;
 
+    Long backPressedTime = Long.valueOf(0);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,18 +103,28 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    public void onBackPressed(){
-        Toast.makeText(this, "Signed Out right now", Toast.LENGTH_SHORT);
-        FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(BaseActivity.this, LoginActivity.class));
-    }
-
     private void replaceFragment(Fragment fragment){
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_layout, fragment);
         fragmentTransaction.commit();
+
+    }
+
+    public void onBackPressed(){
+
+        if (backPressedTime + 3000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+            finish();
+        } else {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_layout, new HomeFragment())
+                    .addToBackStack(null).commit();
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_LONG).show();
+        }
+        backPressedTime = System.currentTimeMillis();
 
     }
 
