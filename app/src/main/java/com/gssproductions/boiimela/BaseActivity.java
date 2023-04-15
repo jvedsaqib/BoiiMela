@@ -31,6 +31,7 @@ public class BaseActivity extends AppCompatActivity {
 //    NavigationView navigationView;
 
     Long backPressedTime = Long.valueOf(0);
+    BottomNavigationView bottom_nav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class BaseActivity extends AppCompatActivity {
 
         replaceFragment(new HomeFragment());
 
-        BottomNavigationView bottom_nav =  findViewById(R.id.bottom_nav);
+        bottom_nav =  findViewById(R.id.bottom_nav);
 
 
 //        drawerLayout = findViewById(R.id.drawer_layout);
@@ -114,7 +115,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void onBackPressed(){
 
-        if (backPressedTime + 3000 > System.currentTimeMillis()) {
+        if (backPressedTime + 500 > System.currentTimeMillis()) {
             super.onBackPressed();
             finish();
         } else {
@@ -122,6 +123,7 @@ public class BaseActivity extends AppCompatActivity {
                     .beginTransaction()
                     .replace(R.id.fragment_layout, new HomeFragment())
                     .addToBackStack(null).commit();
+            bottom_nav.setSelectedItemId(R.id.nav_btn_home);
             Toast.makeText(this, "Press back again to exit", Toast.LENGTH_LONG).show();
         }
         backPressedTime = System.currentTimeMillis();
