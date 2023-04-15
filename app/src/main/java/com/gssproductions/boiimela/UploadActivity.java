@@ -6,16 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
@@ -244,6 +248,8 @@ public class UploadActivity extends AppCompatActivity {
                 return imageView1;
             }
         });
+
+
 
         arrow_right.setOnClickListener(new View.OnClickListener() {
             @Override
