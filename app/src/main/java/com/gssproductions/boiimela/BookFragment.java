@@ -8,11 +8,16 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class BookFragment extends Fragment {
 
@@ -29,9 +34,12 @@ public class BookFragment extends Fragment {
 
     BookData ob;
 
-    TextView book_title, book_price;
+    TextView book_title, book_price,
+            cover_type, book_desc;
 
     String[] imgUrls;
+
+    Button user_chat_btn;
 
     public BookFragment(BookData ob){
         this.ob = ob;
@@ -82,6 +90,30 @@ public class BookFragment extends Fragment {
 
         book_price = view.findViewById(R.id.book_price);
         book_price.setText(ob.getPrice());
+
+        cover_type = view.findViewById(R.id.cover_type);
+        cover_type.setText(ob.getCoverType());
+
+        book_desc = view.findViewById(R.id.book_desc);
+        book_desc.setText(ob.getDescription());
+
+        user_chat_btn = (Button) view.findViewById(R.id.user_chat_btn);
+        if(ob.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+            user_chat_btn.setEnabled(false);
+        }
+        user_chat_btn.setOnClickListener(v -> {
+            Log.d("chat-sender", ob.getUid() + "  -  " + FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
+
+            context = getContext();
+
+            AppCompatActivity activity = (AppCompatActivity) context;
+            activity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_layout, new UserChatFragment(ob))
+                    .commit();
+
+        });
+
 
         return view;
         // Inflate the layout for this fragment

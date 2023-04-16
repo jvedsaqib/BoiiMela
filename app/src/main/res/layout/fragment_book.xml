@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,102 +10,258 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <androidx.cardview.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        card_view:cardBackgroundColor="#eeeeff"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="20dp"
-        android:layout_margin="16dp"
-
-        android:id="@+id/imageViewPager_Card"
-
-        >
-        <androidx.viewpager.widget.ViewPager
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/imageViewPager"
-
-            android:layout_margin="5dp"
-
-            />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-
-        android:id="@+id/book_title_card"
-        android:layout_below="@id/imageViewPager_Card"
-
-        card_view:cardBackgroundColor="#eeeeff"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="20dp"
-        android:layout_margin="16dp"
-        android:layout_centerHorizontal="true"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
         >
 
-        <TextView
-            android:id="@+id/book_title"
-            android:layout_width="match_parent"
+        <androidx.cardview.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width  ="wrap_content"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="#eeeeff"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="20dp"
+            android:layout_margin="16dp"
+
+            android:id="@+id/imageViewPager_Card"
+
+            >
+            <androidx.viewpager.widget.ViewPager
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:id="@+id/imageViewPager"
+
+                android:layout_margin="5dp"
+
+                />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
 
-            android:text="Book Title"
-            android:textSize="25dp"
-            android:gravity="center"
-
+            android:id="@+id/book_title_card"
             android:layout_below="@id/imageViewPager_Card"
 
-            />
+            card_view:cardBackgroundColor="#eeeeff"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="20dp"
+            android:layout_margin="16dp"
+            android:layout_centerHorizontal="true"
 
-    </androidx.cardview.widget.CardView>
+            >
 
+            <TextView
+                android:id="@+id/book_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+                android:text="Book Title"
+                android:textSize="25dp"
+                android:gravity="center"
 
-        android:id="@+id/book_price_card"
-        android:layout_below="@id/book_title_card"
+                android:layout_below="@id/imageViewPager_Card"
 
-        card_view:cardBackgroundColor="#9A9AED"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="20dp"
-        android:layout_margin="16dp"
+                />
 
-        >
-
-    <TextView
-        android:id="@+id/book_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="Book Price"
-        android:textSize="25dp"
-        android:gravity="right"
-
-        android:layout_below="@id/book_title_card"
-        android:layout_margin="5dp"
-        />
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="INR"
-
-        android:layout_below="@id/book_price_card"
-        android:layout_alignRight="@id/book_price_card"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="-15dp"
-
-        />
+        </androidx.cardview.widget.CardView>
 
 
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/highlights_layout"
+
+            android:layout_below="@id/book_title_card"
+            android:layout_centerHorizontal="true"
+
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/book_price_card"
+                android:layout_below="@id/book_title_card"
+
+                card_view:cardBackgroundColor="#9A9AED"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="20dp"
+                android:layout_margin="16dp"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:id="@+id/currency_imageView"
+
+                        android:src="@drawable/currency_rupee_24"
+                        android:layout_margin="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/book_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Book Price"
+                        android:textSize="20dp"
+
+                        android:layout_toRightOf="@id/currency_imageView"
+                        android:layout_margin="2dp"
+                        />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="INR"
+
+                android:layout_below="@id/book_price_card"
+                android:layout_alignRight="@id/book_price_card"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="-15dp"
+
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/cover_type_card"
+                android:layout_below="@id/book_title_card"
+                android:layout_toRightOf="@id/book_price_card"
+                card_view:cardBackgroundColor="#9A9AED"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="20dp"
+                android:layout_margin="16dp"
+
+                >
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:id="@+id/cover_imageView"
+
+                        android:src="@drawable/menu_book_24"
+                        android:layout_margin="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/cover_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
+
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_toRightOf="@id/cover_imageView"
+                        android:text="Cover Type"
+                        android:textSize="20dp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/decsription_layout"
+
+            android:layout_below="@+id/highlights_layout"
+
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/book_description_card"
+
+                card_view:cardBackgroundColor="#eeeeff"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="20dp"
+                android:layout_margin="16dp"
+                android:layout_centerHorizontal="true"
+
+                >
+
+                <TextView
+                    android:id="@+id/book_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="Book Description"
+                    android:textSize="20dp"
+                    android:gravity="center"
+
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_layout"
+
+            android:layout_below="@+id/decsription_layout"
+            android:layout_centerHorizontal="true"
+            >
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:id="@+id/user_chat_btn"
+
+                android:text="Chat"
+
+                />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+
+                android:text="Something"
+                android:textSize="10dp"
+
+                android:layout_toRightOf="@id/user_chat_btn"
+                android:layout_marginStart="20dp"
+
+                />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</ScrollView>

@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -325,28 +326,29 @@ public class UploadActivity extends AppCompatActivity {
 
     private void uploadData() {
 
-        radioGroupCoverType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.HardCoverRadioButton:
-                        cover="HARD COVER";
-                        break;
 
-                    case R.id.PaperBackRadioButton:
-                        cover="PAPER BACK";
-                        break;
+//        radioGroupCoverType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                switch (checkedId) {
+//                    case R.id.HardCoverRadioButton:
+//                        cover="HARD COVER";
+//                        break;
+//
+//                    case R.id.PaperBackRadioButton:
+//                        cover="PAPERBACK";
+//                        break;
+//
+//                    case R.id.SoftCoverRadioButton:
+//                        cover="SOFT COVER";
+//                        break;
+//                    default:
+//                        cover="";
+//                }
+//            }
+//        });
 
-                    case R.id.SoftCoverRadioButton:
-                        cover="SOFT COVER";
-                        break;
-                    default:
-                        cover="";
-                }
-            }
-        });
-
-        ob = new UploadDataUserDetails(FirebaseAuth.getInstance().getCurrentUser().getUid().toString(),
+        ob = new UploadDataUserDetails(FirebaseAuth.getInstance().getCurrentUser().getUid(),
                 etTitle.getText().toString(),
                 etAuthorName.getText().toString(),
                 etPublisherName.getText().toString(),
