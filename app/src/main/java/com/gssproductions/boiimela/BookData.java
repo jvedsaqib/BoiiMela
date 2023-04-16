@@ -5,6 +5,7 @@ public class BookData {
     String address, authorName, description,
             imgUrl0, imgUrl1, imgUrl2,
             phoneNumber, price, publisherName,
+            coverType,
             title, uid;
 
     public String getAddress() {
@@ -49,5 +50,9 @@ public class BookData {
 
     public String getUid() {
         return uid;
+    }
+
+    public String getCoverType() {
+        return coverType;
     }
 }
