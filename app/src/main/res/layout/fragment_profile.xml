@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment"
-    android:background="@color/material_dynamic_neutral80"
+    android:background="#eeefff"
 
     >
 
@@ -18,7 +18,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="#5CC09F"
+            android:background="#82D9FB"
             tools:ignore="UnknownId">
 
             <ImageView

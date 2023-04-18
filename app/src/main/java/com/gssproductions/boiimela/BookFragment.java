@@ -5,12 +5,19 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class BookFragment extends Fragment {
 
@@ -23,9 +30,16 @@ public class BookFragment extends Fragment {
 
     Context context;
 
+    ViewPager imageViewPager;
+
     BookData ob;
 
-    TextView uid;
+    TextView book_title, book_price,
+            cover_type, book_desc;
+
+    String[] imgUrls;
+
+    Button user_chat_btn;
 
     public BookFragment(BookData ob){
         this.ob = ob;
@@ -53,6 +67,12 @@ public class BookFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        imgUrls = new String[3];
+
+        imgUrls[0] = ob.getImgUrl0();
+        imgUrls[1] = ob.getImgUrl1();
+        imgUrls[2] = ob.getImgUrl2();
+
     }
 
     @Override
@@ -60,8 +80,40 @@ public class BookFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_book, container, false);
 
-        uid = view.findViewById(R.id.uid);
-        uid.setText(ob.getTitle());
+        ViewPageAdapter adapter = new ViewPageAdapter(getContext(), imgUrls);
+
+        imageViewPager = view.findViewById(R.id.imageViewPager);
+        imageViewPager.setAdapter(adapter);
+
+        book_title = view.findViewById(R.id.book_title);
+        book_title.setText(ob.getTitle());
+
+        book_price = view.findViewById(R.id.book_price);
+        book_price.setText(ob.getPrice());
+
+        cover_type = view.findViewById(R.id.cover_type);
+        cover_type.setText(ob.getCoverType());
+
+        book_desc = view.findViewById(R.id.book_desc);
+        book_desc.setText(ob.getDescription());
+
+        user_chat_btn = (Button) view.findViewById(R.id.user_chat_btn);
+        if(ob.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+            user_chat_btn.setEnabled(false);
+        }
+        user_chat_btn.setOnClickListener(v -> {
+            Log.d("chat-sender", ob.getUid() + "  -  " + FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
+
+            context = getContext();
+
+            AppCompatActivity activity = (AppCompatActivity) context;
+            activity.getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_layout, new UserChatFragment(ob))
+                    .commit();
+
+        });
+
 
         return view;
         // Inflate the layout for this fragment

@@ -6,16 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
@@ -245,6 +250,8 @@ public class UploadActivity extends AppCompatActivity {
             }
         });
 
+
+
         arrow_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -319,28 +326,29 @@ public class UploadActivity extends AppCompatActivity {
 
     private void uploadData() {
 
-        radioGroupCoverType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.HardCoverRadioButton:
-                        cover="HARD COVER";
-                        break;
 
-                    case R.id.PaperBackRadioButton:
-                        cover="PAPER BACK";
-                        break;
+//        radioGroupCoverType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                switch (checkedId) {
+//                    case R.id.HardCoverRadioButton:
+//                        cover="HARD COVER";
+//                        break;
+//
+//                    case R.id.PaperBackRadioButton:
+//                        cover="PAPERBACK";
+//                        break;
+//
+//                    case R.id.SoftCoverRadioButton:
+//                        cover="SOFT COVER";
+//                        break;
+//                    default:
+//                        cover="";
+//                }
+//            }
+//        });
 
-                    case R.id.SoftCoverRadioButton:
-                        cover="SOFT COVER";
-                        break;
-                    default:
-                        cover="";
-                }
-            }
-        });
-
-        ob = new UploadDataUserDetails(FirebaseAuth.getInstance().getCurrentUser().getUid().toString(),
+        ob = new UploadDataUserDetails(FirebaseAuth.getInstance().getCurrentUser().getUid(),
                 etTitle.getText().toString(),
                 etAuthorName.getText().toString(),
                 etPublisherName.getText().toString(),

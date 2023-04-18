@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:context=".UserChatFragment">
+
+    <RelativeLayout
+        android:id="@+id/userNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+
+        android:background="#82D9FB"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chat"
+
+            android:textSize="25dp"
+            android:textColor="@color/black"
+
+
+            android:layout_margin="20dp"
+            />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/msgList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        android:layout_above="@id/sendFab"
+        android:layout_below="@id/userNameLayout"
+        />
+
+    <EditText
+        android:id="@+id/inputMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_toLeftOf="@id/sendFab"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="20dp"
+
+        android:hint="Message..."
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/sendFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:src="@drawable/send_icon"
+        app:fabSize="mini"
+        android:backgroundTint="@color/browser_actions_bg_grey"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="10dp"
+        />
+
+</RelativeLayout>
