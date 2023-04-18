@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    app:cardCornerRadius="20dp"
+    android:layout_marginTop="15dp"
+    android:paddingTop="10dp"
+    app:cardElevation="10dp"
+    android:backgroundTint="#feeeee"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        >
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="username"
+            android:textSize="18dp"
+            android:textColor="@color/purple_500"
+
+            android:layout_margin="20dp"
+
+            />
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Message"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+
+            android:layout_below="@id/tvUsername"
+            android:layout_marginEnd="25dp"
+            android:gravity="right"
+
+            />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Time"
+
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

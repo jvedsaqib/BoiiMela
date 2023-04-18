@@ -6,32 +6,68 @@
     tools:context=".ChatFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+<!--    <TextView-->
+<!--        android:id="@+id/under_construction"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+
+<!--        android:text="Under Construction..."-->
+<!--        android:textSize="30dp"-->
+
+<!--        android:layout_centerInParent="true"-->
+<!--        android:gravity="center"-->
+
+<!--        />-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+
+<!--        android:src="@drawable/icon_construction"-->
+<!--        android:layout_below="@id/under_construction"-->
+<!--        android:layout_centerHorizontal="true"-->
+
+<!--        />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/chat_nav_layout"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/chat_buy_btn"
+
+            android:text="Buy"
+            android:layout_marginStart="100dp"
+
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/chat_sell_btn"
+
+            android:text="Sell"
+            android:layout_toRightOf="@id/chat_buy_btn"
+            android:layout_marginStart="20dp"
+
+
+            />
+
+    </RelativeLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Chat Fragment" />
+        android:id="@+id/chat_layout"
 
-    <TextView
-        android:id="@+id/under_construction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:text="Under Construction..."
-        android:textSize="30dp"
-
-        android:layout_centerInParent="true"
-        android:gravity="center"
+        android:layout_below="@id/chat_nav_layout"
 
         />
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-
-        android:src="@drawable/icon_construction"
-        android:layout_below="@id/under_construction"
-        android:layout_centerHorizontal="true"
-
-        />
 
 </RelativeLayout>
