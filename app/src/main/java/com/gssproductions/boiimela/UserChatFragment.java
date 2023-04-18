@@ -2,14 +2,17 @@ package com.gssproductions.boiimela;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.text.format.DateFormat;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,12 +56,23 @@ public class UserChatFragment extends Fragment {
     String BUY_CHAT_DB_LOC = "";
     String SELL_CHAT_DB_LOC = "";
 
+    String BUY_PATH, SELL_PATH, MODE;
+
     public UserChatFragment() {
         // Required empty public constructor
     }
 
     public UserChatFragment(BookData sender){
         this.sender = sender;
+        this.BUY_PATH = "Chat/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/"+sender.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+sender.getTitle();
+        this.SELL_PATH = "Chat/"+sender.getUid()+"/sell/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"-"+sender.getUid()+"/"+sender.getTitle();
+        this.MODE = "BUY";
+    }
+
+    public UserChatFragment(String BUY_PATH, String SELL_PATH, String MODE){
+        this.BUY_PATH = BUY_PATH;
+        this.SELL_PATH = SELL_PATH;
+        this.MODE = MODE;
     }
 
     public static UserChatFragment newInstance(String param1, String param2) {
@@ -89,22 +103,38 @@ public class UserChatFragment extends Fragment {
         msgList = (ListView) view.findViewById(R.id.msgList);
         sendFab = view.findViewById(R.id.sendFab);
 
-        displayChatMessages();
+        if(MODE.equals("BUY")){
+            displayChatMessages(BUY_PATH);
+        }
+        else if(MODE.equals("SELL")){
+            displayChatMessages(SELL_PATH);
+        }
 
-        BUY_CHAT_DB_LOC = "Chat/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/"+sender.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+sender.getTitle();
+        BUY_CHAT_DB_LOC = BUY_PATH;
+        SELL_CHAT_DB_LOC = SELL_PATH;
 
-        SELL_CHAT_DB_LOC = "Chat/"+sender.uid+"/sell/"+sender.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+sender.getTitle();
+//        BUY_CHAT_DB_LOC = "Chat/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/"+sender.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+sender.getTitle();
+//
+//        SELL_CHAT_DB_LOC = "Chat/"+sender.uid+"/sell/"+sender.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+sender.getTitle();
 
         sendFab.setOnClickListener(v -> {
             inputMsg = view.findViewById(R.id.inputMsg);
 
-            FirebaseDatabase.getInstance().getReference().child("Chat/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/"+sender.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+sender.getTitle()).push().setValue(
+            FirebaseDatabase.getInstance()
+                    .getReference()
+                    .child(BUY_CHAT_DB_LOC)
+                    .push()
+                    .setValue(
                     new ChatMessage(inputMsg.getText().toString(),
                             FirebaseAuth.getInstance().getCurrentUser().getEmail(),
                             FirebaseAuth.getInstance().getCurrentUser().getUid()
                     ));
 
-            FirebaseDatabase.getInstance().getReference().child("Chat/"+sender.uid+"/sell/"+sender.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+sender.getTitle()).push().setValue(
+            FirebaseDatabase.getInstance()
+                    .getReference()
+                    .child(SELL_CHAT_DB_LOC)
+                    .push()
+                    .setValue(
                     new ChatMessage(inputMsg.getText().toString(),
                             FirebaseAuth.getInstance().getCurrentUser().getEmail(),
                             FirebaseAuth.getInstance().getCurrentUser().getUid()
@@ -117,19 +147,21 @@ public class UserChatFragment extends Fragment {
         return view;
     }
 
-    private void displayChatMessages() {
+    private void displayChatMessages(String PATH) {
 
         adapter = new FirebaseListAdapter<ChatMessage>((AppCompatActivity) context,
                 ChatMessage.class,
                 R.layout.message,
-                FirebaseDatabase.getInstance().getReference().child("Chat/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/"+sender.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+sender.getTitle())) {
+                FirebaseDatabase.getInstance()
+                        .getReference()
+                        .child(PATH)) {
             @Override
             protected void populateView(View v, ChatMessage model, int position) {
                 TextView tvUsername = v.findViewById(R.id.tvUsername);
                 TextView tvMessage = v.findViewById(R.id.tvMessage);
                 TextView tvTime = v.findViewById(R.id.tvTime);
 
-                FirebaseDatabase.getInstance().getReference().child(BUY_CHAT_DB_LOC)
+                FirebaseDatabase.getInstance().getReference().child(PATH)
                         .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -143,11 +175,16 @@ public class UserChatFragment extends Fragment {
                     }
                 });
 
+                if(model.getMessageUserUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+                    tvMessage.setTextColor(Color.BLUE);
+                    tvMessage.setGravity(Gravity.END);
+
+                }
                 // Set their text
                 tvMessage.setText(model.getMessageText());
 
                 // Format the date before showing it
-                tvTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",
+                tvTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm)",
                         model.getMessageTime()));
 
             }

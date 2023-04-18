@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+
     tools:context=".UserChatFragment">
 
     <RelativeLayout
@@ -11,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentTop="true"
+
+        android:background="#82D9FB"
         >
 
         <TextView
@@ -21,6 +25,7 @@
             android:textSize="25dp"
             android:textColor="@color/black"
 
+
             android:layout_margin="20dp"
             />
     </RelativeLayout>
@@ -29,6 +34,7 @@
         android:id="@+id/msgList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
 
         android:layout_above="@id/sendFab"
         android:layout_below="@id/userNameLayout"
