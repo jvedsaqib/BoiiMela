@@ -7,11 +7,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,6 +57,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //hide password
+        ImageView imageViewShowHidePwd=findViewById(R.id.imageView_show_hide_pwd);
+        imageViewShowHidePwd.setImageResource(R.drawable.ic_hide_pwd);
+        imageViewShowHidePwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (editTextLoginPwd.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())) {
+                    //if visible
+                    imageViewShowHidePwd.setImageResource(R.drawable.ic_hide_pwd);
+                    editTextLoginPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    editTextLoginPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+                imageViewShowHidePwd.setImageResource(R.drawable.ic_show_pwd);
+            }
+        });
+
+
         //reset password
         TextView textViewForgotPassword=findViewById(R.id.textView_forgot_password_link);
         textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
@@ -64,15 +85,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //google
-        Button buttonGoogle=findViewById(R.id.button_google);
-        buttonGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(LoginActivity.this,GoogleActivity.class);
-                startActivity(intent);
-            }
-        });
 
         //login
         Button buttonLogin=findViewById(R.id.button_log);
