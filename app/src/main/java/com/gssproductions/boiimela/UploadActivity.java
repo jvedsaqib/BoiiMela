@@ -206,7 +206,7 @@ public class UploadActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
-        getSupportActionBar().hide();
+        // getSupportActionBar().hide();
 
         filePath = new ArrayList<Uri>();
 

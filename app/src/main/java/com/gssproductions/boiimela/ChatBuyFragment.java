@@ -70,7 +70,7 @@ public class ChatBuyFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        // ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         chatList = new ArrayList<>();
 
