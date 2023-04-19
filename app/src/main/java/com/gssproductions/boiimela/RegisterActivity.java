@@ -6,12 +6,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -60,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
         editTextRegisterCPwd=findViewById(R.id.editText_register_confirm_password);
         radioGroupRegisterGender=findViewById(R.id.radio_group_register_gender);
         radioGroupRegisterGender.clearCheck();
-        progressBar=findViewById(R.id.progressbar);
+        progressBar=findViewById(R.id.progressbar_reg);
 
         //set DatePicker
         editTextRegisterDob.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +83,42 @@ public class RegisterActivity extends AppCompatActivity {
                 picker.show();
             }
         });
+
+        //hide password
+        ImageView imageViewpwd=findViewById(R.id.imageView_show_hide_pwd_reg);
+        imageViewpwd.setImageResource(R.drawable.ic_hide_pwd);
+        imageViewpwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (editTextRegisterPwd.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())) {
+                    //if visible
+                    imageViewpwd.setImageResource(R.drawable.ic_hide_pwd);
+                    editTextRegisterPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    editTextRegisterPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+                imageViewpwd.setImageResource(R.drawable.ic_show_pwd);
+            }
+        });
+
+
+        //con hide password
+        ImageView imageViewcpwd=findViewById(R.id.imageView_show_hide_cpwd_reg);
+        imageViewcpwd.setImageResource(R.drawable.ic_hide_pwd);
+        imageViewpwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (editTextRegisterCPwd.getTransformationMethod().equals(HideReturnsTransformationMethod.getInstance())) {
+                    //if visible
+                    imageViewcpwd.setImageResource(R.drawable.ic_hide_pwd);
+                    editTextRegisterCPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    editTextRegisterCPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+                imageViewcpwd.setImageResource(R.drawable.ic_show_pwd);
+            }
+        });
+
 
         Button buttonRegister=findViewById(R.id.button_reg);
         buttonRegister.setOnClickListener(new View.OnClickListener() {
