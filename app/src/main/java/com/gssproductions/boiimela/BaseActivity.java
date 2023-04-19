@@ -116,7 +116,8 @@ public class BaseActivity extends AppCompatActivity {
     public void onBackPressed(){
 
         if (backPressedTime + 500 > System.currentTimeMillis()) {
-            super.onBackPressed();
+            FirebaseAuth.getInstance().signOut();
+//            super.onBackPressed();
             finish();
         } else {
             getSupportFragmentManager()
