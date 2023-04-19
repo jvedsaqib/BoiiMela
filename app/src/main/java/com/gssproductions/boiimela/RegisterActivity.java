@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        getSupportActionBar().hide();
+        // getSupportActionBar().hide();
 
         Toast.makeText(RegisterActivity.this, "you can register now", Toast.LENGTH_SHORT).show();
 
