@@ -7,10 +7,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -33,6 +37,11 @@ public class ProfileFragment extends Fragment {
     String fullName, email, mobile, gender, doB;
     ImageView imageView;
     FirebaseAuth authProfile;
+
+    Toolbar toolbar;
+
+    private MenuItem menuItem;
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -63,6 +72,9 @@ public class ProfileFragment extends Fragment {
         // ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         // --------------
+
+        setHasOptionsMenu(true);
+
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
@@ -74,6 +86,11 @@ public class ProfileFragment extends Fragment {
             showUserProfile(firebaseUser);
         }
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.navigation_menu, menu);  // Use filter.xml from step 1
     }
 
     @Override
@@ -89,7 +106,28 @@ public class ProfileFragment extends Fragment {
         textViewGender = view.findViewById(R.id.textView_show_gender);
         textViewmobile = view.findViewById(R.id.textView_show_mobile);
         //progressBar = view.findViewById(R.id.progressbar_profile);
+
+        toolbar = view.findViewById(R.id.toolbar);
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setTitle("");
+
+
       return view;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.sign_out){
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(getActivity(), LoginActivity.class));
+            getActivity().finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void showUserProfile(FirebaseUser firebaseUser) {
