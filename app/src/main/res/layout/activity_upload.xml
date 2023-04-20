@@ -1,213 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UploadActivity">
+    android:id="@+id/swipeContainer"
 
-    <RelativeLayout
+    >
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UploadActivity"
+    android:background="@color/material_dynamic_primary90"
+    >
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        >
-
-
-        <EditText
-            android:id="@+id/etTitle"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-
-            android:hint="Title"
-
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
-
-            />
-
-        <EditText
-            android:id="@+id/etAuthorName"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-
-            android:hint="Author Name"
-
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/etTitle"
-            android:layout_marginTop="20dp"
-
-            />
-
-        <EditText
-            android:id="@+id/etPublisherName"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-
-            android:hint="Publisher Name"
-
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/etAuthorName"
-            android:layout_marginTop="20dp"
-
-            />
-
-        <RadioGroup
-            android:id="@+id/radioGroupCoverType"
-            android:layout_width="120dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="180dp"
+            android:background="@color/teal_250">
 
-            android:layout_below="@id/etPublisherName"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:background="#deedee"
+            <TextView
+                android:id="@+id/textView_password_reset_head"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Enter your book details"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="-50dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/border"
+            android:padding="15dp"
             >
+
+
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                android:layout_centerHorizontal="true"
+
+                android:layout_marginTop="90dp"
+                android:hint="Title"
+
+                android:minHeight="48dp" />
+
+            <EditText
+                android:id="@+id/etAuthorName"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@id/etTitle"
+
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:hint="Author Name"
+
+                android:minHeight="48dp" />
+
+            <EditText
+                android:id="@+id/etPublisherName"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@id/etAuthorName"
+
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:hint="Publisher Name"
+
+                android:minHeight="48dp" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/text_bookcover"
 
                 android:text="Book Cover"
+                android:layout_below="@+id/etPublisherName"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="70dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
 
                 />
 
-            <RadioButton
-                android:id="@+id/HardCoverRadioButton"
+            <RadioGroup
+                android:id="@+id/radioGroupCoverType"
+                android:layout_width="120dp"
+                android:layout_height="240dp"
+
+                android:layout_below="@id/text_bookcover"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:background="#deedee"
+                >
+
+
+
+                <RadioButton
+                    android:id="@+id/HardCoverRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:minHeight="48dp"
+
+                    android:text="Hard Cover" />
+
+                <RadioButton
+                    android:id="@+id/PaperBackRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:minHeight="48dp"
+                    android:text="Paperback" />
+
+                <RadioButton
+                    android:id="@+id/SoftCoverRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:minHeight="48dp"
+                    android:text="Soft Cover" />
+
+                <RadioButton
+                    android:id="@+id/NoCoverRadioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:minHeight="48dp"
+                    android:text="No Cover" />
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/etDescription"
+                android:layout_width="250dp"
+                android:layout_height="120dp"
+
+                android:hint="Description"
+
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/radioGroupCoverType"
+                android:layout_marginTop="20dp"
+
+                />
+
+            <EditText
+                android:id="@+id/etPrice"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                android:hint="Price"
+                android:inputType="number"
+
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/etDescription"
+                android:layout_marginTop="30dp"
+
+                />
+
+            <EditText
+                android:id="@+id/etPhoneNumber"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                android:hint="Phone Number"
+                android:inputType="number"
+
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/etPrice"
+                android:layout_marginTop="20dp"
+
+                />
+
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="250dp"
+                android:layout_height="120dp"
+
+                android:hint="Address"
+                android:inputType="textPostalAddress"
+
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/etPhoneNumber"
+                android:layout_marginTop="20dp"
+
+                />
+
+            <TextView
+                android:id="@+id/photo_select_warning"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+
+                android:text="[Only 3 photos will be uploaded]"
+                android:textColor="@color/black"
+                android:gravity="center"
+
+                android:layout_below="@id/etAddress"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+
+                />
+
+
+            <ImageSwitcher
+                android:id="@+id/imageView"
+                android:layout_width="200dp"
+                android:layout_height="250dp"
+
+                android:background="#eeeeff"
+
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/photo_select_warning"
+                android:layout_marginTop="20dp"
+
+                />
+
+            <ImageButton
+                android:id="@+id/arrow_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="Hard Cover"
+                android:src="@drawable/arrow_right"
+
+                android:layout_below="@id/imageView"
+                android:layout_alignEnd="@id/imageView"
+
+                android:layout_marginTop="30dp"
 
                 />
 
-            <RadioButton
-                android:id="@+id/PaperBackRadioButton"
+            <ImageButton
+                android:id="@+id/arrow_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="Paperback"
+                android:src="@drawable/arrow_left"
+
+                android:layout_below="@id/imageView"
+                android:layout_alignStart="@id/imageView"
+
+                android:layout_marginTop="30dp"
+
                 />
-
-            <RadioButton
-                android:id="@+id/SoftCoverRadioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="Soft Cover"
-                />
-
-        </RadioGroup>
-
-        <EditText
-            android:id="@+id/etDescription"
-            android:layout_width="250dp"
-            android:layout_height="120dp"
-
-            android:hint="Description"
-
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/radioGroupCoverType"
-            android:layout_marginTop="20dp"
-
-            />
-
-        <EditText
-            android:id="@+id/etPrice"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-
-            android:hint="Price"
-            android:inputType="number"
-
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/etDescription"
-            android:layout_marginTop="30dp"
-
-            />
-
-        <EditText
-            android:id="@+id/etPhoneNumber"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-
-            android:hint="Phone Number"
-            android:inputType="number"
-
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/etPrice"
-            android:layout_marginTop="20dp"
-
-            />
-
-        <EditText
-            android:id="@+id/etAddress"
-            android:layout_width="250dp"
-            android:layout_height="120dp"
-
-            android:hint="Address"
-            android:inputType="textPostalAddress"
-
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/etPhoneNumber"
-            android:layout_marginTop="20dp"
-
-            />
-
-        <TextView
-            android:id="@+id/photo_select_warning"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-
-            android:text="[Only 3 photos will be uploaded]"
-            android:textColor="@color/black"
-            android:gravity="center"
-
-            android:layout_below="@id/etAddress"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
-
-            />
-
-
-        <ImageSwitcher
-            android:id="@+id/imageView"
-            android:layout_width="200dp"
-            android:layout_height="250dp"
-
-            android:background="#eeeeff"
-
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/photo_select_warning"
-            android:layout_marginTop="20dp"
-
-            />
-
-        <ImageButton
-            android:id="@+id/arrow_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:src="@drawable/arrow_right"
-
-            android:layout_below="@id/imageView"
-            android:layout_alignEnd="@id/imageView"
-
-            android:layout_marginTop="40dp"
-
-            />
-
-        <ImageButton
-            android:id="@+id/arrow_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:src="@drawable/arrow_left"
-
-            android:layout_below="@id/imageView"
-            android:layout_alignStart="@id/imageView"
-
-            android:layout_marginTop="40dp"
-
-            />
 
 
             <Button
@@ -216,6 +274,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="Select\nImage"
+                android:backgroundTint="@color/material_dynamic_primary90"
 
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/arrow_left"
@@ -229,6 +288,8 @@
                 android:layout_height="wrap_content"
 
                 android:text="Upload"
+                android:backgroundTint="@color/material_dynamic_primary90"
+
 
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/btnSelectImage"
@@ -236,6 +297,8 @@
 
                 />
 
-    </RelativeLayout>
+        </RelativeLayout>
 
+    </LinearLayout>
 </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
