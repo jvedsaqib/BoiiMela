@@ -39,7 +39,7 @@
         android:layout_alignParentBottom="true"
 
         app:menu="@menu/bottom_nav_menu"
-        android:background="#ffffff"
+        android:background="@color/light_gray"
         />
 
 </RelativeLayout>
