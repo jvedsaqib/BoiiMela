@@ -8,5 +8,5 @@
     <string name="nav_close">Close</string>
     <string name="register"><u>Register</u></string>
     <string name="reset_password"><u>Reset password</u></string>
-    <string name="click_here_to_reset" ><u>click here to reset password</u></string>
+    <string name="click_here_to_reset"><u>click here to reset password</u></string>
 </resources>
