@@ -12,5 +12,27 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+
+    </style>
+
+    <!-- dark mode 99FFFFFF -->
+    <style name="nightModeSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#0A945D</item>
+        <item name="colorSwitchThumbNormal">#1E1616</item>
+        <item name="android:foreground">#99FFFFFF</item>
+    </style>
+    <!-- notification-->
+    <style name="notificationIconSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#0A945D</item>
+        <item name="colorSwitchThumbNormal">#1E1616</item>
+        <item name="android:foreground">#99FFFFFF</item>
+    </style>
+
+    <!-- security-->
+    <style name="PrivacyIconSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#0A945D</item>
+        <item name="colorSwitchThumbNormal">#1E1616</item>
+        <item name="android:foreground">#99FFFFFF</item>
     </style>
 </resources>
