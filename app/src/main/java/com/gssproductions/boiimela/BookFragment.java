@@ -106,11 +106,16 @@ public class BookFragment extends Fragment {
 
             context = getContext();
 
-            AppCompatActivity activity = (AppCompatActivity) context;
-            activity.getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_layout, new UserChatFragment(ob))
-                    .commit();
+            if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                AppCompatActivity activity = (AppCompatActivity) context;
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_layout, new UserChatFragment(ob))
+                        .commit();
+            }
+            else{
+                Toast.makeText(context, "Please verify your email first", Toast.LENGTH_SHORT).show();
+            }
 
         });
 
