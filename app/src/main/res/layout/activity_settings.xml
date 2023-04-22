@@ -68,6 +68,53 @@
                 android:textAllCaps="false"
                 android:textColor="@color/primary" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/round_back_white10_20"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:radius="20dp">
+
+            <!-- Email Verification -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/email_verify_block">
+
+                <ImageView
+                    android:id="@+id/email_verify"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#8998ee"
+                    android:padding="15dp"
+                    android:src="@drawable/ic_email" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="40dp"
+                    android:layout_toEndOf="@+id/email_verify"
+                    android:text="Verify Email"
+                    android:textColor="#1E1616"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -113,73 +160,73 @@
                 </RelativeLayout>
 
                 <!-- Notification -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp">-->
 
-                    <ImageView
-                        android:id="@+id/notificationIcon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/round_back_notification"
-                        android:padding="15dp"
-                        android:src="@drawable/notification" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/notificationIcon"-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:background="@drawable/round_back_notification"-->
+<!--                        android:padding="15dp"-->
+<!--                        android:src="@drawable/notification" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="40dp"
-                        android:layout_toEndOf="@+id/notificationIcon"
-                        android:text="Notification"
-                        android:textColor="#1E1616"
-                        android:textStyle="bold" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginStart="40dp"-->
+<!--                        android:layout_toEndOf="@+id/notificationIcon"-->
+<!--                        android:text="Notification"-->
+<!--                        android:textColor="#1E1616"-->
+<!--                        android:textStyle="bold" />-->
 
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+<!--                    <androidx.appcompat.widget.SwitchCompat-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
 
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:switchMinWidth="50dp"
-                        android:theme="@style/notificationIconSwitch" />
+<!--                        android:layout_alignParentEnd="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:switchMinWidth="50dp"-->
+<!--                        android:theme="@style/notificationIconSwitch" />-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
 
-                <!-- Privacy account -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+<!--                &lt;!&ndash; Privacy account &ndash;&gt;-->
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp">-->
 
-                    <ImageView
-                        android:id="@+id/PrivacyIcon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/round_back_private_account"
-                        android:padding="15dp"
-                        android:src="@drawable/privacy" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/PrivacyIcon"-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:background="@drawable/round_back_private_account"-->
+<!--                        android:padding="15dp"-->
+<!--                        android:src="@drawable/privacy" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="40dp"
-                        android:layout_toEndOf="@+id/PrivacyIcon"
-                        android:text="Privacy Account"
-                        android:textColor="#1E1616"
-                        android:textStyle="bold" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginStart="40dp"-->
+<!--                        android:layout_toEndOf="@+id/PrivacyIcon"-->
+<!--                        android:text="Privacy Account"-->
+<!--                        android:textColor="#1E1616"-->
+<!--                        android:textStyle="bold" />-->
 
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:switchMinWidth="50dp"
-                        android:theme="@style/PrivacyIconSwitch" />
+<!--                    <androidx.appcompat.widget.SwitchCompat-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_alignParentEnd="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:switchMinWidth="50dp"-->
+<!--                        android:theme="@style/PrivacyIconSwitch" />-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
             </LinearLayout>
 
             <LinearLayout
@@ -227,70 +274,70 @@
                 </RelativeLayout>
 
                 <!-- TextSize -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp">-->
 
-                    <ImageView
-                        android:id="@+id/textSizeIcon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/round_back_night_mode"
-                        android:padding="15dp"
-                        android:src="@drawable/text" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/textSizeIcon"-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:background="@drawable/round_back_night_mode"-->
+<!--                        android:padding="15dp"-->
+<!--                        android:src="@drawable/text" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="40dp"
-                        android:layout_toEndOf="@+id/textSizeIcon"
-                        android:text="Text Size"
-                        android:textColor="#1E1616"
-                        android:textStyle="bold" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginStart="40dp"-->
+<!--                        android:layout_toEndOf="@+id/textSizeIcon"-->
+<!--                        android:text="Text Size"-->
+<!--                        android:textColor="#1E1616"-->
+<!--                        android:textStyle="bold" />-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/right_arrow_icon" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_alignParentEnd="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:src="@drawable/right_arrow_icon" />-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
 
-                <!-- language -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+<!--                &lt;!&ndash; language &ndash;&gt;-->
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp">-->
 
-                    <ImageView
-                        android:id="@+id/languageIcon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/round_back_private_account"
-                        android:padding="15dp"
-                        android:src="@drawable/lanuage" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/languageIcon"-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:background="@drawable/round_back_private_account"-->
+<!--                        android:padding="15dp"-->
+<!--                        android:src="@drawable/lanuage" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="40dp"
-                        android:layout_toEndOf="@+id/languageIcon"
-                        android:text="language"
-                        android:textColor="#1E1616"
-                        android:textStyle="bold" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginStart="40dp"-->
+<!--                        android:layout_toEndOf="@+id/languageIcon"-->
+<!--                        android:text="language"-->
+<!--                        android:textColor="#1E1616"-->
+<!--                        android:textStyle="bold" />-->
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/right_arrow_icon" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_alignParentEnd="true"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:src="@drawable/right_arrow_icon" />-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
             </LinearLayout>
 
         </LinearLayout>

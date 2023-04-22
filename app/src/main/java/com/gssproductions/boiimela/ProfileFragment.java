@@ -144,6 +144,11 @@ public class ProfileFragment extends Fragment {
             return true;
         }
 
+        else if(id == R.id.menu_settings){
+            startActivity(new Intent(getActivity(), Settings.class));
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -163,7 +168,7 @@ public class ProfileFragment extends Fragment {
                     gender = readUserDetails.gender;
                     mobile = readUserDetails.mobile;
 
-                    textViewWelcome.setText("Welcome, " + fullName + "!");
+                    //textViewWelcome.setText("Welcome, " + fullName + "!");
                     textViewFullName.setText(fullName);
                     textViewEmail.setText(email);
                     textViewGender.setText(gender);
