@@ -4,16 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/swipeContainer"
-
-    >
+    android:id="@+id/swipeContainer">
 
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UploadActivity"
-    android:background="@color/material_dynamic_primary90"
-    >
+    android:background="@color/material_dynamic_primary90">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,7 +40,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="-50dp"
             android:layout_marginRight="15dp"
@@ -52,249 +49,509 @@
             android:padding="15dp"
             >
 
-
-            <EditText
-                android:id="@+id/etTitle"
-                android:layout_width="250dp"
+            <RelativeLayout
+                android:id="@+id/RL_Title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border">
 
-                android:layout_centerHorizontal="true"
+                <ImageView
+                    android:id="@+id/img_Title"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/title"/>
 
-                android:layout_marginTop="90dp"
-                android:hint="Title"
+                <TextView
+                    android:id="@+id/tV_Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_Title"
+                    android:padding="6dp"
+                    android:text="Title"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
-                android:minHeight="48dp" />
+                <View
+                    android:id="@+id/div_title"
+                    android:layout_width="250dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tV_Title"
+                    android:layout_centerHorizontal="true"
+                    android:background="@android:color/darker_gray"/>
 
-            <EditText
-                android:id="@+id/etAuthorName"
-                android:layout_width="250dp"
+                <EditText
+                    android:id="@+id/etTitle"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tV_Title"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/img_Title"
+                    android:background="@android:color/transparent"
+                    android:hint="Title"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:padding="6dp"
+                    android:textCursorDrawable="@drawable/edittextcursor"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RL_Author"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_below="@id/etTitle"
-
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:hint="Author Name"
+                android:background="@drawable/border"
+                android:layout_below="@+id/RL_Title">
 
-                android:minHeight="48dp" />
+                <ImageView
+                    android:id="@+id/img_Author"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/profile_icon"/>
 
-            <EditText
-                android:id="@+id/etPublisherName"
-                android:layout_width="250dp"
+                <TextView
+                    android:id="@+id/tV_Author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_Author"
+                    android:padding="6dp"
+                    android:text="Author Name"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <View
+                    android:id="@+id/div_author"
+                    android:layout_width="250dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tV_Author"
+                    android:layout_centerHorizontal="true"
+                    android:background="@android:color/darker_gray"/>
+
+                <EditText
+                    android:id="@+id/etAuthorName"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tV_Author"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/img_Author"
+                    android:background="@android:color/transparent"
+                    android:hint="Author name"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:padding="6dp"
+                    android:textCursorDrawable="@drawable/edittextcursor"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RL_Publisher"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_below="@id/etAuthorName"
-
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:hint="Publisher Name"
+                android:background="@drawable/border"
+                android:layout_below="@+id/RL_Author">
 
-                android:minHeight="48dp" />
+                <ImageView
+                    android:id="@+id/img_Publisher"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/publisher"/>
 
+                <TextView
+                    android:id="@+id/tV_Publisher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_Publisher"
+                    android:padding="6dp"
+                    android:text="Publisher"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+                <View
+                    android:id="@+id/div_publisher"
+                    android:layout_width="250dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tV_Publisher"
+                    android:layout_centerHorizontal="true"
+                    android:background="@android:color/darker_gray"/>
+
+                <EditText
+                    android:id="@+id/etPublisherName"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tV_Publisher"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/img_Publisher"
+                    android:background="@android:color/transparent"
+                    android:hint="Publisher"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:padding="6dp"
+                    android:textCursorDrawable="@drawable/edittextcursor"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RL_Book_Cover"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/text_bookcover"
-
-                android:text="Book Cover"
-                android:layout_below="@+id/etPublisherName"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="70dp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="16sp"
+                android:background="@drawable/border"
+                android:layout_below="@+id/RL_Publisher">
 
-                />
+                <TextView
+                    android:id="@+id/tV_Bookcover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:text="Book Cover"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
-            <RadioGroup
-                android:id="@+id/radioGroupCoverType"
-                android:layout_width="120dp"
-                android:layout_height="240dp"
+                <RadioGroup
+                    android:id="@+id/radioGroupCoverType"
+                    android:layout_width="120dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/tV_Bookcover"
+                    android:layout_centerHorizontal="true"
+                    android:background="#deedee"
+                    >
 
-                android:layout_below="@id/text_bookcover"
-                android:layout_centerHorizontal="true"
+                    <RadioButton
+                        android:id="@+id/HardCoverRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Hard Cover"
+                        android:textSize="16sp"/>
+
+                    <RadioButton
+                        android:id="@+id/PaperBackRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:textSize="16sp"
+                        android:text="Paperback" />
+
+                    <RadioButton
+                        android:id="@+id/SoftCoverRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:textSize="16sp"
+                        android:text="Soft Cover" />
+
+                    <RadioButton
+                        android:id="@+id/NoCoverRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:textSize="16sp"
+                        android:text="No Cover" />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RL_Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="#deedee"
-                >
+                android:background="@drawable/border"
+                android:layout_below="@+id/RL_Book_Cover">
+
+                <ImageView
+                    android:id="@+id/img_Description"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/baseline_description_24"/>
+
+                <TextView
+                    android:id="@+id/tV_Description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_Description"
+                    android:padding="6dp"
+                    android:text="Description"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <View
+                    android:id="@+id/div_des"
+                    android:layout_width="250dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tV_Description"
+                    android:layout_centerHorizontal="true"
+                    android:background="@android:color/darker_gray"/>
+
+                <EditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tV_Description"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/img_Description"
+                    android:background="@android:color/transparent"
+                    android:hint="Description"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:padding="6dp"
+                    android:textCursorDrawable="@drawable/edittextcursor"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RL_Price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border"
+                android:layout_below="@+id/RL_Description">
+
+                <ImageView
+                    android:id="@+id/img_Price"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/currency_rupee_24"/>
+
+                <TextView
+                    android:id="@+id/tV_Price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_Price"
+                    android:padding="6dp"
+                    android:text="Price (Rs)"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <View
+                    android:id="@+id/div_price"
+                    android:layout_width="250dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tV_Price"
+                    android:layout_centerHorizontal="true"
+                    android:background="@android:color/darker_gray"/>
+
+                <EditText
+                    android:id="@+id/etPrice"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tV_Price"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/img_Price"
+                    android:background="@android:color/transparent"
+                    android:hint="Price"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:padding="6dp"
+                    android:textCursorDrawable="@drawable/edittextcursor"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RL_Phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border"
+                android:layout_below="@+id/RL_Price">
+
+                <ImageView
+                    android:id="@+id/img_Phone"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_mobile"/>
+
+                <TextView
+                    android:id="@+id/tV_Phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_Phone"
+                    android:padding="6dp"
+                    android:text="Phone"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <View
+                    android:id="@+id/div_phone"
+                    android:layout_width="250dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tV_Phone"
+                    android:layout_centerHorizontal="true"
+                    android:background="@android:color/darker_gray"/>
+
+                <EditText
+                    android:id="@+id/etPhoneNumber"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tV_Phone"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/img_Phone"
+                    android:background="@android:color/transparent"
+                    android:hint="Phone"
+                    android:inputType="phone"
+                    android:minHeight="48dp"
+                    android:padding="6dp"
+                    android:textCursorDrawable="@drawable/edittextcursor"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RL_Address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border"
+                android:layout_below="@+id/RL_Phone">
+
+                <ImageView
+                    android:id="@+id/img_Address"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/baseline_location_on_24"/>
+
+                <TextView
+                    android:id="@+id/tV_Address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_Address"
+                    android:padding="6dp"
+                    android:text="Address"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <View
+                    android:id="@+id/div_address"
+                    android:layout_width="250dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tV_Address"
+                    android:layout_centerHorizontal="true"
+                    android:background="@android:color/darker_gray"/>
+
+                <EditText
+                    android:id="@+id/etAddress"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tV_Address"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/img_Address"
+                    android:background="@android:color/transparent"
+                    android:hint="Address"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:padding="6dp"
+                    android:textCursorDrawable="@drawable/edittextcursor"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RL_Photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border"
+                android:layout_below="@+id/RL_Address">
 
 
+                <TextView
+                    android:id="@+id/tV_Photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:text="[Only 3 photos will be uploaded]"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
 
-                <RadioButton
-                    android:id="@+id/HardCoverRadioButton"
+                <ImageSwitcher
+                    android:id="@+id/imageView"
+                    android:layout_width="200dp"
+                    android:layout_height="250dp"
+                    android:background="#eeeeff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/tV_Photo"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <ImageButton
+                    android:id="@+id/arrow_right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:layout_below="@id/imageView"
+                    android:layout_alignEnd="@id/imageView"
+                    android:layout_marginTop="20dp"
                     android:minHeight="48dp"
+                    android:src="@drawable/arrow_right" />
 
-                    android:text="Hard Cover" />
-
-                <RadioButton
-                    android:id="@+id/PaperBackRadioButton"
+                <ImageButton
+                    android:id="@+id/arrow_left"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_left"
+                    android:layout_below="@id/imageView"
+                    android:layout_alignStart="@id/imageView"
+                    android:layout_marginTop="20dp"
+                    />
 
-                    android:minHeight="48dp"
-                    android:text="Paperback" />
-
-                <RadioButton
-                    android:id="@+id/SoftCoverRadioButton"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/btnSelectImage"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:text="Select\nImage"
+                    android:backgroundTint="@color/material_dynamic_primary90"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/arrow_left"
+                    android:layout_marginTop="20dp"
+                    />
 
-                    android:minHeight="48dp"
-                    android:text="Soft Cover" />
-
-                <RadioButton
-                    android:id="@+id/NoCoverRadioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:minHeight="48dp"
-                    android:text="No Cover" />
-
-            </RadioGroup>
-
-            <EditText
-                android:id="@+id/etDescription"
-                android:layout_width="250dp"
-                android:layout_height="120dp"
-
-                android:hint="Description"
-
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/radioGroupCoverType"
-                android:layout_marginTop="20dp"
-
-                />
-
-            <EditText
-                android:id="@+id/etPrice"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-
-                android:hint="Price"
-                android:inputType="number"
-
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/etDescription"
-                android:layout_marginTop="30dp"
-
-                />
-
-            <EditText
-                android:id="@+id/etPhoneNumber"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-
-                android:hint="Phone Number"
-                android:inputType="number"
-
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/etPrice"
-                android:layout_marginTop="20dp"
-
-                />
-
-            <EditText
-                android:id="@+id/etAddress"
-                android:layout_width="250dp"
-                android:layout_height="120dp"
-
-                android:hint="Address"
-                android:inputType="textPostalAddress"
-
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/etPhoneNumber"
-                android:layout_marginTop="20dp"
-
-                />
-
-            <TextView
-                android:id="@+id/photo_select_warning"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-
-                android:text="[Only 3 photos will be uploaded]"
-                android:textColor="@color/black"
-                android:gravity="center"
-
-                android:layout_below="@id/etAddress"
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true"
-
-                />
-
-
-            <ImageSwitcher
-                android:id="@+id/imageView"
-                android:layout_width="200dp"
-                android:layout_height="250dp"
-
-                android:background="#eeeeff"
-
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/photo_select_warning"
-                android:layout_marginTop="20dp"
-
-                />
-
-            <ImageButton
-                android:id="@+id/arrow_right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:src="@drawable/arrow_right"
-
-                android:layout_below="@id/imageView"
-                android:layout_alignEnd="@id/imageView"
-
-                android:layout_marginTop="30dp"
-
-                />
-
-            <ImageButton
-                android:id="@+id/arrow_left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:src="@drawable/arrow_left"
-
-                android:layout_below="@id/imageView"
-                android:layout_alignStart="@id/imageView"
-
-                android:layout_marginTop="30dp"
-
-                />
-
-
-            <Button
-                android:id="@+id/btnSelectImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="Select\nImage"
-                android:backgroundTint="@color/material_dynamic_primary90"
-
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/arrow_left"
-                android:layout_marginTop="20dp"
-
-                />
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/btnUploadData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:text="Upload"
                 android:backgroundTint="@color/material_dynamic_primary90"
-
-
                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/btnSelectImage"
+                android:layout_below="@id/RL_Photo"
                 android:layout_marginTop="20dp"
-
                 />
 
         </RelativeLayout>

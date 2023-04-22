@@ -13,6 +13,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/light_gray"
 
         >
 
@@ -33,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:id="@+id/imageViewPager"
+                android:background="@color/yellow1"
 
                 android:layout_margin="5dp"
 
@@ -63,6 +65,7 @@
                 android:text="Book Title"
                 android:textSize="25dp"
                 android:gravity="center"
+                android:background="@color/material_dynamic_neutral99"
 
                 android:layout_below="@id/imageViewPager_Card"
 
@@ -93,7 +96,7 @@
                 app:cardCornerRadius="20dp"
                 android:layout_margin="16dp"
 
-                >
+                tools:ignore="NotSibling">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -115,12 +118,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
-                        android:text="Book Price"
-                        android:textSize="20dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
 
+                        android:layout_marginEnd="2dp"
+                        android:layout_marginBottom="2dp"
                         android:layout_toRightOf="@id/currency_imageView"
-                        android:layout_margin="2dp"
-                        />
+                        android:text="Book Price"
+                        android:textSize="20dp" />
 
                 </RelativeLayout>
 
@@ -151,7 +156,7 @@
                 app:cardCornerRadius="20dp"
                 android:layout_margin="16dp"
 
-                >
+                tools:ignore="NotSibling">
 
 
 
@@ -221,6 +226,7 @@
                     android:text="Book Description"
                     android:textSize="20dp"
                     android:gravity="center"
+                    android:background="@color/material_dynamic_tertiary99"
 
                     />
 
@@ -243,6 +249,7 @@
                 android:id="@+id/user_chat_btn"
 
                 android:text="Chat"
+                android:backgroundTint="@color/material_dynamic_primary90"
 
                 />
 
@@ -255,6 +262,7 @@
 
                 android:layout_toRightOf="@id/user_chat_btn"
                 android:layout_marginStart="20dp"
+                android:backgroundTint="@color/material_dynamic_primary90"
 
                 />
 

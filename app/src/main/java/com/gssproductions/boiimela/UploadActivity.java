@@ -44,24 +44,16 @@ class UploadDataUserDetails{
     private String authorName;
     private String publisherName;
     private String description;
-
     private String address;
-
     private String price;
-
     private String phoneNumber;
-
     private String coverType;
-
     private String imgUrl0;
     private String imgUrl1;
     private String imgUrl2;
 
-
-
     public UploadDataUserDetails() {
     }
-
     public UploadDataUserDetails(String uid, String title, String authorName, String publisherName, String description, String address, String price, String phoneNumber, String coverType, String imgUrl0, String imgUrl1, String imgUrl2) {
         this.uid = uid;
         this.title = title;
@@ -176,20 +168,14 @@ class UploadDataUserDetails{
 public class UploadActivity extends AppCompatActivity {
 
     String cover;
-
     EditText etTitle, etAuthorName, etPublisherName, etDescription, etPrice, etPhoneNumber, etAddress;
-
     RadioGroup radioGroupCoverType;
-
     Button btnSelectImage_side, btnUploadData;
     int position = 0;
-
     ImageButton arrow_right, arrow_left;
     ImageSwitcher imageView;
-
     FirebaseDatabase firebaseDb;
     DatabaseReference firebaseDbRef;
-
     FirebaseStorage storageDb;
     StorageReference storageDbRef;
 
@@ -198,9 +184,7 @@ public class UploadActivity extends AppCompatActivity {
 
     private final int PICK_IMAGE_REQUEST = 123;
     private final int PICK_IMAGE_MULTIPLE = 1;
-
     UploadDataUserDetails ob;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -241,7 +225,6 @@ public class UploadActivity extends AppCompatActivity {
             uploadData();
         });
 
-
         imageView.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
             public View makeView() {
@@ -249,8 +232,6 @@ public class UploadActivity extends AppCompatActivity {
                 return imageView1;
             }
         });
-
-
 
         arrow_right.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -276,14 +257,12 @@ public class UploadActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     public void onBackPressed(){
         startActivity(new Intent(UploadActivity.this, BaseActivity.class));
         finish();
     }
-
 
     private void selectImage() {
 
@@ -295,7 +274,6 @@ public class UploadActivity extends AppCompatActivity {
         startActivityForResult(
                 Intent.createChooser(intent,
                 "Select Picture"), PICK_IMAGE_MULTIPLE);
-
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -320,12 +298,10 @@ public class UploadActivity extends AppCompatActivity {
                 imageView.setImageURI(filePath.get(0));
                 position = 0;
             }
-
         }
     }
 
     private void uploadData() {
-
 
 //        radioGroupCoverType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 //            @Override
@@ -363,8 +339,6 @@ public class UploadActivity extends AppCompatActivity {
                 ProgressDialog pd = new ProgressDialog(this);
                 pd.setTitle("Uploading Data");
                 pd.show();
-
-
 
                 StorageReference ref = storageDbRef.child("bookImage/"+ ob.getUid()+"/"+ ob.getTitle()+"/" + UUID.randomUUID().toString());
 
@@ -411,5 +385,4 @@ public class UploadActivity extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
         startActivity(new Intent(UploadActivity.this, BaseActivity.class));
     }
-
 }

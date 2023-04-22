@@ -163,10 +163,63 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/RL_dob"
+                    android:id="@+id/RL_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/RL_email"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border">
+
+                    <ImageView
+                        android:id="@+id/imageViewAddress"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/baseline_location_on_24" />
+
+                    <TextView
+                        android:id="@+id/textView_register_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/imageViewAddress"
+                        android:padding="6dp"
+                        android:text="Address*"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+
+                    <View
+                        android:id="@+id/divider_address"
+                        android:layout_width="250dp"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/textView_register_address"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/darker_gray" />
+
+                    <EditText
+                        android:id="@+id/editText_register_address"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView_register_address"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@id/imageViewAddress"
+                        android:background="@android:color/transparent"
+                        android:hint="enter your address"
+                        android:inputType="text"
+                        android:minHeight="48dp"
+                        android:padding="6dp"
+                        android:textCursorDrawable="@drawable/edittextcursor"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/RL_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/RL_address"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/border">
 
@@ -193,8 +246,8 @@
                         android:id="@+id/divider_dob"
                         android:layout_width="250dp"
                         android:layout_height="1dp"
-                        android:layout_below="@id/textView_register_dob"
                         android:layout_centerHorizontal="true"
+                        android:layout_below="@id/textView_register_dob"
                         android:background="@android:color/darker_gray" />
 
                     <EditText
