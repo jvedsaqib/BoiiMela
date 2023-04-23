@@ -1,19 +1,12 @@
 package com.gssproductions.boiimela;
 
 public class ReadwriteUserDetails {
+    public String fullName,doB,gender,mobile;
 
-    public ReadwriteUserDetails() {
-    }
-
-    public String name,address,doB,gender,mobile,password;
-    //constructor
-    public ReadwriteUserDetails(String textFullName, String textAddress, String textDob, String textGender, String textMobile, String textPwd){
-        this.name=textFullName;
-        this.address=textAddress;
+    public ReadwriteUserDetails(String textFullName, String textDob, String textGender, String textMobile) {
+        this.fullName=textFullName;
         this.doB=textDob;
         this.gender=textGender;
         this.mobile=textMobile;
-        this.password=textPwd;
     }
-
 }

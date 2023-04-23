@@ -32,9 +32,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileFragment extends Fragment {
 
-    TextView textViewWelcome, textViewFullName, textViewEmail,textViewAddress, textViewDoB, textViewGender, textViewmobile;
+    TextView textViewWelcome, textViewFullName, textViewEmail, textViewDoB, textViewGender, textViewmobile;
     //ProgressBar progressBar;
-    String fullName, email,address, mobile, gender, doB;
+    String fullName, email, mobile, gender, doB;
     ImageView imageView;
     FirebaseAuth authProfile;
 
@@ -106,7 +106,6 @@ public class ProfileFragment extends Fragment {
         textViewWelcome = view.findViewById(R.id.TextView_show_welcome);
         textViewFullName = view.findViewById(R.id.textView_show_full_name);
         textViewEmail = view.findViewById(R.id.textView_show_email);
-        textViewAddress= view.findViewById(R.id.textView_show_address);
         textViewDoB = view.findViewById(R.id.textView_show_dob);
         textViewGender = view.findViewById(R.id.textView_show_gender);
         textViewmobile = view.findViewById(R.id.textView_show_mobile);
@@ -152,7 +151,6 @@ public class ProfileFragment extends Fragment {
                 if (readUserDetails != null) {
                     fullName = firebaseUser.getDisplayName();
                     email = firebaseUser.getEmail();
-                    address=readUserDetails.address;
                     doB = readUserDetails.doB;
                     gender = readUserDetails.gender;
                     mobile = readUserDetails.mobile;
@@ -160,7 +158,6 @@ public class ProfileFragment extends Fragment {
                     textViewWelcome.setText("Welcome, " + fullName + "!");
                     textViewFullName.setText(fullName);
                     textViewEmail.setText(email);
-                    textViewAddress.setText(address);
                     textViewGender.setText(gender);
                     textViewDoB.setText(doB);
                     textViewmobile.setText(mobile);

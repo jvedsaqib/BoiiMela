@@ -10,7 +10,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UploadActivity"
-    android:background="@color/material_dynamic_primary90">
+    android:background="@color/light_blue">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -535,7 +535,7 @@
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:text="Select\nImage"
-                    android:backgroundTint="@color/material_dynamic_primary90"
+                    android:backgroundTint="@color/light_blue"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@id/arrow_left"
                     android:layout_marginTop="20dp"
@@ -548,7 +548,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Upload"
-                android:backgroundTint="@color/material_dynamic_primary90"
+                android:backgroundTint="@color/light_blue"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/RL_Photo"
                 android:layout_marginTop="20dp"
