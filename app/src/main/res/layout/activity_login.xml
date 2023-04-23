@@ -194,7 +194,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
-                        android:text="Do not have an account?"
+                        android:text="Do not have an\n account?"
                         android:textAlignment="center" />
 
                     <TextView
@@ -222,6 +222,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
+                        android:layout_marginLeft="20dp"
                         android:text="Forgot your password?"
                         android:textAlignment="center" />
 
@@ -233,6 +234,7 @@
                         android:textStyle="bold"
                         android:textAlignment="center"
                         android:layout_marginTop="10dp"
+                        android:layout_marginLeft="30dp"
                         android:textColor="@color/purple_700" />
                 </LinearLayout>
 

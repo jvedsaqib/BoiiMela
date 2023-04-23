@@ -111,13 +111,40 @@
                 android:background="@android:color/darker_gray"
                 android:id="@+id/divider_email"/>
 
+            <!---show address -->
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/ic_address"
+                android:background="@drawable/baseline_location_on_24"
+                android:layout_below="@+id/divider_email"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_show_address"
+                android:layout_alignStart="@id/ic_address"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/divider_email"
+                android:hint="Loading"
+                android:layout_marginStart="50dp"
+                android:textSize="18sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/textView_show_address"
+                android:background="@android:color/darker_gray"
+                android:id="@+id/divider_address"/>
             <!---show birthday -->
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:id="@+id/ic_dob"
                 android:background="@drawable/ic_birthday"
-                android:layout_below="@+id/divider_email"
+                android:layout_below="@+id/divider_address"
                 android:layout_marginTop="20dp"/>
 
             <TextView
@@ -126,7 +153,7 @@
                 android:id="@+id/textView_show_dob"
                 android:layout_alignStart="@id/ic_dob"
                 android:layout_marginTop="20dp"
-                android:layout_below="@id/divider_email"
+                android:layout_below="@id/divider_address"
                 android:hint="Loading"
                 android:layout_marginStart="50dp"
                 android:textSize="18sp"/>

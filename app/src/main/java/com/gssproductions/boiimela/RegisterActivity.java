@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText editTextRegisterFullName,editTextRegisterEmail,editTextRegisterDob,editTextRegisterMobile,
+    private EditText editTextRegisterFullName,editTextRegisterEmail,editTextRegisterAddress,editTextRegisterDob,editTextRegisterMobile,
             editTextRegisterPwd,editTextRegisterCPwd;
     private ProgressBar progressBar;
     private RadioGroup radioGroupRegisterGender;
@@ -57,6 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         editTextRegisterFullName=findViewById(R.id.editText_register_full_name);
         editTextRegisterEmail=findViewById(R.id.editText_register_email);
+        editTextRegisterAddress=findViewById(R.id.editText_register_address);
         editTextRegisterDob=findViewById(R.id.editText_register_dob);
         editTextRegisterMobile=findViewById(R.id.editText_register_mobile);
         editTextRegisterPwd=findViewById(R.id.editText_register_password);
@@ -129,6 +130,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 String textFullName=editTextRegisterFullName.getText().toString();
                 String textEmail=editTextRegisterEmail.getText().toString();
+                String textAddress=editTextRegisterAddress.getText().toString();
                 String textDob=editTextRegisterDob.getText().toString();
                 String textMobile=editTextRegisterMobile.getText().toString();
                 String textPwd=editTextRegisterPwd.getText().toString();
@@ -155,7 +157,11 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "please re-enter your email", Toast.LENGTH_LONG).show();
                     editTextRegisterEmail.setError("Valid email is required");
                     editTextRegisterEmail.requestFocus();
-                } else if (TextUtils.isEmpty(textDob)) {
+                } else if (TextUtils.isEmpty(textAddress)) {
+                    Toast.makeText(RegisterActivity.this, "please enter your address", Toast.LENGTH_LONG).show();
+                    editTextRegisterAddress.setError("Address is required");
+                    editTextRegisterAddress.requestFocus();
+                }else if (TextUtils.isEmpty(textDob)) {
                     Toast.makeText(RegisterActivity.this, "please enter your date of birth", Toast.LENGTH_LONG).show();
                     editTextRegisterDob.setError("Date of birth is required");
                     editTextRegisterDob.requestFocus();
@@ -196,13 +202,13 @@ public class RegisterActivity extends AppCompatActivity {
                 }else {
                     textGender=radioButtonRegisterGenderSelected.getText().toString();
                     progressBar.setVisibility(view.VISIBLE);
-                    registerUser(textFullName,textEmail,textDob,textGender,textMobile,textPwd);
+                    registerUser(textFullName,textAddress,textEmail,textDob,textGender,textMobile,textPwd);
                 }
             }
         });
     }
 
-    private void registerUser(String textFullName, String textEmail, String textDob, String textGender, String textMobile, String textPwd) {
+    private void registerUser(String textFullName, String textEmail,String textAddress, String textDob, String textGender, String textMobile, String textPwd) {
         FirebaseAuth auth=FirebaseAuth.getInstance();
         auth.createUserWithEmailAndPassword(textEmail,textPwd).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -216,7 +222,7 @@ public class RegisterActivity extends AppCompatActivity {
                     firebaseUser.updateProfile(profileChangeRequest);
 
                     //data into realtime database
-                    ReadwriteUserDetails writeUserDetails=new ReadwriteUserDetails(textDob,textGender,textMobile);
+                    ReadwriteUserDetails writeUserDetails=new ReadwriteUserDetails(textFullName,textAddress,textDob,textGender,textMobile,textPwd)      ;
                     //extracting user reference from database for 'Registered users'
                     DatabaseReference referenceProfile= FirebaseDatabase.getInstance().getReference("Registered Users");
 
