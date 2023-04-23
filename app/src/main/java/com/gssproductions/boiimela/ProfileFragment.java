@@ -157,7 +157,7 @@ public class ProfileFragment extends Fragment {
                     gender = readUserDetails.gender;
                     mobile = readUserDetails.mobile;
 
-                    //textViewWelcome.setText("Welcome, " + fullName + "!");
+                    textViewWelcome.setText("Welcome, " + fullName + "!");
                     textViewFullName.setText(fullName);
                     textViewEmail.setText(email);
                     textViewAddress.setText(address);
