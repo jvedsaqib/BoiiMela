@@ -97,6 +97,20 @@
                 android:layout_marginStart="50dp"
                 android:textSize="18sp"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_verify_email"
+
+                android:layout_alignStart="@id/ic_email"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="300dp"
+                android:layout_below="@id/divider_name"
+
+                android:hint="Loading"
+
+                />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

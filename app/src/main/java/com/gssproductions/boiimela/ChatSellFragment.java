@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,6 +41,8 @@ public class ChatSellFragment extends Fragment {
     String bookTitle = "";
 
     Boolean flag = false;
+
+    TextView tv_no_chat_msg;
 
 
     // --------------
@@ -96,7 +99,6 @@ public class ChatSellFragment extends Fragment {
 
                                 String CHILD = "bookData/"+users.getKey().toString().substring(0, 28)+"/"+book_title.getKey().toString()+"/price";
 
-                                //book_price = getData(CHILD);
 
                                 bookTitle = book_title.getKey().toString();
 
@@ -108,25 +110,6 @@ public class ChatSellFragment extends Fragment {
                             }
                         }
                         chatSellAdapter.notifyDataSetChanged();
-                    }
-
-                    synchronized private String getData(String child) {
-                        FirebaseDatabase.getInstance()
-                                .getReference(child)
-                                .addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        book_price = Objects.requireNonNull(snapshot.getValue()).toString();
-                                        Log.d("book_price", book_price);
-                                        flag = true;
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-                        return book_price;
                     }
 
                 });

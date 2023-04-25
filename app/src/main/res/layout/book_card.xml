@@ -7,6 +7,8 @@
     app:cardCornerRadius="8dp"
     android:layout_margin="16dp"
     android:id="@+id/bookDataCardView"
+    app:cardBackgroundColor="@color/cream"
+
     >
 
     <RelativeLayout

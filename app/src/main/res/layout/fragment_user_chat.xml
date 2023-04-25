@@ -14,7 +14,6 @@
         android:layout_height="80dp"
         android:layout_alignParentTop="true"
 
-        android:background="#82D9FB"
         >
 
         <TextView
@@ -39,18 +38,28 @@
         android:layout_below="@id/userNameLayout"
         />
 
-    <EditText
-        android:id="@+id/inputMsg"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputMsg_card"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
         android:layout_toLeftOf="@id/sendFab"
-        android:background="@color/white"
+        android:elevation="3dp"
+        app:cardCornerRadius="8dp"
+        >
 
-        android:hint="Message..." />
+        <EditText
+            android:id="@+id/inputMsg"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+
+            android:background="@color/white"
+
+            android:hint="Message..." />
+
+    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/sendFab"
@@ -58,13 +67,12 @@
         android:layout_height="wrap_content"
 
         android:src="@drawable/send_icon"
-        app:fabSize="mini"
         android:backgroundTint="@color/browser_actions_bg_grey"
 
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="8dp"
         />
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.gssproductions.boiimela;
 import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -32,7 +33,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ProfileFragment extends Fragment {
 
-    TextView textViewWelcome, textViewFullName, textViewEmail, textViewDoB, textViewGender, textViewmobile;
+    TextView textViewWelcome, textViewFullName,
+            textViewEmail, textViewDoB,
+            textViewGender, textViewmobile,
+            textView_verify_email;
+
     //ProgressBar progressBar;
     String fullName, email, mobile, gender, doB;
     ImageView imageView;
@@ -109,6 +114,7 @@ public class ProfileFragment extends Fragment {
         textViewDoB = view.findViewById(R.id.textView_show_dob);
         textViewGender = view.findViewById(R.id.textView_show_gender);
         textViewmobile = view.findViewById(R.id.textView_show_mobile);
+        textView_verify_email = view.findViewById(R.id.textView_verify_email);
         //progressBar = view.findViewById(R.id.progressbar_profile);
 
         toolbar = view.findViewById(R.id.toolbar);
@@ -116,6 +122,12 @@ public class ProfileFragment extends Fragment {
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setTitle("");
+
+        if(!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+            textView_verify_email.setText("Verified");
+            textView_verify_email.setTextColor(Color.GREEN);
+            textView_verify_email.setPaintFlags(0);
+        }
 
 
       return view;
@@ -161,6 +173,19 @@ public class ProfileFragment extends Fragment {
                     textViewGender.setText(gender);
                     textViewDoB.setText(doB);
                     textViewmobile.setText(mobile);
+
+                    if(!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                        textView_verify_email.setText("Verify");
+                        textView_verify_email.setTextColor(Color.RED);
+                        textView_verify_email.setPaintFlags(0);
+                        textView_verify_email.setOnClickListener(click -> {
+                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
+                        });
+                    }
+                    else{
+                        textView_verify_email.setText("Verified");
+                        textView_verify_email.setTextColor(Color.GREEN);
+                    }
 
                 }
                 //progressBar.setVisibility(View.GONE);
