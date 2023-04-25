@@ -164,7 +164,8 @@ public class HomeFragment extends Fragment {
         ArrayList<BookData> searchedBooks = new ArrayList<>();
 
         for(BookData ob : bookData){
-            if(ob.getTitle().toLowerCase().contains(query.toLowerCase())){
+            if(ob.getTitle().toLowerCase().contains(query.toLowerCase())
+                || ob.getAuthorName().toLowerCase().contains(query.toLowerCase())){
                 searchedBooks.add(ob);
             }
         }
@@ -184,7 +185,7 @@ public class HomeFragment extends Fragment {
 
                 AppCompatActivity activity = (AppCompatActivity) getActivity();
                 activity.setSupportActionBar(toolbar);
-                activity.getSupportActionBar().setTitle("");
+                activity.getSupportActionBar().setTitle("BoiiMela");
 
 
                 recyclerView = view.findViewById(R.id.recycler_View);

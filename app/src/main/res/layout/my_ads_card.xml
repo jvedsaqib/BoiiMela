@@ -6,6 +6,7 @@
     app:cardCornerRadius="15dp"
     android:layout_margin="16dp"
     android:id="@+id/myAdsCard"
+    app:cardBackgroundColor="@color/light_blue1"
 
     >
 
