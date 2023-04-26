@@ -62,10 +62,11 @@ public class UserChatFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public UserChatFragment(BookData sender){
-        this.sender = sender;
-        this.BUY_PATH = "Chat/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/"+sender.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+sender.getTitle();
-        this.SELL_PATH = "Chat/"+sender.getUid()+"/sell/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"-"+sender.getUid()+"/"+sender.getTitle();
+    public UserChatFragment(BookData seller){
+        this.sender = seller;
+        this.BUY_PATH = "Chat/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/"+seller.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+seller.getSeller_name()+"/"+seller.getTitle();
+        // BUY_PATH_NAME = "Chat/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/+seller.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+
+        this.SELL_PATH = "Chat/"+seller.getUid()+"/sell/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"-"+seller.getUid()+"/"+FirebaseAuth.getInstance().getCurrentUser().getDisplayName()+"/"+seller.getTitle();
         this.MODE = "BUY";
     }
 
@@ -127,7 +128,7 @@ public class UserChatFragment extends Fragment {
                     .setValue(
                     new ChatMessage(inputMsg.getText().toString(),
                             FirebaseAuth.getInstance().getCurrentUser().getEmail(),
-                            FirebaseAuth.getInstance().getCurrentUser().getUid()
+                            FirebaseAuth.getInstance().getCurrentUser().getDisplayName()
                     ));
 
             FirebaseDatabase.getInstance()
@@ -137,7 +138,7 @@ public class UserChatFragment extends Fragment {
                     .setValue(
                     new ChatMessage(inputMsg.getText().toString(),
                             FirebaseAuth.getInstance().getCurrentUser().getEmail(),
-                            FirebaseAuth.getInstance().getCurrentUser().getUid()
+                            FirebaseAuth.getInstance().getCurrentUser().getDisplayName()
                     ));
 
             inputMsg.setText("");
@@ -175,7 +176,7 @@ public class UserChatFragment extends Fragment {
                     }
                 });
 
-                if(model.getMessageUserUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+                if(model.getMessageUserUid().equals(FirebaseAuth.getInstance().getCurrentUser().getDisplayName())){
                     tvMessage.setTextColor(Color.BLUE);
                     tvMessage.setGravity(Gravity.END);
 

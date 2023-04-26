@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,21 +92,23 @@ public class ChatSellFragment extends Fragment {
                     @Override
                     public void onSuccess(DataSnapshot dataSnapshot) {
                         for (DataSnapshot users : dataSnapshot.getChildren()) {
-                            Log.d("chat-user", users.getKey().toString());
+                            Log.d("chat-user", users.getKey());
                             //users.getKey().toString().substring(28);
 
                             for(DataSnapshot book_title : users.getChildren()){
-                                Log.d("book_title", book_title.getKey().toString());
+                                Log.d("book_title", book_title.getKey());
 
-                                String CHILD = "bookData/"+users.getKey().toString().substring(0, 28)+"/"+book_title.getKey().toString()+"/price";
+                                bookTitle = book_title.getKey();
 
+                                for(DataSnapshot book_details : book_title.getChildren()){
+                                    Log.d("book_dets", book_details.getKey());
 
-                                bookTitle = book_title.getKey().toString();
-
-                                Log.d("book_price_now", book_price);
-                                chatList.add(new ChatSell(bookTitle,
-                                        users.getKey().toString().substring(0, 28),
-                                        book_price));
+                                    chatList.add(new ChatSell(bookTitle,
+                                            book_details.getKey(),
+                                            book_price,
+                                            FirebaseAuth.getInstance().getCurrentUser().getUid().toString(),
+                                            users.getKey().toString().substring(0, 28)));
+                                }
 
                             }
                         }

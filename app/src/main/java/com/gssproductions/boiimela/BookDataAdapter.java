@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -47,6 +48,8 @@ public class BookDataAdapter extends RecyclerView.Adapter<BookDataAdapter.bookDa
     @Override
     public void onBindViewHolder(@NonNull bookDataViewHolder holder, int position) {
         BookData bookData = list.get(position);
+
+        // bookData.setSeller_name(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
 
         holder.book_title.setText(bookData.getTitle());
         holder.book_author.setText(bookData.getAuthorName());

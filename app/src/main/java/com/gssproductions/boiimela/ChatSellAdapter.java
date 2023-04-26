@@ -48,15 +48,22 @@ public class ChatSellAdapter extends RecyclerView.Adapter<ChatSellAdapter.ChatSe
 //            Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show();
             AppCompatActivity activity = (AppCompatActivity) context;
 
-            Log.d("BUY", "Chat/"+ FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/"+ob.getSenderName().substring(0, 28)+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+ob.getBookTitle());
-            Log.d("SELL", "Chat/"+ob.getSenderName().substring(0, 28)+"/sell/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"-"+ob.getSenderName().substring(0, 28)+"/"+ob.getBookTitle());
+//            Log.d("BUY", "Chat/"+ FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/"+ob.getSenderName().substring(0, 28)+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+ob.getBookTitle());
+//            Log.d("SELL", "Chat/"+ob.getSenderName().substring(0, 28)+"/sell/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"-"+ob.getSenderName().substring(0, 28)+"/"+ob.getBookTitle());
 
+
+            Log.d("sellerUID + buyerUID", ob.getSellerUID() + " + " + ob.getBuyerUID());
+
+            String disName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName().substring(0, FirebaseAuth.getInstance().getCurrentUser().getDisplayName().length() - 1);
+
+            Log.d("SELL_PATH", "Chat/"+ob.getSellerUID().substring(0, 28)+"/sell/"+ob.getBuyerUID()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+ob.getBookTitle()+"/"+ob.getSenderName());
+            Log.d("BUY_PATH", "Chat/"+ ob.getBuyerUID()+"/buy/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"-"+ob.getSellerUID()+"/"+FirebaseAuth.getInstance().getCurrentUser().getDisplayName()+"/"+ob.getSenderName());
 
             activity.getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_layout,
-                            new UserChatFragment("Chat/"+ FirebaseAuth.getInstance().getCurrentUser().getUid()+"/sell/"+ob.getSenderName().substring(0, 28)+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+ob.getBookTitle(),
-                                    "Chat/"+ob.getSenderName().substring(0, 28)+"/buy/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"-"+ob.getSenderName().substring(0, 28)+"/"+ob.getBookTitle(),
+                            new UserChatFragment("Chat/"+ ob.getBuyerUID()+"/buy/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"-"+ob.getBuyerUID()+"/"+FirebaseAuth.getInstance().getCurrentUser().getDisplayName()+"/"+ob.getSenderName(),
+                                    "Chat/"+ob.getSellerUID().substring(0, 28)+"/sell/"+ob.getBuyerUID()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+ob.getBookTitle()+"/"+ob.getSenderName(),
                                     "SELL"))
                     .addToBackStack(null).commit();
         });
