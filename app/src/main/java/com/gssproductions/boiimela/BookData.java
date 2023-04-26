@@ -6,7 +6,7 @@ public class BookData {
             imgUrl0, imgUrl1, imgUrl2,
             phoneNumber, price, publisherName,
             coverType,
-            title, uid;
+            title, uid, seller_name;
 
     public String getAddress() {
         return address;
@@ -54,5 +54,13 @@ public class BookData {
 
     public String getCoverType() {
         return coverType;
+    }
+
+    public String getSeller_name() {
+        return seller_name;
+    }
+
+    public void setSeller_name(String seller_name) {
+        this.seller_name = seller_name;
     }
 }

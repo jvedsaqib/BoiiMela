@@ -51,10 +51,12 @@ class UploadDataUserDetails{
     private String imgUrl0;
     private String imgUrl1;
     private String imgUrl2;
+    private String seller_name;
 
     public UploadDataUserDetails() {
     }
-    public UploadDataUserDetails(String uid, String title, String authorName, String publisherName, String description, String address, String price, String phoneNumber, String coverType, String imgUrl0, String imgUrl1, String imgUrl2) {
+
+    public UploadDataUserDetails(String uid, String title, String authorName, String publisherName, String description, String address, String price, String phoneNumber, String coverType, String imgUrl0, String imgUrl1, String imgUrl2, String seller_name) {
         this.uid = uid;
         this.title = title;
         this.authorName = authorName;
@@ -67,6 +69,7 @@ class UploadDataUserDetails{
         this.imgUrl0 = imgUrl0;
         this.imgUrl1 = imgUrl1;
         this.imgUrl2 = imgUrl2;
+        this.seller_name = seller_name;
     }
 
     public String getUid() {
@@ -163,6 +166,14 @@ class UploadDataUserDetails{
 
     public void setImgUrl2(String imgUrl2) {
         this.imgUrl2 = imgUrl2;
+    }
+
+    public String getSeller_name() {
+        return seller_name;
+    }
+
+    public void setSeller_name(String seller_name) {
+        this.seller_name = seller_name;
     }
 }
 public class UploadActivity extends AppCompatActivity {
@@ -333,7 +344,8 @@ public class UploadActivity extends AppCompatActivity {
                 etPrice.getText().toString(),
                 etPhoneNumber.getText().toString(),
                 cover,
-                "","","");
+                "","","",
+                FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
         for(int i = 0; i < 3; i++){
             if(filePath.get(i) != null){
                 ProgressDialog pd = new ProgressDialog(this);

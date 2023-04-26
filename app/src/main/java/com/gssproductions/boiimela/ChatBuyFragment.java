@@ -13,7 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +41,7 @@ public class ChatBuyFragment extends Fragment {
     String bookTitle = "";
 
     Boolean flag = false;
+    String name = "";
 
 
     // --------------
@@ -81,54 +84,38 @@ public class ChatBuyFragment extends Fragment {
         FirebaseDatabase
                 .getInstance()
                 .getReference("Chat/"+ FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy")
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                .addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onSuccess(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot users : dataSnapshot.getChildren()) {
-                            Log.d("chat-user", users.getKey().toString());
-                            //users.getKey().toString().substring(28);
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot users : snapshot.getChildren()) {
+                            // Log.d("chat-user", users.getKey());
 
                             for(DataSnapshot book_title : users.getChildren()){
-                                Log.d("book_title", book_title.getKey().toString());
+                                // Log.d("book_title", book_title.getKey().toString());
 
-                                String CHILD = "bookData/"+users.getKey().substring(0, 28)+"/"+book_title.getKey()+"/price";
+                                bookTitle = book_title.getKey();
 
-                                //book_price = getData(CHILD);
+                                for(DataSnapshot book_details : book_title.getChildren()){
+                                    // Log.d("book_dets", book_details.getKey());
 
-                                bookTitle = book_title.getKey().toString();
-
-                                Log.d("book_price_now", book_price);
-                                chatList.add(new ChatSell(bookTitle,
-                                        users.getKey().toString().substring(0, 28),
-                                        book_price));
+                                    chatList.add(new ChatSell(bookTitle,
+                                            book_details.getKey(),
+                                            book_price,
+                                            FirebaseAuth.getInstance().getCurrentUser().getUid().toString(),
+                                            users.getKey().toString().substring(0, 28)));
+                                }
 
                             }
                         }
                         chatBuyAdapter.notifyDataSetChanged();
                     }
 
-                    synchronized private String getData(String child) {
-                        FirebaseDatabase.getInstance()
-                                .getReference(child)
-                                .addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        book_price = snapshot.getValue().toString();
-                                        Log.d("book_price", book_price);
-                                        flag = true;
-                                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-                        return book_price;
                     }
 
                 });
-
 
     }
 
