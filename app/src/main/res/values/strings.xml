@@ -9,4 +9,6 @@
     <string name="register"><u>Register</u></string>
     <string name="reset_password"><u>Reset password</u></string>
     <string name="click_here_to_reset"><u>click here to reset password</u></string>
+    <string name="upload_pic_u" />
+    <string name="update_email_u" />
 </resources>

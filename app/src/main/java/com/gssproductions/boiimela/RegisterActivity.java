@@ -195,7 +195,7 @@ public class RegisterActivity extends AppCompatActivity {
                     editTextRegisterCPwd.clearComposingText();
                 }else {
                     textGender=radioButtonRegisterGenderSelected.getText().toString();
-                    progressBar.setVisibility(view.VISIBLE);
+                    progressBar.setVisibility(View.VISIBLE);
                     registerUser(textFullName,textEmail,textDob,textGender,textMobile,textPwd);
                 }
             }
