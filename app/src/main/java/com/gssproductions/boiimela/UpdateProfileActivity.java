@@ -170,7 +170,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
     private void showProfile(FirebaseUser firebaseUser) {
         String userIDofRegistered=firebaseUser.getUid();
 
-        //extracting user reference from database for 'registered user'
+        //extracting user reference from database for 'registered user'.
         DatabaseReference referenceProfile= FirebaseDatabase.getInstance().getReference("Registered Users");
         progressBar.setVisibility(View.VISIBLE);
 

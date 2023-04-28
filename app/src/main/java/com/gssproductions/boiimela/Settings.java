@@ -23,6 +23,7 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        //edit profile
         Button buttonUpdateProfile=findViewById(R.id.buttonEditProfile);
         buttonUpdateProfile.setOnClickListener(new View.OnClickListener() {
             @Override

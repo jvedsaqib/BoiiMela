@@ -285,6 +285,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
                     android:text="Update Profile"
+                    android:backgroundTint="@color/light_blue"
                     android:textAlignment="center" />
 
                 <TextView
