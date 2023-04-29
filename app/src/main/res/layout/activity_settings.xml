@@ -58,10 +58,11 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonEditProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="25dp"
                 android:background="@drawable/round_back_secondery_100"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
