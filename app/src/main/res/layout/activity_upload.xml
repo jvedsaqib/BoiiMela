@@ -226,12 +226,12 @@
 
                 <RadioGroup
                     android:id="@+id/radioGroupCoverType"
-                    android:layout_width="120dp"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:layout_below="@id/tV_Bookcover"
-                    android:layout_centerHorizontal="true"
-                    android:background="#deedee"
+
+
                     >
 
                     <RadioButton
@@ -271,12 +271,180 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/RL_Description"
+                android:id="@+id/RL_condition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border"
                 android:layout_below="@+id/RL_Book_Cover">
+
+                <TextView
+                    android:id="@+id/tV_condition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:text="Book Condition"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupBookCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_below="@id/tV_condition"
+
+
+                    >
+
+                    <RadioButton
+                        android:id="@+id/GoodConditionRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Good (Book is in a good condition with all pages attached)"
+                        android:textSize="16sp"/>
+
+                    <RadioButton
+                        android:id="@+id/OldConditionRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Old (Book is old and might have some pages missing)"
+                        android:textSize="16sp"/>
+
+                    <RadioButton
+                        android:id="@+id/NewConditionRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="New (Book is new)"
+                        android:textSize="16sp"/>
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RL_Category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border"
+                android:layout_below="@+id/RL_condition">
+
+                <ImageView
+                    android:id="@+id/img_category"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/tV_Category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/img_category"
+                    android:padding="6dp"
+                    android:text="Category"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <RadioGroup
+                    android:id="@+id/radioGroupBookCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_below="@id/tV_Category"
+
+                    >
+
+                    <RadioButton
+                        android:id="@+id/AcademicsCategoryRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Academics"
+                        android:textSize="16sp"/>
+
+                    <RadioButton
+                        android:id="@+id/StoryBookCategoryRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Story Book"
+                        android:textSize="16sp"/>
+
+                    <RadioButton
+                        android:id="@+id/NovelCategoryRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Novel"
+                        android:textSize="16sp"/>
+
+                    <RadioButton
+                        android:id="@+id/BiographyCategoryRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Biography / Auto-Biography"
+                        android:textSize="16sp"/>
+
+                    <RadioButton
+                        android:id="@+id/FictionCategoryRadioButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="48dp"
+                        android:text="Fiction"
+                        android:textSize="16sp"/>
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/tV_otherCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="6dp"
+                    android:text="Other Category"
+                    android:layout_marginStart="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/radioGroupBookCategory"/>
+
+                <View
+                    android:id="@+id/div_othercategory"
+                    android:layout_width="250dp"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/tV_otherCategory"
+                    android:layout_marginStart="10dp"
+                    android:background="@android:color/darker_gray"/>
+
+                <EditText
+                    android:id="@+id/etCategory"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tV_otherCategory"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/transparent"
+                    android:hint="Please specify category if not mentioned above"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:padding="6dp"
+                    android:textCursorDrawable="@drawable/edittextcursor"
+                    android:textSize="15sp" />
+                
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RL_Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/border"
+                android:layout_below="@+id/RL_Category">
 
                 <ImageView
                     android:id="@+id/img_Description"

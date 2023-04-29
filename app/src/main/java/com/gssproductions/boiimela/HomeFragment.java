@@ -165,7 +165,10 @@ public class HomeFragment extends Fragment {
 
         for(BookData ob : bookData){
             if(ob.getTitle().toLowerCase().contains(query.toLowerCase())
-                || ob.getAuthorName().toLowerCase().contains(query.toLowerCase())){
+                || ob.getAuthorName().toLowerCase().contains(query.toLowerCase())
+                || ob.getCategory().toLowerCase().contains(query.toLowerCase())
+                || ob.getOtherCategory().toLowerCase().contains(query.toLowerCase())
+                || ob.getSeller_name().toLowerCase().contains(query.toLowerCase())){
                 searchedBooks.add(ob);
             }
         }

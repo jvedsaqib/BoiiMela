@@ -218,17 +218,161 @@
 
                 >
 
-                <TextView
-                    android:id="@+id/book_desc"
-                    android:layout_width="match_parent"
+                <RelativeLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:text="Book Description"
-                    android:textSize="20dp"
-                    android:gravity="center"
-                    android:background="#FCFCFF"
+                    >
 
-                    />
+                    <TextView
+                        android:id="@+id/tv_book_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text="Book Description"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+
+                        android:layout_marginStart="10dp"
+
+                        />
+
+                    <View
+                        android:id="@+id/div_othercategory"
+                        android:layout_width="250dp"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/tv_book_desc"
+                        android:layout_margin="10dp"
+                        android:background="@android:color/darker_gray"/>
+
+                    <TextView
+                        android:id="@+id/tv_bookCondition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Book Condition : "
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        android:layout_below="@id/div_othercategory"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginBottom="30dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_bookCondition_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_below="@id/div_othercategory"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginBottom="30dp"
+
+                        android:layout_toEndOf="@id/tv_bookCondition"
+                        android:text="Book Condition Data"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_bookCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Book Category : "
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+
+                        android:layout_below="@id/tv_bookCondition"
+                        android:layout_margin="10dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_bookCategory_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_below="@id/tv_bookCondition"
+                        android:layout_margin="10dp"
+                        android:layout_marginStart="10dp"
+
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+
+                        android:layout_toEndOf="@id/tv_bookCategory"
+                        android:text="Book Category Data"
+                        android:textColor="@color/black"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_bookOtherCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Other : "
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+
+                        android:layout_below="@id/tv_bookCategory"
+                        android:layout_margin="10dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_bookOtherCategory_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Book Other Category Data"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+
+                        android:layout_toEndOf="@id/tv_bookOtherCategory"
+                        android:layout_below="@id/tv_bookCategory"
+                        android:layout_margin="10dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_userDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="User Description : "
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+
+                        android:layout_below="@id/tv_bookOtherCategory"
+                        android:layout_margin="10dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_bookUserDesc_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Book User Description"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+
+                        android:layout_toEndOf="@id/tv_userDesc"
+                        android:layout_below="@id/tv_bookOtherCategory"
+                        android:layout_margin="10dp"
+
+                        />
+
+                </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
 
