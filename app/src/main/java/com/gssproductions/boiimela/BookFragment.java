@@ -35,7 +35,9 @@ public class BookFragment extends Fragment {
     BookData ob;
 
     TextView book_title, book_price,
-            cover_type, book_desc;
+            cover_type, tv_bookCondition_data,
+            tv_bookCategory_data, tv_bookOtherCategory_data,
+            tv_bookUserDesc_data;
 
     String[] imgUrls;
 
@@ -94,8 +96,27 @@ public class BookFragment extends Fragment {
         cover_type = view.findViewById(R.id.cover_type);
         cover_type.setText(ob.getCoverType());
 
-        book_desc = view.findViewById(R.id.book_desc);
-        book_desc.setText(ob.getDescription());
+        tv_bookCondition_data = view.findViewById(R.id.tv_bookCondition_data);
+        tv_bookCondition_data.setText(ob.getCondition());
+
+        tv_bookCategory_data = view.findViewById(R.id.tv_bookCategory_data);
+        tv_bookCategory_data.setText(ob.getCategory());
+
+        tv_bookOtherCategory_data = view.findViewById(R.id.tv_bookOtherCategory_data);
+        if(ob.getOtherCategory().equals("")){
+            tv_bookOtherCategory_data.setVisibility(View.INVISIBLE);
+        }else{
+            tv_bookOtherCategory_data.setText(ob.getOtherCategory());
+        }
+
+        tv_bookUserDesc_data = view.findViewById(R.id.tv_bookUserDesc_data);
+        if(ob.getDescription().equals("")){
+            tv_bookUserDesc_data.setVisibility(View.INVISIBLE);
+        }else{
+            tv_bookUserDesc_data.setText(ob.getDescription());
+        }
+
+
 
         user_chat_btn = (Button) view.findViewById(R.id.user_chat_btn);
         if(ob.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){

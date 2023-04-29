@@ -48,6 +48,9 @@ class UploadDataUserDetails{
     private String price;
     private String phoneNumber;
     private String coverType;
+    private String condition;
+    private String category;
+    private String otherCategory;
     private String imgUrl0;
     private String imgUrl1;
     private String imgUrl2;
@@ -56,7 +59,7 @@ class UploadDataUserDetails{
     public UploadDataUserDetails() {
     }
 
-    public UploadDataUserDetails(String uid, String title, String authorName, String publisherName, String description, String address, String price, String phoneNumber, String coverType, String imgUrl0, String imgUrl1, String imgUrl2, String seller_name) {
+    public UploadDataUserDetails(String uid, String title, String authorName, String publisherName, String description, String address, String price, String phoneNumber, String coverType, String condition, String category, String otherCategory, String imgUrl0, String imgUrl1, String imgUrl2, String seller_name) {
         this.uid = uid;
         this.title = title;
         this.authorName = authorName;
@@ -66,6 +69,9 @@ class UploadDataUserDetails{
         this.price = price;
         this.phoneNumber = phoneNumber;
         this.coverType = coverType;
+        this.condition = condition;
+        this.category = category;
+        this.otherCategory = otherCategory;
         this.imgUrl0 = imgUrl0;
         this.imgUrl1 = imgUrl1;
         this.imgUrl2 = imgUrl2;
@@ -175,12 +181,37 @@ class UploadDataUserDetails{
     public void setSeller_name(String seller_name) {
         this.seller_name = seller_name;
     }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getOtherCategory() {
+        return otherCategory;
+    }
+
+    public void setOtherCategory(String otherCategory) {
+        this.otherCategory = otherCategory;
+    }
 }
 public class UploadActivity extends AppCompatActivity {
 
-    String cover;
-    EditText etTitle, etAuthorName, etPublisherName, etDescription, etPrice, etPhoneNumber, etAddress;
-    RadioGroup radioGroupCoverType;
+    String cover, condition, category, otherCategory;
+    EditText etTitle, etAuthorName, etPublisherName, etDescription, etPrice, etPhoneNumber, etAddress, etCategory;
+    RadioGroup radioGroupCoverType, radioGroupBookCondition, radioGroupBookCategory;
+    RadioButton radioButtonCoverType, radioButtonBookCondition, radioButtonBookCategory;
     Button btnSelectImage_side, btnUploadData;
     int position = 0;
     ImageButton arrow_right, arrow_left;
@@ -197,6 +228,8 @@ public class UploadActivity extends AppCompatActivity {
     private final int PICK_IMAGE_MULTIPLE = 1;
     UploadDataUserDetails ob;
 
+    Boolean canUpload = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -212,8 +245,11 @@ public class UploadActivity extends AppCompatActivity {
         etPrice = findViewById(R.id.etPrice);
         etPhoneNumber = findViewById(R.id.etPhoneNumber);
         etAddress = findViewById(R.id.etAddress);
+        etCategory = findViewById(R.id.etCategory);
 
         radioGroupCoverType = findViewById(R.id.radioGroupCoverType);
+        radioGroupBookCondition = findViewById(R.id.radioGroupBookCondition);
+        radioGroupBookCategory = findViewById(R.id.radioGroupBookCategory);
 
         imageView = findViewById(R.id.imageView);
         btnSelectImage_side = findViewById(R.id.btnSelectImage);
@@ -314,26 +350,20 @@ public class UploadActivity extends AppCompatActivity {
 
     private void uploadData() {
 
-//        radioGroupCoverType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                switch (checkedId) {
-//                    case R.id.HardCoverRadioButton:
-//                        cover="HARD COVER";
-//                        break;
-//
-//                    case R.id.PaperBackRadioButton:
-//                        cover="PAPERBACK";
-//                        break;
-//
-//                    case R.id.SoftCoverRadioButton:
-//                        cover="SOFT COVER";
-//                        break;
-//                    default:
-//                        cover="";
-//                }
-//            }
-//        });
+        int checkedId = radioGroupCoverType.getCheckedRadioButtonId();
+        radioButtonCoverType = findViewById(checkedId);
+        cover = radioButtonCoverType.getText().toString();
+
+        checkedId = radioGroupBookCondition.getCheckedRadioButtonId();
+        radioButtonBookCondition = findViewById(checkedId);
+        condition = radioButtonBookCondition.getText().toString();
+
+        checkedId = radioGroupBookCategory.getCheckedRadioButtonId();
+        radioButtonBookCategory = findViewById(checkedId);
+        category = radioButtonBookCategory.getText().toString();
+
+        otherCategory = etCategory.getText().toString();
+
 
         ob = new UploadDataUserDetails(FirebaseAuth.getInstance().getCurrentUser().getUid(),
                 etTitle.getText().toString(),
@@ -344,57 +374,125 @@ public class UploadActivity extends AppCompatActivity {
                 etPrice.getText().toString(),
                 etPhoneNumber.getText().toString(),
                 cover,
+                condition,
+                category,
+                otherCategory,
                 "","","",
                 FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-        for(int i = 0; i < 3; i++){
-            if(filePath.get(i) != null){
-                ProgressDialog pd = new ProgressDialog(this);
-                pd.setTitle("Uploading Data");
-                pd.show();
+        if(filePath.size() > 3){
+            for(int i = 0; i < 3; i++){
+                if(filePath.isEmpty()){
+                    Toast.makeText(UploadActivity.this, "No image selected", Toast.LENGTH_SHORT).show();
+                    canUpload = false;
+                    break;
+                }
+                if(filePath.get(i) != null){
+                    ProgressDialog pd = new ProgressDialog(this);
+                    pd.setTitle("Uploading Data");
+                    pd.show();
 
-                StorageReference ref = storageDbRef.child("bookImage/"+ ob.getUid()+"/"+ ob.getTitle()+"/" + UUID.randomUUID().toString());
+                    StorageReference ref = storageDbRef.child("bookImage/"+ ob.getUid()+"/"+ ob.getTitle()+"/" + UUID.randomUUID().toString());
 
-                int finalI = i;
-                ref.putFile(filePath.get(i)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    int finalI = i;
+                    ref.putFile(filePath.get(i)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                                Task<Uri> dwnldUrl = ref.getDownloadUrl();
+                                    Task<Uri> dwnldUrl = ref.getDownloadUrl();
 
-                                dwnldUrl.addOnSuccessListener(uri -> {
-                                    Log.d("Image Url #" + finalI, uri.toString());
-                                    FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()+"/"+ob.getTitle()+"/imgUrl"+finalI).setValue(uri.toString());
+                                    dwnldUrl.addOnSuccessListener(uri -> {
+                                        Log.d("Image Url #" + finalI, uri.toString());
+                                        FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()+"/"+ob.getTitle()+"/imgUrl"+finalI).setValue(uri.toString());
 
-                                });
+                                    });
 
 //                                FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
-                                pd.dismiss();
-                                Toast.makeText(UploadActivity.this, "Upload Done! #"+finalI, Toast.LENGTH_SHORT).show();
+                                    pd.dismiss();
+                                    Toast.makeText(UploadActivity.this, "Upload Done! #"+finalI, Toast.LENGTH_SHORT).show();
 //                                startActivity(new Intent(UploadActivity.this, BaseActivity.class));
 //                                finish();
-                            }
-                        })
-                        // What?
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                pd.dismiss();
-                                Toast.makeText(UploadActivity.this, "Upload Failed!" + " " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                                double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                                pd.setMessage("Uploaded " + (int)progress + "%");
-                            }
-                        });
+                                }
+                            })
+                            // What?
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    pd.dismiss();
+                                    Toast.makeText(UploadActivity.this, "Upload Failed!" + " " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                    double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                                    pd.setMessage("Uploaded " + (int)progress + "%");
+                                }
+                            });
+                }
+                else{
+                    Toast.makeText(UploadActivity.this, "No image selected", Toast.LENGTH_SHORT).show();
+                    break;
+                }
             }
-            else{
-                Toast.makeText(UploadActivity.this, "No image selected", Toast.LENGTH_SHORT).show();
+        }else{
+            for(int i = 0; i < filePath.size(); i++){
+                if(filePath.isEmpty()){
+                    Toast.makeText(UploadActivity.this, "No image selected", Toast.LENGTH_SHORT).show();
+                    canUpload = false;
+                    break;
+                }
+                if(filePath.get(i) != null){
+                    ProgressDialog pd = new ProgressDialog(this);
+                    pd.setTitle("Uploading Data");
+                    pd.show();
+
+                    StorageReference ref = storageDbRef.child("bookImage/"+ ob.getUid()+"/"+ ob.getTitle()+"/" + UUID.randomUUID().toString());
+
+                    int finalI = i;
+                    ref.putFile(filePath.get(i)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                    Task<Uri> dwnldUrl = ref.getDownloadUrl();
+
+                                    dwnldUrl.addOnSuccessListener(uri -> {
+                                        Log.d("Image Url #" + finalI, uri.toString());
+                                        FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()+"/"+ob.getTitle()+"/imgUrl"+finalI).setValue(uri.toString());
+
+                                    });
+
+//                                FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
+                                    pd.dismiss();
+                                    Toast.makeText(UploadActivity.this, "Upload Done! #"+finalI, Toast.LENGTH_SHORT).show();
+//                                startActivity(new Intent(UploadActivity.this, BaseActivity.class));
+//                                finish();
+                                }
+                            })
+                            // What?
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    pd.dismiss();
+                                    Toast.makeText(UploadActivity.this, "Upload Failed!" + " " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                    double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                                    pd.setMessage("Uploaded " + (int)progress + "%");
+                                }
+                            });
+                }
+                else{
+                    Toast.makeText(UploadActivity.this, "No image selected", Toast.LENGTH_SHORT).show();
+                    break;
+                }
             }
         }
-        FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
-        startActivity(new Intent(UploadActivity.this, BaseActivity.class));
+        if(canUpload){
+            FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
+            startActivity(new Intent(UploadActivity.this, BaseActivity.class));
+        }
     }
 }
