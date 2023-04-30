@@ -55,11 +55,18 @@ class UploadDataUserDetails{
     private String imgUrl1;
     private String imgUrl2;
     private String seller_name;
+    private Boolean isSold;
 
     public UploadDataUserDetails() {
     }
 
-    public UploadDataUserDetails(String uid, String title, String authorName, String publisherName, String description, String address, String price, String phoneNumber, String coverType, String condition, String category, String otherCategory, String imgUrl0, String imgUrl1, String imgUrl2, String seller_name) {
+    public UploadDataUserDetails(String uid,
+                                 String title, String authorName, String publisherName,
+                                 String description, String address,
+                                 String price, String phoneNumber,
+                                 String coverType, String condition, String category, String otherCategory,
+                                 String imgUrl0, String imgUrl1, String imgUrl2,
+                                 String seller_name, Boolean isSold) {
         this.uid = uid;
         this.title = title;
         this.authorName = authorName;
@@ -76,6 +83,7 @@ class UploadDataUserDetails{
         this.imgUrl1 = imgUrl1;
         this.imgUrl2 = imgUrl2;
         this.seller_name = seller_name;
+        this.isSold = isSold;
     }
 
     public String getUid() {
@@ -204,6 +212,14 @@ class UploadDataUserDetails{
 
     public void setOtherCategory(String otherCategory) {
         this.otherCategory = otherCategory;
+    }
+
+    public Boolean getSold() {
+        return isSold;
+    }
+
+    public void setSold(Boolean sold) {
+        isSold = sold;
     }
 }
 public class UploadActivity extends AppCompatActivity {
@@ -378,8 +394,9 @@ public class UploadActivity extends AppCompatActivity {
                 category,
                 otherCategory,
                 "","","",
-                FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-        if(filePath.size() > 3){
+                FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
+                false);
+        if(filePath.size() >= 3){
             for(int i = 0; i < 3; i++){
                 if(filePath.isEmpty()){
                     Toast.makeText(UploadActivity.this, "No image selected", Toast.LENGTH_SHORT).show();

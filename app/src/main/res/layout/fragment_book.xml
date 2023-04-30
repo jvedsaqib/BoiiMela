@@ -198,9 +198,176 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/decsription_layout"
+            android:id="@+id/book_details_layout"
 
             android:layout_below="@+id/highlights_layout"
+
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/book_details_card"
+
+                card_view:cardBackgroundColor="#eeeeff"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="20dp"
+                android:layout_margin="16dp"
+                android:layout_centerHorizontal="true"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_book_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text="Book Details"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+
+                        android:layout_marginStart="10dp"
+
+                        />
+
+                    <View
+                        android:id="@+id/div_book_detials"
+                        android:layout_width="250dp"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/tv_book_details"
+                        android:layout_margin="10dp"
+                        android:background="@android:color/darker_gray"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/book_title_layout"
+
+                        android:layout_below="@id/div_book_detials"
+                        android:layout_marginStart="10dp"
+
+
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_book_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Book Title : "
+                            android:textSize="16dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_bookTitle_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_toEndOf="@id/tv_book_title"
+                            android:layout_marginStart="10dp"
+
+                            android:text="Book Title Data"
+                            android:textColor="@color/black"
+                            android:textSize="16dp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bookAuthor_name_layout"
+
+                        android:layout_below="@id/book_title_layout"
+                        android:layout_margin="10dp"
+
+
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_book_author"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Author Name : "
+                            android:textSize="16dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_bookAuthor_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_toEndOf="@id/tv_book_author"
+                            android:layout_marginStart="10dp"
+
+                            android:text="Book Author Data"
+                            android:textColor="@color/black"
+                            android:textSize="16dp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bookPublisher_name_layout"
+
+                        android:layout_below="@id/bookAuthor_name_layout"
+                        android:layout_margin="10dp"
+
+
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_book_publisher"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Publisher Name : "
+                            android:textSize="16dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_bookPublisher_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_toEndOf="@id/tv_book_publisher"
+                            android:layout_marginStart="10dp"
+
+                            android:text="Book Publisher Data"
+                            android:textColor="@color/black"
+                            android:textSize="16dp" />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/decsription_layout"
+
+            android:layout_below="@+id/book_details_layout"
 
             >
 
@@ -379,11 +546,198 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seller_detials_layout"
+
+            android:layout_below="@+id/decsription_layout"
+
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/seller_details_card"
+
+                card_view:cardBackgroundColor="#eeeeff"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="20dp"
+                android:layout_margin="16dp"
+                android:layout_centerHorizontal="true"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_seller_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:text="Seller Details"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+
+                        android:layout_marginStart="10dp"
+
+                        />
+
+                    <View
+                        android:id="@+id/div_seller_detials"
+                        android:layout_width="250dp"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/tv_seller_details"
+                        android:layout_margin="10dp"
+                        android:background="@android:color/darker_gray"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/seller_name_layout"
+
+                        android:layout_below="@id/div_seller_detials"
+                        android:layout_marginStart="10dp"
+
+
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_seller_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Seller Name : "
+                            android:textSize="16dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_sellerName_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_toEndOf="@id/tv_seller_name"
+                            android:layout_marginStart="10dp"
+
+                            android:text="Seller Name Data"
+                            android:textColor="@color/black"
+                            android:textSize="16dp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/seller_address_layout"
+
+                        android:layout_below="@id/seller_name_layout"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="10dp"
+
+
+
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_seller_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Seller Address : "
+                            android:textSize="16dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_sellerAddress_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_toEndOf="@id/tv_seller_address"
+                            android:layout_marginStart="10dp"
+
+                            android:text="Seller Address Data"
+                            android:textColor="@color/black"
+                            android:textSize="16dp" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/seller_number_layout"
+
+                        android:layout_below="@id/seller_address_layout"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="10dp"
+
+
+                        >
+
+                        <TextView
+                            android:id="@+id/tv_seller_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Seller Number : "
+                            android:textSize="16dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_sellerNumber_data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_toEndOf="@id/tv_seller_number"
+                            android:layout_marginStart="10dp"
+
+                            android:text="1234567890"
+                            android:textColor="@color/black"
+                            android:textSize="16dp" />
+
+                        <TextView
+                            android:id="@+id/tv_sellerNumber_ask"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_toEndOf="@id/tv_sellerNumber_data"
+                            android:layout_marginStart="50dp"
+
+                            android:text="ask for number"
+                            android:textColor="@color/green"
+                            android:textSize="16dp" />
+
+                    </RelativeLayout>
+
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button_layout"
 
-            android:layout_below="@+id/decsription_layout"
+            android:layout_below="@+id/seller_detials_layout"
             android:layout_centerHorizontal="true"
             >
 
@@ -400,8 +754,9 @@
             <Button
                 android:layout_width="100dp"
                 android:layout_height="50dp"
+                android:id="@+id/makeOffer_btn"
 
-                android:text="Something"
+                android:text="Make an Offer"
                 android:textSize="10dp"
 
                 android:layout_toRightOf="@id/user_chat_btn"
@@ -409,6 +764,40 @@
                 android:backgroundTint="@color/secondary"
 
                 />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/offer_layout"
+
+            android:layout_below="@+id/button_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            >
+
+        <EditText
+            android:id="@+id/et_offer_price"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+
+            android:hint="Book Price"
+
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/negotiate_btn"
+
+            android:text="Negotiate"
+
+            android:layout_toEndOf="@id/et_offer_price"
+            android:layout_marginStart="5dp"
+
+            />
+
 
         </RelativeLayout>
 

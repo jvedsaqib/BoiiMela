@@ -56,10 +56,19 @@ public class UserChatFragment extends Fragment {
     String BUY_CHAT_DB_LOC = "";
     String SELL_CHAT_DB_LOC = "";
 
-    String BUY_PATH, SELL_PATH, MODE;
+    String BUY_PATH, SELL_PATH, MODE, message="";
 
     public UserChatFragment() {
         // Required empty public constructor
+    }
+
+    public UserChatFragment(BookData seller, String message){
+        this.sender = seller;
+        this.BUY_PATH = "Chat/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/"+seller.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+seller.getSeller_name()+"/"+seller.getTitle();
+        // BUY_PATH_NAME = "Chat/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/+seller.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+
+        this.SELL_PATH = "Chat/"+seller.getUid()+"/sell/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"-"+seller.getUid()+"/"+FirebaseAuth.getInstance().getCurrentUser().getDisplayName()+"/"+seller.getTitle();
+        this.MODE = "BUY";
+        this.message = message;
     }
 
     public UserChatFragment(BookData seller){
@@ -104,6 +113,8 @@ public class UserChatFragment extends Fragment {
         msgList = (ListView) view.findViewById(R.id.msgList);
         sendFab = view.findViewById(R.id.sendFab);
 
+
+
         if(MODE.equals("BUY")){
             displayChatMessages(BUY_PATH);
         }
@@ -117,6 +128,28 @@ public class UserChatFragment extends Fragment {
 //        BUY_CHAT_DB_LOC = "Chat/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/buy/"+sender.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+sender.getTitle();
 //
 //        SELL_CHAT_DB_LOC = "Chat/"+sender.uid+"/sell/"+sender.getUid()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+sender.getTitle();
+
+        if(!message.equals("")){
+            FirebaseDatabase.getInstance()
+                    .getReference()
+                    .child(BUY_CHAT_DB_LOC)
+                    .push()
+                    .setValue(
+                            new ChatMessage(message,
+                                    FirebaseAuth.getInstance().getCurrentUser().getEmail(),
+                                    FirebaseAuth.getInstance().getCurrentUser().getDisplayName()
+                            ));
+
+            FirebaseDatabase.getInstance()
+                    .getReference()
+                    .child(SELL_CHAT_DB_LOC)
+                    .push()
+                    .setValue(
+                            new ChatMessage(message,
+                                    FirebaseAuth.getInstance().getCurrentUser().getEmail(),
+                                    FirebaseAuth.getInstance().getCurrentUser().getDisplayName()
+                            ));
+        }
 
         sendFab.setOnClickListener(v -> {
             inputMsg = view.findViewById(R.id.inputMsg);
