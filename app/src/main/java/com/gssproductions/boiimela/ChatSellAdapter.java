@@ -7,9 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +24,8 @@ public class ChatSellAdapter extends RecyclerView.Adapter<ChatSellAdapter.ChatSe
     Context context;
 
     ArrayList<ChatSell> list;
+
+    Toolbar toolbar;
 
     public ChatSellAdapter(Context context, ArrayList<ChatSell> list) {
         this.context = context;
@@ -68,8 +72,9 @@ public class ChatSellAdapter extends RecyclerView.Adapter<ChatSellAdapter.ChatSe
                     .addToBackStack(null).commit();
         });
 
-
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -92,6 +97,8 @@ public class ChatSellAdapter extends RecyclerView.Adapter<ChatSellAdapter.ChatSe
 
 
             chatListView = itemView.findViewById(R.id.chatListView);
+
+
 
         }
     }

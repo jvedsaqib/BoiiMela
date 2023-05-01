@@ -45,7 +45,7 @@ class UploadDataUserDetails{
     private String publisherName;
     private String description;
     private String address;
-    private String price;
+    private double price;
     private String phoneNumber;
     private String coverType;
     private String condition;
@@ -63,7 +63,7 @@ class UploadDataUserDetails{
     public UploadDataUserDetails(String uid,
                                  String title, String authorName, String publisherName,
                                  String description, String address,
-                                 String price, String phoneNumber,
+                                 double price, String phoneNumber,
                                  String coverType, String condition, String category, String otherCategory,
                                  String imgUrl0, String imgUrl1, String imgUrl2,
                                  String seller_name, Boolean isSold) {
@@ -134,11 +134,11 @@ class UploadDataUserDetails{
         this.address = address;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -387,7 +387,7 @@ public class UploadActivity extends AppCompatActivity {
                 etPublisherName.getText().toString(),
                 etDescription.getText().toString(),
                 etAddress.getText().toString(),
-                etPrice.getText().toString(),
+                Double.parseDouble(etPrice.getText().toString()),
                 etPhoneNumber.getText().toString(),
                 cover,
                 condition,
