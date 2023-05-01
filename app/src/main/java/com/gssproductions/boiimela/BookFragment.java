@@ -206,6 +206,8 @@ public class BookFragment extends Fragment {
             makeOffer_btn.setEnabled(false);
         }
 
+
+
         makeOffer_btn.setOnClickListener(v -> {
             offer_layout.setEnabled(true);
             offer_layout.setVisibility(View.VISIBLE);
@@ -218,16 +220,22 @@ public class BookFragment extends Fragment {
 
                 String message = "Hey Papi, can I get it @ Rs."+et_offer_price.getText().toString();
 
-                if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
-                    AppCompatActivity activity = (AppCompatActivity) context;
-                    activity.getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.fragment_layout, new UserChatFragment(ob, message))
-                            .commit();
+                if(Double.parseDouble(et_offer_price.getText().toString()) < Double.parseDouble(ob.getPrice().toString()) / 2){
+                    et_offer_price.setError("Negotiation price must be between " + Double.parseDouble(ob.getPrice().toString()) / 2 + " to " + Double.parseDouble(ob.getPrice().toString()));
+                }else{
+                    if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                        AppCompatActivity activity = (AppCompatActivity) context;
+                        activity.getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.fragment_layout, new UserChatFragment(ob, message))
+                                .commit();
+                    }
+                    else{
+                        Toast.makeText(context, "Please verify your email first", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                else{
-                    Toast.makeText(context, "Please verify your email first", Toast.LENGTH_SHORT).show();
-                }
+
+
             });
         });
 

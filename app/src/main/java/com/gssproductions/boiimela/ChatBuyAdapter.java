@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -83,6 +84,12 @@ public class ChatBuyAdapter extends RecyclerView.Adapter<ChatBuyAdapter.ChatBuyV
                                     "BUY"))
                     .addToBackStack(null).commit();
         });
+
+        holder.chatListView.setOnLongClickListener(longlistener -> {
+            Toast.makeText(context, "Long pressed", Toast.LENGTH_LONG).show();
+            return true;
+        });
+
 
 
     }
