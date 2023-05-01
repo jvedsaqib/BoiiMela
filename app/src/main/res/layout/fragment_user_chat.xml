@@ -4,30 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-
     tools:context=".UserChatFragment">
 
-    <RelativeLayout
-        android:id="@+id/userNameLayout"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/light_gray"
-        android:layout_alignParentTop="true"
-        >
+        android:layout_height="wrap_content"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chat"
+        android:background="#eeeeef"
 
-            android:textSize="25dp"
-            android:textColor="@color/black"
+        />
 
 
-            android:layout_margin="20dp"
-            />
-    </RelativeLayout>
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/userNameLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="80dp"-->
+<!--        android:background="@color/light_gray"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        >-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Chat"-->
+
+<!--            android:textSize="25dp"-->
+<!--            android:textColor="@color/black"-->
+
+
+<!--            android:layout_margin="20dp"-->
+<!--            />-->
+<!--    </RelativeLayout>-->
 
     <ListView
         android:id="@+id/msgList"
@@ -35,7 +43,7 @@
         android:layout_height="match_parent"
         android:background="@color/light_blue1"
         android:layout_above="@id/sendFab"
-        android:layout_below="@id/userNameLayout"
+        android:layout_below="@id/toolbar"
         />
 
     <androidx.cardview.widget.CardView
