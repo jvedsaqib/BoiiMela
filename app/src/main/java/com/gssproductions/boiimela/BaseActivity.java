@@ -1,27 +1,15 @@
 package com.gssproductions.boiimela;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.gssproductions.boiimela.databinding.ActivityMainBinding;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -39,7 +27,7 @@ public class BaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 //        getSupportActionBar().hide();
 
-        replaceFragment(new HomeFragment());
+        replaceFragment(new WelcomeFragment());
 
         bottom_nav =  findViewById(R.id.bottom_nav);
 
@@ -72,6 +60,10 @@ public class BaseActivity extends AppCompatActivity {
 
             switch (item.getItemId()){
                 case R.id.nav_btn_home:
+                    replaceFragment(new WelcomeFragment());
+                    break;
+
+                case R.id.nav_btn_search:
                     replaceFragment(new HomeFragment());
                     break;
 
@@ -124,7 +116,7 @@ public class BaseActivity extends AppCompatActivity {
                     .beginTransaction()
                     .replace(R.id.fragment_layout, new HomeFragment())
                     .addToBackStack(null).commit();
-            bottom_nav.setSelectedItemId(R.id.nav_btn_home);
+            bottom_nav.setSelectedItemId(R.id.nav_btn_search);
             Toast.makeText(this, "Press back again to exit", Toast.LENGTH_LONG).show();
         }
         backPressedTime = System.currentTimeMillis();
