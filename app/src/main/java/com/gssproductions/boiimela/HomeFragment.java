@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -51,6 +52,9 @@ public class HomeFragment extends Fragment {
     private MenuItem menuItem;
     private SearchView searchView;
 
+    private String queryFilter = "";
+    private boolean FILTERED = false;
+
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +65,11 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment() {
         // Required empty public constructor
+    }
+
+    public HomeFragment(String queryFilter, boolean FILTERED){
+        this.queryFilter = queryFilter;
+        this.FILTERED = FILTERED;
     }
 
     public static HomeFragment newInstance(String param1, String param2) {
@@ -108,22 +117,45 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
 
-        FirebaseDatabase.getInstance().getReference("bookData").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
-            @Override
-            public void onSuccess(DataSnapshot dataSnapshot) {
+        if(!FILTERED){
+            FirebaseDatabase.getInstance().getReference("bookData").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                @Override
+                public void onSuccess(DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot users : dataSnapshot.getChildren()) {
-                    for (DataSnapshot bookTitles : users.getChildren()) {
-                        BookData ob = bookTitles.getValue(BookData.class);
-                        Log.d("ob#bookData", "Title - " + ob.getTitle());
-                        bookData.add(ob);
+                    for (DataSnapshot users : dataSnapshot.getChildren()) {
+                        for (DataSnapshot bookTitles : users.getChildren()) {
+                            BookData ob = bookTitles.getValue(BookData.class);
+                            if(!ob.getSold() && !FirebaseAuth.getInstance().getCurrentUser().getUid().equals(ob.getUid())){
+                                Log.d("ob#bookData", "Title - " + ob.getTitle());
+                                bookData.add(ob);
+                            }
+                        }
+
                     }
-
+                    bookDataAdapter.notifyDataSetChanged();
                 }
-                bookDataAdapter.notifyDataSetChanged();
-            }
 
-        });
+            });
+        }else{
+            FirebaseDatabase.getInstance().getReference("bookData").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+                @Override
+                public void onSuccess(DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot users : dataSnapshot.getChildren()) {
+                        for (DataSnapshot bookTitles : users.getChildren()) {
+                            BookData ob = bookTitles.getValue(BookData.class);
+                            Log.d("ob#bookData", "Title - " + ob.getTitle());
+                            if(ob.getCategory().equals(queryFilter) && !ob.getSold())
+                                bookData.add(ob);
+                        }
+
+                    }
+                    bookDataAdapter.notifyDataSetChanged();
+                }
+
+            });
+            FILTERED = false;
+        }
 
     }
 
@@ -131,15 +163,12 @@ public class HomeFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.search, menu);
 
-//        searchView = (SearchView) menu.findItem(R.id.search).getActionView();
-//
-//        searchView = (SearchView) MenuItemCompat.getActionView(menuItem);
-
         searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.search));
         searchView.setIconified(true);
 
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -178,6 +207,7 @@ public class HomeFragment extends Fragment {
 
     }
 
+
     @Override
             public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                      Bundle savedInstanceState) {
@@ -200,6 +230,4 @@ public class HomeFragment extends Fragment {
 
                 return view;
             }
-
-
 }

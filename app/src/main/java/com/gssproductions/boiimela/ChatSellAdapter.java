@@ -7,10 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +25,8 @@ public class ChatSellAdapter extends RecyclerView.Adapter<ChatSellAdapter.ChatSe
     Context context;
 
     ArrayList<ChatSell> list;
+
+    Toolbar toolbar;
 
     public ChatSellAdapter(Context context, ArrayList<ChatSell> list) {
         this.context = context;
@@ -68,8 +73,17 @@ public class ChatSellAdapter extends RecyclerView.Adapter<ChatSellAdapter.ChatSe
                     .addToBackStack(null).commit();
         });
 
+        holder.chatListView.setOnLongClickListener(longlistener -> {
+            DeleteDialog deleteDialog = new DeleteDialog("Chat/"+ob.getSellerUID().substring(0, 28)+"/sell/"+ob.getBuyerUID()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+ob.getBookTitle()+"/"+ob.getSenderName(),
+                    "SELL");
+            deleteDialog.show(((FragmentActivity)context).getSupportFragmentManager(), "Dialog");
+
+            return true;
+        });
 
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -92,6 +106,8 @@ public class ChatSellAdapter extends RecyclerView.Adapter<ChatSellAdapter.ChatSe
 
 
             chatListView = itemView.findViewById(R.id.chatListView);
+
+
 
         }
     }

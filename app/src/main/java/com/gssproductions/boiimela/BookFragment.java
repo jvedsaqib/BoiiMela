@@ -1,6 +1,7 @@
 package com.gssproductions.boiimela;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,8 +21,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class BookFragment extends Fragment {
+import java.io.Serializable;
+
+public class BookFragment extends Fragment implements Serializable {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -180,56 +184,90 @@ public class BookFragment extends Fragment {
 
 
         user_chat_btn = (Button) view.findViewById(R.id.user_chat_btn);
-        if(ob.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+        if(ob.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()) && !ob.getSold()){
+            user_chat_btn.setText("Edit Ad");
+            user_chat_btn.setOnClickListener(v -> {
+                Intent intent = new Intent(getActivity(), UploadActivity.class);
+                intent.putExtra("Object", ob);
+                intent.putExtra("EDIT", true);
+                startActivity(intent);
+            });
+        } else if (ob.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()) && ob.getSold()) {
+            user_chat_btn.setText("Edit Ad");
             user_chat_btn.setEnabled(false);
-        }
-        user_chat_btn.setOnClickListener(v -> {
-            Log.d("chat-sender", ob.getUid() + "  -  " + FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
+        } else{
+            user_chat_btn.setOnClickListener(v -> {
+                Log.d("chat-sender", ob.getUid() + "  -  " + FirebaseAuth.getInstance().getCurrentUser().getUid().toString());
 
-            context = getContext();
-
-            if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
-                AppCompatActivity activity = (AppCompatActivity) context;
-                activity.getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragment_layout, new UserChatFragment(ob))
-                        .commit();
-            }
-            else{
-                Toast.makeText(context, "Please verify your email first", Toast.LENGTH_SHORT).show();
-            }
-
-        });
-
-        makeOffer_btn = (Button) view.findViewById(R.id.makeOffer_btn);
-        if(ob.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
-            makeOffer_btn.setEnabled(false);
-        }
-
-        makeOffer_btn.setOnClickListener(v -> {
-            offer_layout.setEnabled(true);
-            offer_layout.setVisibility(View.VISIBLE);
-            et_offer_price = view.findViewById(R.id.et_offer_price);
-            et_offer_price.setText(ob.getPrice());
-
-            negotiate_btn = (Button) view.findViewById(R.id.negotiate_btn);
-            negotiate_btn.setOnClickListener(vi -> {
                 context = getContext();
-
-                String message = "Hey Papi, can I get it @ Rs."+et_offer_price.getText().toString();
 
                 if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
                     AppCompatActivity activity = (AppCompatActivity) context;
                     activity.getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.fragment_layout, new UserChatFragment(ob, message))
+                            .replace(R.id.fragment_layout, new UserChatFragment(ob))
                             .commit();
                 }
                 else{
                     Toast.makeText(context, "Please verify your email first", Toast.LENGTH_SHORT).show();
                 }
+
             });
-        });
+        }
+
+
+        makeOffer_btn = (Button) view.findViewById(R.id.makeOffer_btn);
+        if(ob.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()) && !ob.getSold()){
+            context = getContext();
+            makeOffer_btn.setText("Sold");
+            makeOffer_btn.setOnClickListener(v -> {
+                ob.setSold(true);
+                FirebaseDatabase.getInstance().getReference("bookData/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+ob.getTitle()+"/sold").setValue(true);
+                AppCompatActivity activity = (AppCompatActivity) context;
+                activity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_layout, new HomeFragment())
+                        .commit();
+            });
+        }else if (ob.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()) && ob.getSold()) {
+            makeOffer_btn.setText("Sold");
+            makeOffer_btn.setEnabled(false);
+        } else{
+            makeOffer_btn.setOnClickListener(v -> {
+                offer_layout.setEnabled(true);
+                offer_layout.setVisibility(View.VISIBLE);
+                et_offer_price = view.findViewById(R.id.et_offer_price);
+                et_offer_price.setText(ob.getPrice());
+
+                negotiate_btn = (Button) view.findViewById(R.id.negotiate_btn);
+                negotiate_btn.setOnClickListener(vi -> {
+                    context = getContext();
+
+                    String message = "Hey Papi, can I get it @ Rs."+et_offer_price.getText().toString();
+
+                    if(Double.parseDouble(et_offer_price.getText().toString()) < Double.parseDouble(ob.getPrice().toString()) / 2){
+                        et_offer_price.setError("Negotiation price must be between " + Double.parseDouble(ob.getPrice().toString()) / 2 + " to " + Double.parseDouble(ob.getPrice().toString()));
+                    }else{
+                        if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                            AppCompatActivity activity = (AppCompatActivity) context;
+                            activity.getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .replace(R.id.fragment_layout, new UserChatFragment(ob, message))
+                                    .commit();
+                        }
+                        else{
+                            Toast.makeText(context, "Please verify your email first", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+
+                });
+            });
+        }
+
+
+
+
 
 
         return view;

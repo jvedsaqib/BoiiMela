@@ -1,12 +1,16 @@
 package com.gssproductions.boiimela;
 
-public class BookData {
+import java.io.Serializable;
+
+public class BookData implements Serializable {
 
     String address, authorName, description,
             imgUrl0, imgUrl1, imgUrl2,
             phoneNumber, price, publisherName,
             coverType, condition, category, otherCategory,
             title, uid, seller_name;
+
+    Boolean isSold = false;
 
     public String getAddress() {
         return address;
@@ -134,5 +138,13 @@ public class BookData {
 
     public void setSeller_name(String seller_name) {
         this.seller_name = seller_name;
+    }
+
+    public Boolean getSold() {
+        return isSold;
+    }
+
+    public void setSold(Boolean sold) {
+        isSold = sold;
     }
 }

@@ -8,15 +8,20 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.firebase.ui.database.FirebaseListAdapter;
@@ -52,6 +57,8 @@ public class UserChatFragment extends Fragment {
     ListView msgList;
 
     Context context;
+
+    Toolbar toolbar;
 
     String BUY_CHAT_DB_LOC = "";
     String SELL_CHAT_DB_LOC = "";
@@ -113,6 +120,11 @@ public class UserChatFragment extends Fragment {
         msgList = (ListView) view.findViewById(R.id.msgList);
         sendFab = view.findViewById(R.id.sendFab);
 
+        toolbar = view.findViewById(R.id.toolbar);
+
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setTitle("Chat");
 
 
         if(MODE.equals("BUY")){
@@ -181,7 +193,30 @@ public class UserChatFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.delete_menu, menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+
+        switch (id){
+            case R.id.delete:
+                Toast.makeText(context, "delete", Toast.LENGTH_LONG).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+
+    }
+
     private void displayChatMessages(String PATH) {
+
 
         adapter = new FirebaseListAdapter<ChatMessage>((AppCompatActivity) context,
                 ChatMessage.class,

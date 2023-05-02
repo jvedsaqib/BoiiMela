@@ -7,10 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +33,8 @@ public class ChatBuyAdapter extends RecyclerView.Adapter<ChatBuyAdapter.ChatBuyV
     Context context;
 
     ArrayList<ChatSell> list;
+
+    Toolbar toolbar;
 
     String name;
 
@@ -83,6 +90,15 @@ public class ChatBuyAdapter extends RecyclerView.Adapter<ChatBuyAdapter.ChatBuyV
                                     "BUY"))
                     .addToBackStack(null).commit();
         });
+
+        holder.chatListView.setOnLongClickListener(longlistener -> {
+            DeleteDialog deleteDialog = new DeleteDialog("Chat/"+ob.getSellerUID().substring(0, 28)+"/buy/"+ob.getBuyerUID()+"-"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+ob.getBookTitle()+"/"+ob.getSenderName(),
+                    "BUY");
+            deleteDialog.show(((FragmentActivity)context).getSupportFragmentManager(), "Dialog");
+
+            return true;
+        });
+
 
 
     }

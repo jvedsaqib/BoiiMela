@@ -53,7 +53,7 @@ public class BookDataAdapter extends RecyclerView.Adapter<BookDataAdapter.bookDa
 
         holder.book_title.setText(bookData.getTitle());
         holder.book_author.setText(bookData.getAuthorName());
-        holder.book_price.setText(bookData.getPrice());
+        holder.book_price.setText(String.valueOf(bookData.getPrice()));
 
 //        Picasso.get().load(bookData.getImgUrl0()).into(holder.book_thumbnail);
 

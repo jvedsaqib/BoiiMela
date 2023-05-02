@@ -35,6 +35,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -222,13 +223,17 @@ class UploadDataUserDetails{
         isSold = sold;
     }
 }
-public class UploadActivity extends AppCompatActivity {
+public class UploadActivity extends AppCompatActivity implements Serializable {
 
     String cover, condition, category, otherCategory;
     EditText etTitle, etAuthorName, etPublisherName, etDescription, etPrice, etPhoneNumber, etAddress, etCategory;
     RadioGroup radioGroupCoverType, radioGroupBookCondition, radioGroupBookCategory;
     RadioButton radioButtonCoverType, radioButtonBookCondition, radioButtonBookCategory;
-    Button btnSelectImage_side, btnUploadData;
+    Button btnSelectImage_side, btnUploadData, btnClearImage;
+
+    boolean edit = false;
+    BookData bookEditOb;
+
     int position = 0;
     ImageButton arrow_right, arrow_left;
     ImageSwitcher imageView;
@@ -270,6 +275,7 @@ public class UploadActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         btnSelectImage_side = findViewById(R.id.btnSelectImage);
         btnUploadData = findViewById(R.id.btnUploadData);
+        btnClearImage = findViewById(R.id.btnClearImage);
 
         arrow_right = findViewById(R.id.arrow_right);
         arrow_left = findViewById(R.id.arrow_left);
@@ -286,6 +292,16 @@ public class UploadActivity extends AppCompatActivity {
 
         btnUploadData.setOnClickListener(view -> {
             uploadData();
+        });
+
+        btnClearImage.setOnClickListener(v ->{
+            if(!filePath.isEmpty()){
+                imageView.setImageURI(null);
+                filePath.clear();
+            }
+            else{
+                Toast.makeText(this, "No Image Selected", Toast.LENGTH_SHORT).show();
+            }
         });
 
         imageView.setFactory(new ViewSwitcher.ViewFactory() {
@@ -320,6 +336,23 @@ public class UploadActivity extends AppCompatActivity {
                 }
             }
         });
+
+        if(getIntent().getExtras() != null){
+            bookEditOb = (BookData) getIntent().getSerializableExtra("Object");
+            edit = getIntent().getBooleanExtra("EDIT", true);
+        }
+
+        if(edit){
+            etTitle.setText(bookEditOb.getTitle());
+            etAuthorName.setText(bookEditOb.getAuthorName());
+            etPublisherName.setText(bookEditOb.getPublisherName());
+            etCategory.setText(bookEditOb.getOtherCategory());
+            etDescription.setText(bookEditOb.getDescription());
+            etPrice.setText(bookEditOb.getPrice());
+            etPhoneNumber.setText(bookEditOb.getPhoneNumber());
+            etAddress.setText(bookEditOb.getAddress());
+        }
+
     }
 
     public void onBackPressed(){

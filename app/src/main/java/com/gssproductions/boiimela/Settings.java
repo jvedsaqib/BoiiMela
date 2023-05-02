@@ -52,7 +52,6 @@ public class Settings extends AppCompatActivity {
         });
 
         email_verify_block = findViewById(R.id.email_verify_block);
-
         email_verify_block.setOnClickListener(v -> {
             if(!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
                 FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
