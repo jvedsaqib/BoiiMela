@@ -1,19 +1,16 @@
 package com.gssproductions.boiimela;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,9 +33,9 @@ public class Settings extends AppCompatActivity {
 
         settings = (UserSettings) getApplication();
 
-        initWidgets();
-        loadSharedPreferences();
-        initSwitchListener();
+      //  initWidgets();
+       // loadSharedPreferences();
+        //initSwitchListener();
 
 
         //edit profile
@@ -70,7 +67,7 @@ public class Settings extends AppCompatActivity {
 
     }
 
-    private void initSwitchListener() {
+    /*private void initSwitchListener() {
     themeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
@@ -122,7 +119,7 @@ public class Settings extends AppCompatActivity {
         themeTV = findViewById(R.id.themeTV);
         titleTV = findViewById(R.id.titleTV);
         themeSwitch = findViewById(R.id.themeSwitchTV);
-        parentView = findViewById(R.id.parentView);
+        parentView = findViewById(R.id.parentView);*/
 
     }
-}
+//}

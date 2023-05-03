@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment"
-    android:background="#eeefff">
+    android:background="@color/primary">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:background="#82D9FB"
+            android:background="@color/primary"
             tools:ignore="UnknownId">
 
             <ImageView
@@ -32,7 +32,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_centerInParent="true"
-                android:background="@drawable/no_profile" />
+                android:background="@drawable/book1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -46,158 +46,170 @@
                 android:textColor="@color/white"/>
 
         </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_back_white10_20"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:radius="20dp">
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="337dp"
             android:layout_height="match_parent"
-            android:padding="15dp"
             android:layout_margin="15dp"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:padding="15dp">
 
             <!---show name -->
             <ImageView
+                android:id="@+id/ic_profile"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:id="@+id/ic_profile"
-                android:background="@drawable/ic_profile"/>
+                android:background="@drawable/ic_profile" />
 
             <TextView
+                android:id="@+id/textView_show_full_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_show_full_name"
                 android:layout_alignStart="@id/ic_profile"
-                android:hint="Loading"
                 android:layout_marginStart="50dp"
-                android:textSize="18sp"/>
+                android:hint="Loading"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
 
             <View
+                android:id="@+id/divider_name"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="20dp"
                 android:layout_below="@id/textView_show_full_name"
-                android:background="@android:color/darker_gray"
-                android:id="@+id/divider_name"/>
+                android:layout_marginTop="20dp"
+                android:background="@android:color/black" />
             <!---show email -->
             <ImageView
+                android:id="@+id/ic_email"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:id="@+id/ic_email"
-                android:background="@drawable/ic_email"
                 android:layout_below="@+id/divider_name"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_email" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/textView_show_email"
-                android:layout_alignStart="@id/ic_email"
-                android:layout_marginTop="20dp"
-                android:layout_below="@id/divider_name"
-                android:hint="Loading"
-                android:layout_marginStart="50dp"
-                android:textSize="18sp"/>
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_verify_email"
-
-                android:layout_alignStart="@id/ic_email"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="300dp"
                 android:layout_below="@id/divider_name"
-
+                android:layout_alignStart="@id/ic_email"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
                 android:hint="Loading"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
 
-                />
+            <TextView
+                android:id="@+id/textView_verify_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/divider_name"
+                android:layout_alignStart="@id/ic_email"
+                android:layout_marginStart="230dp"
+                android:layout_marginTop="20dp"
+                android:hint="Loading" />
 
             <View
+                android:id="@+id/divider_email"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="20dp"
                 android:layout_below="@id/textView_show_email"
-                android:background="@android:color/darker_gray"
-                android:id="@+id/divider_email"/>
+                android:layout_marginTop="20dp"
+                android:background="@android:color/black" />
 
 
             <!---show birthday -->
             <ImageView
+                android:id="@+id/ic_dob"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:id="@+id/ic_dob"
-                android:background="@drawable/ic_birthday"
                 android:layout_below="@+id/divider_email"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_birthday" />
 
             <TextView
+                android:id="@+id/textView_show_dob"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_show_dob"
-                android:layout_alignStart="@id/ic_dob"
-                android:layout_marginTop="20dp"
                 android:layout_below="@id/divider_email"
-                android:hint="Loading"
+                android:layout_alignStart="@id/ic_dob"
                 android:layout_marginStart="50dp"
-                android:textSize="18sp"/>
+                android:layout_marginTop="20dp"
+                android:hint="Loading"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
 
             <View
+                android:id="@+id/divider_dob"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="20dp"
                 android:layout_below="@id/textView_show_dob"
-                android:background="@android:color/darker_gray"
-                android:id="@+id/divider_dob"/>
+                android:layout_marginTop="20dp"
+                android:background="@android:color/black" />
 
 
             <!---show gender -->
             <ImageView
+                android:id="@+id/ic_gender"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:id="@+id/ic_gender"
-                android:background="@drawable/ic_gender"
                 android:layout_below="@+id/divider_dob"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_gender" />
 
             <TextView
+                android:id="@+id/textView_show_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_show_gender"
-                android:layout_alignStart="@id/ic_gender"
-                android:layout_marginTop="20dp"
                 android:layout_below="@id/divider_dob"
-                android:hint="Loading"
+                android:layout_alignStart="@id/ic_gender"
                 android:layout_marginStart="50dp"
-                android:textSize="18sp"/>
+                android:layout_marginTop="20dp"
+                android:hint="Loading"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
 
             <View
+                android:id="@+id/divider_gender"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="20dp"
                 android:layout_below="@id/textView_show_gender"
-                android:background="@android:color/darker_gray"
-                android:id="@+id/divider_gender"/>
+                android:layout_marginTop="20dp"
+                android:background="@android:color/black" />
 
             <!---show mobile -->
             <ImageView
+                android:id="@+id/ic_mobile"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:id="@+id/ic_mobile"
-                android:background="@drawable/ic_mobile"
                 android:layout_below="@+id/divider_gender"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_mobile" />
 
             <TextView
+                android:id="@+id/textView_show_mobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_show_mobile"
-                android:layout_alignStart="@id/ic_mobile"
-                android:layout_marginTop="20dp"
                 android:layout_below="@id/divider_gender"
-                android:hint="Loading"
+                android:layout_alignStart="@id/ic_mobile"
                 android:layout_marginStart="50dp"
-                android:textSize="18sp"/>
+                android:layout_marginTop="20dp"
+                android:hint="Loading"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
 
         </RelativeLayout>
+    </LinearLayout>
 
     </LinearLayout>
 
