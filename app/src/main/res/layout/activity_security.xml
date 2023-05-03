@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    android:orientation="vertical"
+    tools:context=".SecurityActivity">
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="10dp"
+      android:layout_marginTop="10dp"
+      android:layout_marginEnd="10dp"
+      android:background="@drawable/round_back_white10_20"
+      android:orientation="vertical"
+      android:padding="15dp"
+      android:radius="20dp">
+      <!-- Update Email -->
+      <RelativeLayout
+          android:id="@+id/RL_update_email"
+          android:layout_width="match_parent"
+          android:layout_height="70dp"
+          android:background="@drawable/round_back_white10_20"
+          android:layout_marginTop="10dp">
+
+          <ImageView
+              android:id="@+id/EmailUpdate"
+              android:layout_width="60dp"
+              android:layout_height="60dp"
+              android:background="@drawable/round_back_private_account"
+              android:padding="12dp"
+              android:src="@drawable/email" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="30dp"
+              android:layout_centerVertical="true"
+              android:layout_marginStart="40dp"
+              android:layout_toEndOf="@+id/EmailUpdate"
+              android:text="Update Email"
+              android:textColor="#1E1616"
+              android:textStyle="bold" />
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentEnd="true"
+              android:layout_centerVertical="true"
+              android:src="@drawable/right_arrow_icon" />
+
+      </RelativeLayout>
+
+      <!-- Update password -->
+      <RelativeLayout
+          android:id="@+id/RL_change_password"
+          android:layout_width="match_parent"
+          android:layout_height="70dp"
+          android:layout_below="@+id/RL_update_email"
+          android:background="@drawable/round_back_white10_20"
+          android:layout_marginTop="10dp">
+
+          <ImageView
+              android:id="@+id/ChangePasssword"
+              android:layout_width="60dp"
+              android:layout_height="60dp"
+              android:background="@drawable/round_back_night_mode"
+              android:padding="12dp"
+              android:src="@drawable/lock3" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_centerVertical="true"
+              android:layout_marginStart="40dp"
+              android:layout_toEndOf="@+id/ChangePasssword"
+              android:text="Change Password"
+              android:textColor="#1E1616"
+              android:textStyle="bold" />
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentEnd="true"
+              android:layout_centerVertical="true"
+              android:src="@drawable/right_arrow_icon" />
+
+      </RelativeLayout>
+  </RelativeLayout>
+
+</LinearLayout>
