@@ -102,7 +102,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        textViewWelcome = view.findViewById(R.id.TextView_show_welcome);
+        //textViewWelcome = view.findViewById(R.id.TextView_show_welcome);
         textViewFullName = view.findViewById(R.id.textView_show_full_name);
         textViewEmail = view.findViewById(R.id.textView_show_email);
         textViewDoB = view.findViewById(R.id.textView_show_dob);
@@ -163,7 +163,7 @@ public class ProfileFragment extends Fragment {
                     gender = readUserDetails.gender;
                     mobile = readUserDetails.mobile;
 
-                    textViewWelcome.setText("Welcome, " + fullName + "!");
+                    // textViewWelcome.setText("Welcome, " + fullName + "!");
                     textViewFullName.setText(fullName);
                     textViewEmail.setText(email);
                     textViewGender.setText(gender);

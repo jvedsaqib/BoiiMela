@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -60,8 +61,13 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsAdapter.myAdsViewHol
                         .addToBackStack(null).commit();
             });
 
-        }
-        else {
+            holder.myAdsCard.setOnLongClickListener(v -> {
+                DeleteDialogAd deleteDialog = new DeleteDialogAd("bookData/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/"+bookData.getTitle(),
+                        "AD");
+                deleteDialog.show(((FragmentActivity)context).getSupportFragmentManager(), "Dialog");
+
+                return true;
+            });
 
         }
 

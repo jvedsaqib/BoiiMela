@@ -10,10 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ChatFragment extends Fragment {
 
-    Button chat_buy_btn, chat_sell_btn;
+    TextView chat_buy_btn, chat_sell_btn;
+    View sell_indicator, buy_indicator;
 
     Context context;
 
@@ -61,8 +63,12 @@ public class ChatFragment extends Fragment {
         chat_buy_btn = view.findViewById(R.id.chat_buy_btn);
         chat_sell_btn = view.findViewById(R.id.chat_sell_btn);
 
+        sell_indicator = view.findViewById(R.id.sell_indicator);
+        buy_indicator = view.findViewById(R.id.buy_indicator);
 
-        chat_sell_btn.setEnabled(false);
+
+        buy_indicator.setVisibility(View.INVISIBLE);
+        chat_sell_btn.setTextSize(30);
 
         AppCompatActivity activity = (AppCompatActivity) context;
         activity.getSupportFragmentManager()
@@ -71,8 +77,10 @@ public class ChatFragment extends Fragment {
                 .addToBackStack(null).commit();
 
         chat_sell_btn.setOnClickListener(v -> {
-            chat_buy_btn.setEnabled(true);
-            chat_sell_btn.setEnabled(false);
+            chat_sell_btn.setTextSize(30);
+            chat_buy_btn.setTextSize(25);
+            buy_indicator.setVisibility(View.INVISIBLE);
+            sell_indicator.setVisibility(View.VISIBLE);
             activity.getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.chat_layout, new ChatSellFragment())
@@ -80,8 +88,10 @@ public class ChatFragment extends Fragment {
         });
 
         chat_buy_btn.setOnClickListener(v -> {
-            chat_sell_btn.setEnabled(true);
-            chat_buy_btn.setEnabled(false);
+            chat_buy_btn.setTextSize(30);
+            chat_sell_btn.setTextSize(25);
+            sell_indicator.setVisibility(View.INVISIBLE);
+            buy_indicator.setVisibility(View.VISIBLE);
             activity.getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.chat_layout, new ChatBuyFragment())
