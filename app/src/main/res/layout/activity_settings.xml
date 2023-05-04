@@ -82,7 +82,7 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="25dp"
                     android:layout_marginRight="70dp"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="35dp"
                     android:background="@drawable/round_back_security"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
