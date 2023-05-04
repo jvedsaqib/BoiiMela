@@ -18,9 +18,6 @@
             android:name=".Contact_us"
             android:exported="false" />
         <activity
-            android:name=".About"
-            android:exported="false" />
-        <activity
             android:name=".ChangePasswordActivity"
             android:exported="false" />
         <activity
