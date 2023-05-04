@@ -23,7 +23,7 @@ public class Settings extends AppCompatActivity {
     private TextView themeTV, titleTV;
 
     private UserSettings settings;
-    RelativeLayout email_verify_block;
+    RelativeLayout email_verify_block,security;
 
     ImageView back_to_frag_btn;
     @Override
@@ -44,6 +44,26 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Settings.this,UpdateProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //delete profile
+        Button buttonDeleteProfile=findViewById(R.id.buttonDeleteProfile);
+        buttonDeleteProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Settings.this,DeleteProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //security
+        security=findViewById(R.id.RL_security);
+        security.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Settings.this,SecurityActivity.class);
                 startActivity(intent);
             }
         });
