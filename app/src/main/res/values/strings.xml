@@ -11,4 +11,13 @@
     <string name="click_here_to_reset"><u>click here to reset password</u></string>
     <string name="upload_pic_u" />
     <string name="update_email_u" />
+    <string name="contact_us" />
+    <string name="phone_no" />
+    <string name="_91_8383066031" />
+    <string name="email_address" />
+    <string name="info_seekmyvision_in" />
+    <string name="ask_your_query" />
+    <string name="send_your_message" />
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
