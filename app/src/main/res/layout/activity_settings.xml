@@ -58,19 +58,38 @@
                 android:textSize="22sp"
                 android:textStyle="bold" />-->
 
-                <!-- Edit profile -->
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/buttonEditProfile"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/round_back_secondery_100"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:text="Edit Profile"
-                android:textAllCaps="false"
-                android:textColor="@color/primary" />
+                android:layout_height="wrap_content">
+                <!-- Edit profile -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonEditProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/round_back_secondery_100"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="Edit Profile"
+                    android:textAllCaps="false"
+                    android:textColor="@color/primary" />
+
+                <!-- Delete profile -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/buttonDeleteProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="70dp"
+                    android:background="@drawable/round_back_security"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="Delete Profile"
+                    android:textAllCaps="false"
+                    android:textColor="@color/primary" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -250,6 +269,7 @@
 
                 <!-- Security -->
                 <RelativeLayout
+                    android:id="@+id/RL_security"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
@@ -281,71 +301,7 @@
 
                 </RelativeLayout>
 
-                <!-- Update Email -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
 
-                    <ImageView
-                        android:id="@+id/EmailUpdate"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/round_back_private_account"
-                        android:padding="15dp"
-                        android:src="@drawable/email" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="40dp"
-                        android:layout_toEndOf="@+id/EmailUpdate"
-                        android:text="Update Email"
-                        android:textColor="#1E1616"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/right_arrow_icon" />
-
-                </RelativeLayout>
-
-                <!-- Update Email -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                    <ImageView
-                        android:id="@+id/ChangePasssword"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/round_back_night_mode"
-                        android:padding="15dp"
-                        android:src="@drawable/lock3" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="40dp"
-                        android:layout_toEndOf="@+id/ChangePasssword"
-                        android:text="Change Password"
-                        android:textColor="#1E1616"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/right_arrow_icon" />
-
-                </RelativeLayout>
                 <!-- TextSize -->
                 <!--                <RelativeLayout-->
                 <!--                    android:layout_width="match_parent"-->
