@@ -142,8 +142,6 @@ public class ProfileFragment extends Fragment {
             return true;
         }
 
-       //
-
         return super.onOptionsItemSelected(item);
     }
 

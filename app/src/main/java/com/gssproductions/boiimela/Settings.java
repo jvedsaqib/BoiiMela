@@ -23,7 +23,9 @@ public class Settings extends AppCompatActivity {
     private TextView themeTV, titleTV;
 
     private UserSettings settings;
-    RelativeLayout email_verify_block,security;
+    RelativeLayout security, RL_aboutUs,
+            RL_contactUs, RL_editProfile,
+            RL_deleteProfile;
 
     ImageView back_to_frag_btn;
     @Override
@@ -33,14 +35,11 @@ public class Settings extends AppCompatActivity {
 
         settings = (UserSettings) getApplication();
 
-      //  initWidgets();
-       // loadSharedPreferences();
-        //initSwitchListener();
 
 
         //edit profile
-        Button buttonUpdateProfile=findViewById(R.id.buttonEditProfile);
-        buttonUpdateProfile.setOnClickListener(new View.OnClickListener() {
+        RL_editProfile = findViewById(R.id.RL_editProfile);
+        RL_editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Settings.this,UpdateProfileActivity.class);
@@ -49,8 +48,8 @@ public class Settings extends AppCompatActivity {
         });
 
         //delete profile
-        Button buttonDeleteProfile=findViewById(R.id.buttonDeleteProfile);
-        buttonDeleteProfile.setOnClickListener(new View.OnClickListener() {
+        RL_deleteProfile = findViewById(R.id.RL_deleteProfile);
+        RL_deleteProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Settings.this,DeleteProfileActivity.class);
@@ -59,31 +58,36 @@ public class Settings extends AppCompatActivity {
         });
 
         //security
-        security=findViewById(R.id.RL_security);
+        security = findViewById(R.id.RL_security);
         security.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Settings.this,SecurityActivity.class);
+                Intent intent=new Intent(Settings.this, SecurityActivity.class);
                 startActivity(intent);
             }
         });
 
-        email_verify_block = findViewById(R.id.email_verify_block);
-        email_verify_block.setOnClickListener(v -> {
-            if(!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
-                FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification();
-                Toast.makeText(this, "Please verify your email and restart the app", Toast.LENGTH_LONG).show();
-            }
-            else{
-                email_verify_block.setBackgroundColor(Color.rgb(0, 255, 0));
-            }
-        });
 
         back_to_frag_btn = findViewById(R.id.back_to_frag_btn);
         back_to_frag_btn.setOnClickListener(click ->{
             startActivity(new Intent(Settings.this, BaseActivity.class));
             finish();
         });
+
+        RL_aboutUs = findViewById(R.id.RL_aboutUs);
+        RL_contactUs = findViewById(R.id.RL_contactUs);
+
+//        RL_aboutUs.setOnClickListener(v ->{
+//            Intent intent=new Intent(Settings.this, aboutUs.class);
+//            startActivity(intent);
+//        });
+
+        RL_contactUs.setOnClickListener(v -> {
+            Intent intent=new Intent(Settings.this, Contact_us.class);
+            startActivity(intent);
+        });
+
+
 
     }
 

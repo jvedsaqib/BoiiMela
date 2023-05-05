@@ -44,7 +44,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         buttonChangePwd=findViewById(R.id.button_change_pwd);
 
         //disable edittext for new,confirm password and make change password button disable until user is authenticated
-        editTextPwdCur.setEnabled(false);
+        editTextPwdCur.setEnabled(true);
         editTextPwdNew.setEnabled(false);
         editTextPwdConfirm.setEnabled(false);
 
@@ -90,7 +90,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                 //enable change password button,disable reauthenticate
                                 buttonChangePwd.setEnabled(true);
                                 buttonReAuthenticate.setEnabled(false);
-                                textViewAuthenticated.setText("now you can change your password");
+                                textViewAuthenticated.setText("Now you can change your password");
                                 Toast.makeText(ChangePasswordActivity.this, "change your password", Toast.LENGTH_SHORT).show();
 
                                 buttonChangePwd.setBackgroundTintList(ContextCompat.getColorStateList(ChangePasswordActivity.this,R.color.green));
@@ -127,11 +127,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
             Toast.makeText(ChangePasswordActivity.this, "please confirm new password", Toast.LENGTH_SHORT).show();
             editTextPwdConfirm.setError("please confirm new password");
             editTextPwdConfirm.requestFocus();
-        } else if (userPwdNew.matches(userPwdConfirm)) {
+        } else if (!userPwdNew.matches(userPwdConfirm)) {
             Toast.makeText(ChangePasswordActivity.this, "password not matched", Toast.LENGTH_SHORT).show();
             editTextPwdConfirm.setError("please enter same password");
             editTextPwdConfirm.requestFocus();
-        } else if (!userPwdCur.matches(userPwdNew)) {
+        } else if (userPwdCur.matches(userPwdNew)) {
             Toast.makeText(ChangePasswordActivity.this, "New password is required", Toast.LENGTH_SHORT).show();
             editTextPwdNew.setError("please enter new password");
             editTextPwdNew.requestFocus();

@@ -40,14 +40,6 @@
 
        <!-- </RelativeLayout>-->
 
-        <ImageView
-            android:id="@+id/imageView_profile_user"
-            android:layout_width="130dp"
-            android:layout_height="140dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/icon"/>
 
         <LinearLayout
         android:layout_width="match_parent"
@@ -59,7 +51,7 @@
         android:radius="20dp">
 
         <RelativeLayout
-            android:layout_width="330dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="15dp"
             android:background="@drawable/round_back_white10_20"
