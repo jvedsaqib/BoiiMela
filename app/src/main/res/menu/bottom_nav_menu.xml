@@ -7,11 +7,11 @@
     <item
         android:id="@+id/nav_btn_home"
         android:title="Home"
-        android:icon="@drawable/home_icon" />
+        android:icon="@drawable/home" />
     <item
         android:id="@+id/nav_btn_search"
         android:title="Search"
-        android:icon="@drawable/search_24" />
+        android:icon="@drawable/search" />
 
     <item
         android:id="@+id/nav_btn_my_ads"
@@ -21,11 +21,11 @@
     <item
         android:id="@+id/nav_btn_chats"
         android:title="Chats"
-        android:icon="@drawable/chat_icon" />
+        android:icon="@drawable/chats_icon" />
 
     <item
         android:id="@+id/nav_btn_profile"
         android:title="Profile"
-        android:icon="@drawable/profile_icon" />
+        android:icon="@drawable/profile" />
 
 </menu>
