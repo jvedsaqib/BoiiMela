@@ -21,8 +21,7 @@
         <ImageView
             android:id="@+id/book_thumbnail"
             android:layout_width="100dp"
-            android:layout_height="90dp"
-
+            android:layout_height="70dp"
             android:src="@drawable/my_ads_icon"
             android:elevation="100dp"
             />
