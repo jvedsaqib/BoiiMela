@@ -34,6 +34,7 @@
             android:text="Title"
             android:textSize="25dp"
             android:textStyle="bold"
+            android:textColor="@color/black"
 
             android:layout_toRightOf="@id/book_thumbnail"
             android:layout_marginStart="15dp"
@@ -46,6 +47,8 @@
 
             android:text="Author"
             android:textSize="15dp"
+            android:textColor="@color/black"
+
 
             android:layout_below="@id/book_title"
             android:layout_marginTop="15dp"
@@ -61,6 +64,7 @@
 
             android:text="Price"
             android:textSize="25dp"
+            android:textColor="@color/black"
 
             android:layout_alignParentEnd="true"
             android:layout_alignBottom="@id/book_author"
