@@ -25,6 +25,12 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsAdapter.myAdsViewHol
 
     ArrayList<BookData> list;
 
+    int totalAds;
+
+    public int getTotalAds() {
+        return totalAds;
+    }
+
     public MyAdsAdapter(Context context, ArrayList<BookData> list) {
         this.context = context;
         this.list = list;
@@ -75,6 +81,8 @@ public class MyAdsAdapter extends RecyclerView.Adapter<MyAdsAdapter.myAdsViewHol
 
     @Override
     public int getItemCount() {
+
+        totalAds = list.size();
         return list.size();
     }
 

@@ -25,12 +25,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class ProfileFragment extends Fragment {
 
     TextView textViewWelcome, textViewFullName,
             textViewEmail, textViewDoB,
             textViewGender, textViewmobile,
-            textView_verify_email;
+            textView_verify_email, tv_total_ads_count,
+            tv_total_ads_sold_count, tv_total_ads_available_count;
 
     //ProgressBar progressBar;
     String fullName, email, mobile, gender, doB;
@@ -109,13 +112,21 @@ public class ProfileFragment extends Fragment {
         textViewGender = view.findViewById(R.id.textView_show_gender);
         textViewmobile = view.findViewById(R.id.textView_show_mobile);
         textView_verify_email = view.findViewById(R.id.textView_verify_email);
-        //progressBar = view.findViewById(R.id.progressbar_profile);
+
+        tv_total_ads_count = view.findViewById(R.id.tv_total_ads_count);
+        tv_total_ads_sold_count = view.findViewById(R.id.tv_total_ads_sold_count);
+        tv_total_ads_available_count = view.findViewById(R.id.tv_total_ads_available_count);
 
         toolbar = view.findViewById(R.id.toolbar);
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setTitle("");
+
+        tv_total_ads_count.setText("");
+        tv_total_ads_sold_count.setText("");
+        tv_total_ads_available_count.setText("");
+
 
         if(!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
             textView_verify_email.setText("Verified");

@@ -19,33 +19,13 @@
             android:background="@color/napbar"
             app:menu="@menu/navigation_menu"
             app:showAsAction="always"/>
-
-<!--        <RelativeLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="250dp"-->
-<!--            android:background="@color/primary"-->
-<!--            tools:ignore="UnknownId">-->
-
-<!--                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/TextView_show_welcome"
-                        android:layout_below="@+id/imageView_profile_user"
-                        android:hint="Loading......"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="10dp"
-                        android:layout_centerHorizontal="true"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                        android:textColor="@color/white"/>-->
-
-       <!-- </RelativeLayout>-->
-
+        
 
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@color/white"
+        android:background="@drawable/round_back_white10_20"
         android:orientation="vertical"
         android:padding="1dp"
         android:radius="20dp">
@@ -54,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="15dp"
-            android:background="@drawable/round_back_white10_20"
+            android:background="@drawable/round_back_secondery_100"
             android:padding="15dp">
 
             <!---show name -->
@@ -203,6 +183,139 @@
 
         </RelativeLayout>
     </LinearLayout>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:elevation="10dp"
+                android:layout_centerHorizontal="true"
+                app:cardCornerRadius="10dp"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_your_ads"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Your Ads"
+                        android:textSize="30dp"
+                        android:textColor="@color/black"
+
+                        android:layout_marginStart="10dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_total_ads"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Total Ads :"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+
+                        android:layout_below="@id/tv_your_ads"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="25dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_total_ads_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Total Ads Count"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+
+                        android:layout_toEndOf="@id/tv_total_ads"
+                        android:layout_below="@id/tv_your_ads"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_total_ads_sold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Total Ads Sold :"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"
+
+                        android:layout_below="@id/tv_total_ads"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="25dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_total_ads_sold_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Sold Count"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"
+
+                        android:layout_toEndOf="@id/tv_total_ads"
+                        android:layout_below="@id/tv_total_ads_count"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="60dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_total_ads_available"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Total Ads Available :"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"
+
+                        android:layout_below="@id/tv_total_ads_sold"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="25dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_total_ads_available_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Available Count"
+                        android:textSize="15dp"
+                        android:textColor="@color/black"
+
+                        android:layout_toEndOf="@id/tv_total_ads"
+                        android:layout_below="@id/tv_total_ads_sold_count"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="60dp"
+
+                        />
+
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

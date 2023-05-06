@@ -111,4 +111,9 @@ public class MyAdsFragment extends Fragment {
 
         return view;
     }
+
+
+    public int getTotalAds(){
+        return bookData.size();
+    }
 }

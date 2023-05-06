@@ -89,10 +89,6 @@ public class BaseActivity extends AppCompatActivity {
             return true;
         });
 
-//        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-//        actionBarDrawerToggle.syncState();
-//
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
