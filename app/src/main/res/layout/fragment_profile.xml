@@ -37,7 +37,6 @@
             android:background="@drawable/round_back_secondery_100"
             android:padding="15dp">
 
-            <!---show name -->
             <ImageView
                 android:id="@+id/ic_profile"
                 android:layout_width="25dp"
