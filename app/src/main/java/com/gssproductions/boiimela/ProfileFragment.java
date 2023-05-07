@@ -3,6 +3,7 @@ package com.gssproductions.boiimela;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -41,6 +43,9 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth authProfile;
 
     Toolbar toolbar;
+
+    int adscount = 0;
+    int adsSoldcount = 0;
 
     private MenuItem menuItem;
 
@@ -92,6 +97,52 @@ public class ProfileFragment extends Fragment {
             showUserProfile(firebaseUser);
         }
 
+        FirebaseDatabase.getInstance()
+                .getReference()
+                .child("bookData/" + FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .orderByChild(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        adscount = (int) snapshot.getChildrenCount();
+                        System.out.println(adscount);
+                        tv_total_ads_count.setText(String.valueOf(adscount));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+        FirebaseDatabase.getInstance()
+                .getReference()
+                .child("bookData/" + FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .orderByChild("sold")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for(DataSnapshot i : snapshot.getChildren()){
+                            BookData ob = i.getValue(BookData.class);
+
+                            if(ob.isSold){
+                                adsSoldcount++;
+                            }
+
+                        }
+                        System.out.println(adsSoldcount);
+                        tv_total_ads_sold_count.setText(String.valueOf(adsSoldcount));
+
+                        int adsAvailable = adscount - adsSoldcount;
+                        tv_total_ads_available_count.setText(String.valueOf(adsAvailable));
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
     }
 
     @Override
@@ -123,9 +174,10 @@ public class ProfileFragment extends Fragment {
         activity.setSupportActionBar(toolbar);
         activity.getSupportActionBar().setTitle("");
 
+
+        tv_total_ads_available_count.setText("");
         tv_total_ads_count.setText("");
         tv_total_ads_sold_count.setText("");
-        tv_total_ads_available_count.setText("");
 
 
         if(!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
