@@ -86,8 +86,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/divider_name"
-                android:layout_alignStart="@id/ic_email"
-                android:layout_marginStart="250dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
                 android:layout_marginTop="30dp"
                 android:hint="Loading" />
 
@@ -190,7 +190,7 @@
             >
 
             <androidx.cardview.widget.CardView
-                android:layout_width="300dp"
+                android:layout_width="350dp"
                 android:layout_height="200dp"
                 android:elevation="10dp"
                 android:layout_centerHorizontal="true"
@@ -221,7 +221,7 @@
                         android:layout_height="wrap_content"
 
                         android:text="Total Ads :"
-                        android:textSize="20dp"
+                        android:textSize="28sp"
                         android:textColor="@color/black"
 
                         android:layout_below="@id/tv_your_ads"
@@ -235,8 +235,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
-                        android:text="Total Ads Count"
-                        android:textSize="20dp"
+                        android:text="0"
+                        android:textSize="28sp"
                         android:textColor="@color/black"
 
                         android:layout_toEndOf="@id/tv_total_ads"
@@ -252,7 +252,7 @@
                         android:layout_height="wrap_content"
 
                         android:text="Total Ads Sold :"
-                        android:textSize="15dp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"
 
                         android:layout_below="@id/tv_total_ads"
@@ -266,14 +266,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
-                        android:text="Sold Count"
-                        android:textSize="15dp"
+                        android:text="0"
+                        android:textSize="18sp"
                         android:textColor="@color/black"
 
                         android:layout_toEndOf="@id/tv_total_ads"
                         android:layout_below="@id/tv_total_ads_count"
                         android:layout_marginTop="10dp"
-                        android:layout_marginStart="60dp"
+                        android:layout_marginStart="40dp"
 
                         />
 
@@ -283,7 +283,7 @@
                         android:layout_height="wrap_content"
 
                         android:text="Total Ads Available :"
-                        android:textSize="15dp"
+                        android:textSize="18sp"
                         android:textColor="@color/black"
 
                         android:layout_below="@id/tv_total_ads_sold"
@@ -297,8 +297,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
 
-                        android:text="Available Count"
-                        android:textSize="15dp"
+                        android:text="0"
+                        android:textSize="18sp"
                         android:textColor="@color/black"
 
                         android:layout_toEndOf="@id/tv_total_ads"

@@ -63,7 +63,10 @@ public class MyAdsFragment extends Fragment {
         bookData = new ArrayList<>();
         myAdsAdapter = new MyAdsAdapter(getContext(), bookData);
 
-        FirebaseDatabase.getInstance().getReference("bookData/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/").get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
+        FirebaseDatabase.getInstance()
+                .getReference("bookData/"+FirebaseAuth.getInstance().getCurrentUser().getUid()+"/")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
             @Override
             public void onSuccess(DataSnapshot dataSnapshot) {
 
@@ -112,8 +115,4 @@ public class MyAdsFragment extends Fragment {
         return view;
     }
 
-
-    public int getTotalAds(){
-        return bookData.size();
-    }
 }
