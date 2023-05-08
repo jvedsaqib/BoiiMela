@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -80,7 +81,6 @@ public class ProfileFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        // ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         // --------------
 
@@ -90,7 +90,7 @@ public class ProfileFragment extends Fragment {
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
         if (firebaseUser == null) {
-//            Toast.makeText(ProfileFragment.this, "something went wrong user details are not right", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "something went wrong user details are not right", Toast.LENGTH_LONG).show();
 
         } else {
            // progressBar.setVisibility(View.VISIBLE);

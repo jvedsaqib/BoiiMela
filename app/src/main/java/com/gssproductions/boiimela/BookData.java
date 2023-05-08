@@ -8,7 +8,7 @@ public class BookData implements Serializable {
             imgUrl0, imgUrl1, imgUrl2,
             phoneNumber, price, publisherName,
             coverType, condition, category, otherCategory,
-            title, uid, seller_name;
+            title, uid, seller_name, adUID;
 
     Boolean isSold = false;
 
@@ -146,5 +146,13 @@ public class BookData implements Serializable {
 
     public void setSold(Boolean sold) {
         isSold = sold;
+    }
+
+    public String getAdUID() {
+        return adUID;
+    }
+
+    public void setAdUID(String adUID) {
+        this.adUID = adUID;
     }
 }

@@ -164,7 +164,18 @@
                         android:textColorHighlight="@color/black"
                         android:textSize="20sp" />
 
+
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_contactUs"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:text="Contact"
+
+                    android:layout_below="@id/lin_3"
+                    android:layout_centerHorizontal="true"
+                    />
 
 
                 <RelativeLayout

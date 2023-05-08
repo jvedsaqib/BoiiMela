@@ -58,6 +58,8 @@ class UploadDataUserDetails{
     private String seller_name;
     private Boolean isSold;
 
+    private String adUID;
+
     public UploadDataUserDetails() {
     }
 
@@ -67,7 +69,7 @@ class UploadDataUserDetails{
                                  String price, String phoneNumber,
                                  String coverType, String condition, String category, String otherCategory,
                                  String imgUrl0, String imgUrl1, String imgUrl2,
-                                 String seller_name, Boolean isSold) {
+                                 String seller_name, Boolean isSold, String adUID) {
         this.uid = uid;
         this.title = title;
         this.authorName = authorName;
@@ -85,6 +87,7 @@ class UploadDataUserDetails{
         this.imgUrl2 = imgUrl2;
         this.seller_name = seller_name;
         this.isSold = isSold;
+        this.adUID = adUID;
     }
 
     public String getUid() {
@@ -221,6 +224,14 @@ class UploadDataUserDetails{
 
     public void setSold(Boolean sold) {
         isSold = sold;
+    }
+
+    public String getAdUID() {
+        return adUID;
+    }
+
+    public void setAdUID(String adUID) {
+        this.adUID = adUID;
     }
 }
 public class UploadActivity extends AppCompatActivity implements Serializable {
@@ -428,7 +439,8 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                 otherCategory,
                 "","","",
                 FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
-                false);
+                false,
+                UUID.randomUUID().toString().substring(0, 12));
         if(filePath.size() >= 3){
             for(int i = 0; i < 3; i++){
                 if(filePath.isEmpty()){
