@@ -1,7 +1,12 @@
 package com.gssproductions.boiimela;
 
+import static androidx.core.content.ContextCompat.getSystemService;
+
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,7 +52,7 @@ public class BookFragment extends Fragment implements Serializable {
             tv_sellerAddress_data, tv_sellerEmail_data,
             tv_sellerNumber_data, tv_sellerNumber_ask,
             tv_bookTitle_data, tv_bookAuthor_data,
-            tv_bookPublisher_data;
+            tv_bookPublisher_data, tv_adUID, adReport;
 
     EditText et_offer_price;
     RelativeLayout offer_layout;
@@ -168,7 +173,7 @@ public class BookFragment extends Fragment implements Serializable {
         }
         tv_sellerNumber_ask.setOnClickListener(v -> {
             context = getContext();
-            String message = "Hey Papi send me your number !";
+            String message = "Hey, I am interested in this ad, please send me your number for further discussion.";
             if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
                 AppCompatActivity activity = (AppCompatActivity) context;
                 activity.getSupportFragmentManager()
@@ -243,7 +248,7 @@ public class BookFragment extends Fragment implements Serializable {
                 negotiate_btn.setOnClickListener(vi -> {
                     context = getContext();
 
-                    String message = "Hey Papi, can I get it @ Rs."+et_offer_price.getText().toString();
+                    String message = "Hey, can I get it @ Rs."+et_offer_price.getText().toString();
 
                     if(Double.parseDouble(et_offer_price.getText().toString()) < Double.parseDouble(ob.getPrice().toString()) / 2){
                         et_offer_price.setError("Negotiation price must be between " + Double.parseDouble(ob.getPrice().toString()) / 2 + " to " + Double.parseDouble(ob.getPrice().toString()));
@@ -265,9 +270,19 @@ public class BookFragment extends Fragment implements Serializable {
             });
         }
 
+        tv_adUID = view.findViewById(R.id.tv_adUID);
+        tv_adUID.setText(ob.getAdUID());
 
-
-
+        adReport = view.findViewById(R.id.adReport);
+        adReport.setOnClickListener(v -> {
+            System.out.println("Ad Report for - " +  ob.getAdUID());
+            ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("label", ob.getAdUID());
+            if (clipboard == null || clip == null) return;
+            clipboard.setPrimaryClip(clip);
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/Me69bDVHNr9ZJnL49"));
+            startActivity(browserIntent);
+        });
 
 
         return view;

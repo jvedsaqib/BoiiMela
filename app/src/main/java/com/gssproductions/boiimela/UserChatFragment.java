@@ -226,7 +226,6 @@ public class UserChatFragment extends Fragment {
                         .child(PATH)) {
             @Override
             protected void populateView(View v, ChatMessage model, int position) {
-                TextView tvUsername = v.findViewById(R.id.tvUsername);
                 TextView tvMessage = v.findViewById(R.id.tvMessage);
                 TextView tvTime = v.findViewById(R.id.tvTime);
 
@@ -234,8 +233,7 @@ public class UserChatFragment extends Fragment {
                         .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        //tvUsername.setText(snapshot.getValue().toString());
-                        tvUsername.setText("");
+
                     }
 
                     @Override

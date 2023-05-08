@@ -802,6 +802,58 @@
         </RelativeLayout>
 
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/adUID_layout"
+            android:layout_below="@id/offer_layout"
+            android:background="@drawable/round_back_secondery_100"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="AD ID : "
+                android:textColor="@color/black"
+                android:textSize="25sp"
+
+                android:layout_marginStart="10dp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_adUID"
+
+
+                android:textColor="@color/black"
+                android:textSize="25sp"
+
+                android:layout_marginStart="90sp"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/adReport"
+
+                android:text="Report this AD"
+                android:textColor="@color/buttonColor"
+                android:textSize="25sp"
+
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/tv_adUID"
+                android:layout_centerHorizontal="true"
+
+                />
+
+        </RelativeLayout>
+
+
     </RelativeLayout>
 
 
