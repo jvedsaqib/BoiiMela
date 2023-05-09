@@ -66,9 +66,9 @@
                         android:id="@+id/aboutUsIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/round_back_security"
+                        android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/profile_icon" />
+                        android:src="@drawable/profile" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -115,9 +115,9 @@
                         android:id="@+id/editProfileIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/round_back_security"
+                        android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/edittextcursor" />
+                        android:src="@drawable/edit" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -164,9 +164,9 @@
                         android:id="@+id/securityIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/round_back_security"
+                        android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/security" />
+                        android:src="@drawable/sequrity" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -278,9 +278,9 @@
                         android:id="@+id/contactUsIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/bottom_nap"
+                        android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/phonecall" />
+                        android:src="@drawable/contact" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -392,9 +392,9 @@
                         android:id="@+id/deleteProfileIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@drawable/round_back_security"
+                        android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/baseline_delete_24" />
+                        android:src="@drawable/remove" />
 
                     <TextView
                         android:layout_width="wrap_content"

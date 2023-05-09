@@ -9,21 +9,21 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_blue"
+        android:background="@color/primary"
         android:orientation="vertical"
         tools:context=".UpdateEmailActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/light_blue"
+            android:background="@color/primary"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:orientation="vertical"
-                android:background="@color/teal_250">
+                android:background="@color/napbar">
 
                 <TextView
                     android:id="@+id/textView_update_profile_head"
@@ -111,12 +111,66 @@
                         android:textSize="16sp" />
                 </RelativeLayout>
 
+
+                <!--                <RelativeLayout-->
+<!--                    android:id="@+id/Email_Rl"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/RL_gender"-->
+<!--                    android:layout_marginTop="88dp"-->
+<!--                    android:background="@drawable/border">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/imageViewEmail"-->
+<!--                        android:layout_width="35dp"-->
+<!--                        android:layout_height="35dp"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_marginLeft="10dp"-->
+<!--                        android:layout_marginRight="10dp"-->
+<!--                        android:src="@drawable/email" />-->
+
+<!--                    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:id="@+id/textView_update_profile_mobile"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_width="match_parent"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_toEndOf="@id/imageViewMobile"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:padding="6dp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:text="Mobile"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:textColor="@color/black"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:textStyle="bold" />&ndash;&gt;-->
+
+<!--                    &lt;!&ndash;                    <View&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:id="@+id/divider_mobile"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_width="250dp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_height="1dp"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_below="@id/textView_update_profile_mobile"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:layout_centerHorizontal="true"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        android:background="@android:color/darker_gray" />&ndash;&gt;-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/editText_update_profile_Email"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_below="@id/imageViewEmail"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:layout_marginTop="-30dp"-->
+<!--                        android:layout_marginBottom="10dp"-->
+<!--                        android:layout_toEndOf="@id/imageViewEmail"-->
+<!--                        android:background="@android:color/transparent"-->
+<!--                        android:hint="Email"-->
+<!--                        android:inputType="textPersonName"-->
+<!--                        android:minHeight="48dp"-->
+<!--                        android:padding="6dp"-->
+<!--                        android:textCursorDrawable="@drawable/edittextcursor"-->
+<!--                        android:textSize="16sp" />-->
+<!--                </RelativeLayout>-->
+
                 <RelativeLayout
                     android:id="@+id/RL_dob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/RL_name"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="23dp"
                     android:background="@drawable/border">
 
                     <ImageView
@@ -178,7 +232,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/RL_dob"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="28dp"
                     android:background="@drawable/border">
 
                     <ImageView
@@ -245,7 +299,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/RL_gender"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="33dp"
                     android:background="@drawable/border">
 
                     <ImageView
@@ -293,67 +347,13 @@
                         android:textSize="16sp" />
                 </RelativeLayout>
 
-
-                <RelativeLayout
-                    android:id="@+id/Email_Rl"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/RL_gender"
-                    android:layout_marginTop="88dp"
-                    android:background="@drawable/border">
-
-                    <ImageView
-                        android:id="@+id/imageViewEmail"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/email" />
-
-                    <!--                    <TextView-->
-                    <!--                        android:id="@+id/textView_update_profile_mobile"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_toEndOf="@id/imageViewMobile"-->
-                    <!--                        android:padding="6dp"-->
-                    <!--                        android:text="Mobile"-->
-                    <!--                        android:textColor="@color/black"-->
-                    <!--                        android:textStyle="bold" />-->
-
-                    <!--                    <View-->
-                    <!--                        android:id="@+id/divider_mobile"-->
-                    <!--                        android:layout_width="250dp"-->
-                    <!--                        android:layout_height="1dp"-->
-                    <!--                        android:layout_below="@id/textView_update_profile_mobile"-->
-                    <!--                        android:layout_centerHorizontal="true"-->
-                    <!--                        android:background="@android:color/darker_gray" />-->
-
-                    <EditText
-                        android:id="@+id/editText_update_profile_Email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/imageViewEmail"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="-30dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_toEndOf="@id/imageViewEmail"
-                        android:background="@android:color/transparent"
-                        android:hint="Email"
-                        android:inputType="textPersonName"
-                        android:minHeight="48dp"
-                        android:padding="6dp"
-                        android:textCursorDrawable="@drawable/edittextcursor"
-                        android:textSize="16sp" />
-                </RelativeLayout>
-
                 <Button
                     android:id="@+id/button_update_profile"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/RL_mobile"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="142dp"
+                    android:layout_marginTop="35dp"
                     android:background="@drawable/buton_hol"
                     android:text="Update Profile"
                     android:textAlignment="center"

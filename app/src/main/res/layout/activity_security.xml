@@ -30,7 +30,7 @@
               android:id="@+id/EmailUpdate"
               android:layout_width="60dp"
               android:layout_height="60dp"
-              android:background="@drawable/round_back_private_account"
+              android:background="@drawable/grey"
               android:padding="12dp"
               android:src="@drawable/email" />
 
@@ -66,7 +66,7 @@
               android:id="@+id/ChangePasssword"
               android:layout_width="60dp"
               android:layout_height="60dp"
-              android:background="@drawable/round_back_night_mode"
+              android:background="@drawable/grey"
               android:padding="12dp"
               android:src="@drawable/lock3" />
 
