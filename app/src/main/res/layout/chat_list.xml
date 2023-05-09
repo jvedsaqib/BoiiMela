@@ -7,7 +7,7 @@
     app:cardCornerRadius="15dp"
     android:layout_margin="16dp"
     android:id="@+id/chatListView"
-    app:cardBackgroundColor="@color/light_blue1"
+    app:cardBackgroundColor="@color/primary"
 
     >
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
-        android:background="@color/light_blue1"
+        android:background="@color/primary"
         >
 
         <TextView

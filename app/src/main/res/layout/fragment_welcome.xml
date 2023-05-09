@@ -8,6 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/primary"
         >
 
         <RelativeLayout
@@ -53,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/category_layout"
-
+            android:background="@color/primary"
             android:layout_below="@id/welcome_logo"
             android:layout_marginTop="30dp"
 
@@ -77,7 +78,7 @@
                         android:layout_width="150dp"
                         android:layout_height="90dp"
                         android:id="@+id/academics_iv"
-
+                        android:background="@drawable/white_curcle"
                         android:src="@drawable/menu_book_24"
 
                         />
@@ -85,14 +86,11 @@
                     <TextView
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
-
                         android:text="Academics"
                         android:textSize="25dp"
                         android:textColor="@color/black"
                         android:gravity="center"
-
                         android:layout_below="@id/academics_iv"
-
                         />
 
                 </RelativeLayout>

@@ -108,7 +108,7 @@ public class BookFragment extends Fragment implements Serializable {
         offer_layout.setEnabled(false);
         offer_layout.setVisibility(View.INVISIBLE);
 
-        imageViewPager = view.findViewById(R.id.imageViewPager);
+        imageViewPager = view.findViewById(R.id.imageViewPage);
         imageViewPager.setAdapter(adapter);
 
         book_title = view.findViewById(R.id.book_title);

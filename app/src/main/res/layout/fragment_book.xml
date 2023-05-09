@@ -18,26 +18,25 @@
         >
 
         <androidx.cardview.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width  ="wrap_content"
-            android:layout_height="wrap_content"
-            card_view:cardBackgroundColor="@color/yellow1"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="20dp"
-            android:layout_margin="16dp"
-
             android:id="@+id/imageViewPager_Card"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
 
-            >
+            android:layout_marginEnd="16dp"
+
+            android:layout_marginBottom="16dp"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardCornerRadius="20dp"
+            card_view:cardElevation="8dp">
+
             <androidx.viewpager.widget.ViewPager
+                android:id="@+id/imageViewPage"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:id="@+id/imageViewPager"
-                android:background="@color/yellow1"
-
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-
+                android:background="@color/white"
                 />
 
         </androidx.cardview.widget.CardView>
@@ -64,6 +63,7 @@
 
                 android:text="Book Title"
                 android:textSize="25dp"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:background="#FCFCFF"
 
@@ -91,7 +91,7 @@
                 android:id="@+id/book_price_card"
                 android:layout_below="@id/book_title_card"
 
-                card_view:cardBackgroundColor="#9A9AED"
+                card_view:cardBackgroundColor="@color/white"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="20dp"
                 android:layout_margin="16dp"
@@ -125,6 +125,7 @@
                         android:layout_marginBottom="2dp"
                         android:layout_toRightOf="@id/currency_imageView"
                         android:text="Book Price"
+                        android:textColor="@color/black"
                         android:textSize="20dp" />
 
                 </RelativeLayout>
@@ -136,7 +137,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="INR"
-
+                android:textColor="@color/black"
                 android:layout_below="@id/book_price_card"
                 android:layout_alignRight="@id/book_price_card"
                 android:layout_marginRight="10dp"
@@ -151,7 +152,7 @@
                 android:id="@+id/cover_type_card"
                 android:layout_below="@id/book_title_card"
                 android:layout_toRightOf="@id/book_price_card"
-                card_view:cardBackgroundColor="#9A9AED"
+                card_view:cardBackgroundColor="@color/white"
                 app:cardElevation="8dp"
                 app:cardCornerRadius="20dp"
                 android:layout_margin="16dp"
@@ -187,6 +188,7 @@
                         android:layout_marginBottom="2dp"
                         android:layout_toRightOf="@id/cover_imageView"
                         android:text="Cover Type"
+                        android:textColor="@color/black"
                         android:textSize="20dp" />
 
                 </RelativeLayout>
@@ -221,7 +223,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:background="@color/white"
                     >
 
                     <TextView
@@ -229,11 +231,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
+                        android:layout_marginStart="10dp"
                         android:text="Book Details"
-                        android:textSize="20dp"
                         android:textColor="@color/black"
 
-                        android:layout_marginStart="10dp"
+                        android:textSize="20dp"
 
                         />
 
@@ -242,8 +244,11 @@
                         android:layout_width="250dp"
                         android:layout_height="1dp"
                         android:layout_below="@id/tv_book_details"
-                        android:layout_margin="10dp"
-                        android:background="@android:color/darker_gray"/>
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/darker_gray" />
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -388,7 +393,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:background="@color/white"
                     >
 
                     <TextView
@@ -571,7 +576,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:background="@color/white"
                     >
 
                     <TextView
@@ -719,7 +724,7 @@
                             android:layout_marginStart="50dp"
 
                             android:text="ask for number"
-                            android:textColor="@color/green"
+                            android:textColor="@color/light_blue_600"
                             android:textSize="16dp" />
 
                     </RelativeLayout>
@@ -747,7 +752,7 @@
                 android:id="@+id/user_chat_btn"
 
                 android:text="Chat"
-                android:backgroundTint="@color/light_blue"
+                android:background="@drawable/white_curcle"
 
                 />
 
@@ -761,7 +766,7 @@
 
                 android:layout_toRightOf="@id/user_chat_btn"
                 android:layout_marginStart="20dp"
-                android:backgroundTint="@color/secondary"
+                android:background="@drawable/white_curcle"
 
                 />
 
@@ -781,8 +786,9 @@
             android:id="@+id/et_offer_price"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-
+            android:background="@drawable/white_curcle"
             android:hint="Book Price"
+            android:textColor="@color/black"
 
             />
 
@@ -792,7 +798,7 @@
             android:id="@+id/negotiate_btn"
 
             android:text="Negotiate"
-
+            android:background="@drawable/white_curcle"
             android:layout_toEndOf="@id/et_offer_price"
             android:layout_marginStart="5dp"
 
@@ -807,7 +813,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/adUID_layout"
             android:layout_below="@id/offer_layout"
-            android:background="@drawable/round_back_secondery_100"
+            android:background="@color/light_gray"
 
             >
 
@@ -843,8 +849,8 @@
 
                 android:text="Report this AD"
                 android:textColor="@color/buttonColor"
-                android:textSize="25sp"
-
+                android:textSize="20sp"
+                android:background="@drawable/white_curcle"
                 android:layout_marginTop="5dp"
                 android:layout_below="@id/tv_adUID"
                 android:layout_centerHorizontal="true"
