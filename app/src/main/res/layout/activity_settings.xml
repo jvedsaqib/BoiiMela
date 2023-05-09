@@ -8,19 +8,15 @@
     android:background="@color/primary"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <ImageView
             android:id="@+id/back_to_frag_btn"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/back_bal"
             android:padding="14dp"/>
-
         <TextView
             android:id="@+id/titleTV"
             android:layout_width="wrap_content"
@@ -31,17 +27,13 @@
             android:textSize="18sp"
             android:textStyle="bold" />
     </RelativeLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,22 +45,21 @@
                 android:padding="15dp"
                 android:radius="20dp"
                 android:id="@+id/RL_aboutUs"
-
                 >
-
                 <!-- About Us -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
+                    android:layout_marginTop="10dp"
+                    tools:ignore="ExtraText">
                     <ImageView
                         android:id="@+id/aboutUsIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/profile" />
+                        android:src="@drawable/profile_icon" />
+                    android:src="@drawable/profile" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -79,18 +70,14 @@
                         android:text="About Us"
                         android:textColor="#1E1616"
                         android:textStyle="bold" />
-
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/right_arrow_icon" />
-
                 </RelativeLayout>
-
             </RelativeLayout>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,22 +89,20 @@
                 android:padding="15dp"
                 android:radius="20dp"
                 android:id="@+id/RL_editProfile"
-
                 >
-
                 <!-- Edit Profile -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
-
                     <ImageView
                         android:id="@+id/editProfileIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/edit" />
+                        android:src="@drawable/edittextcursor" />
+                    android:src="@drawable/edit" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -128,18 +113,14 @@
                         android:text="Edit Profile"
                         android:textColor="#1E1616"
                         android:textStyle="bold" />
-
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/right_arrow_icon" />
-
                 </RelativeLayout>
-
             </RelativeLayout>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -151,22 +132,20 @@
                 android:padding="15dp"
                 android:radius="20dp"
                 android:id="@+id/RL_security"
-
                 >
-
                 <!-- Security -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
-
                     <ImageView
                         android:id="@+id/securityIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/sequrity" />
+                        android:src="@drawable/lock3" />
+                    android:src="@drawable/sequrity" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -177,22 +156,18 @@
                         android:text="Security"
                         android:textColor="#1E1616"
                         android:textStyle="bold" />
-
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/right_arrow_icon" />
-
                 </RelativeLayout>
-
                 <!-- TextSize -->
                 <!--                <RelativeLayout-->
                 <!--                    android:layout_width="match_parent"-->
                 <!--                    android:layout_height="wrap_content"-->
                 <!--                    android:layout_marginTop="10dp">-->
-
                 <!--                    <ImageView-->
                 <!--                        android:id="@+id/textSizeIcon"-->
                 <!--                        android:layout_width="50dp"-->
@@ -200,7 +175,6 @@
                 <!--                        android:background="@drawable/round_back_night_mode"-->
                 <!--                        android:padding="15dp"-->
                 <!--                        android:src="@drawable/text" />-->
-
                 <!--                    <TextView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
@@ -210,22 +184,18 @@
                 <!--                        android:text="Text Size"-->
                 <!--                        android:textColor="#1E1616"-->
                 <!--                        android:textStyle="bold" />-->
-
                 <!--                    <ImageView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
                 <!--                        android:layout_alignParentEnd="true"-->
                 <!--                        android:layout_centerVertical="true"-->
                 <!--                        android:src="@drawable/right_arrow_icon" />-->
-
                 <!--                </RelativeLayout>-->
-
                 <!--                &lt;!&ndash; language &ndash;&gt;-->
                 <!--                <RelativeLayout-->
                 <!--                    android:layout_width="match_parent"-->
                 <!--                    android:layout_height="wrap_content"-->
                 <!--                    android:layout_marginTop="10dp">-->
-
                 <!--                    <ImageView-->
                 <!--                        android:id="@+id/languageIcon"-->
                 <!--                        android:layout_width="50dp"-->
@@ -233,7 +203,6 @@
                 <!--                        android:background="@drawable/round_back_private_account"-->
                 <!--                        android:padding="15dp"-->
                 <!--                        android:src="@drawable/lanuage" />-->
-
                 <!--                    <TextView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
@@ -243,17 +212,14 @@
                 <!--                        android:text="language"-->
                 <!--                        android:textColor="#1E1616"-->
                 <!--                        android:textStyle="bold" />-->
-
                 <!--                    <ImageView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
                 <!--                        android:layout_alignParentEnd="true"-->
                 <!--                        android:layout_centerVertical="true"-->
                 <!--                        android:src="@drawable/right_arrow_icon" />-->
-
                 <!--                </RelativeLayout>-->
             </RelativeLayout>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -265,22 +231,20 @@
                 android:padding="15dp"
                 android:radius="20dp"
                 android:id="@+id/RL_contactUs"
-
                 >
-
                 <!-- Security -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
-
                     <ImageView
                         android:id="@+id/contactUsIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/contact" />
+                        android:src="@drawable/phonecall" />
+                    android:src="@drawable/contact" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -291,22 +255,18 @@
                         android:text="Contact Us"
                         android:textColor="#1E1616"
                         android:textStyle="bold" />
-
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/right_arrow_icon" />
-
                 </RelativeLayout>
-
                 <!-- TextSize -->
                 <!--                <RelativeLayout-->
                 <!--                    android:layout_width="match_parent"-->
                 <!--                    android:layout_height="wrap_content"-->
                 <!--                    android:layout_marginTop="10dp">-->
-
                 <!--                    <ImageView-->
                 <!--                        android:id="@+id/textSizeIcon"-->
                 <!--                        android:layout_width="50dp"-->
@@ -314,7 +274,6 @@
                 <!--                        android:background="@drawable/round_back_night_mode"-->
                 <!--                        android:padding="15dp"-->
                 <!--                        android:src="@drawable/text" />-->
-
                 <!--                    <TextView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
@@ -324,22 +283,18 @@
                 <!--                        android:text="Text Size"-->
                 <!--                        android:textColor="#1E1616"-->
                 <!--                        android:textStyle="bold" />-->
-
                 <!--                    <ImageView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
                 <!--                        android:layout_alignParentEnd="true"-->
                 <!--                        android:layout_centerVertical="true"-->
                 <!--                        android:src="@drawable/right_arrow_icon" />-->
-
                 <!--                </RelativeLayout>-->
-
                 <!--                &lt;!&ndash; language &ndash;&gt;-->
                 <!--                <RelativeLayout-->
                 <!--                    android:layout_width="match_parent"-->
                 <!--                    android:layout_height="wrap_content"-->
                 <!--                    android:layout_marginTop="10dp">-->
-
                 <!--                    <ImageView-->
                 <!--                        android:id="@+id/languageIcon"-->
                 <!--                        android:layout_width="50dp"-->
@@ -347,7 +302,6 @@
                 <!--                        android:background="@drawable/round_back_private_account"-->
                 <!--                        android:padding="15dp"-->
                 <!--                        android:src="@drawable/lanuage" />-->
-
                 <!--                    <TextView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
@@ -357,17 +311,14 @@
                 <!--                        android:text="language"-->
                 <!--                        android:textColor="#1E1616"-->
                 <!--                        android:textStyle="bold" />-->
-
                 <!--                    <ImageView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
                 <!--                        android:layout_alignParentEnd="true"-->
                 <!--                        android:layout_centerVertical="true"-->
                 <!--                        android:src="@drawable/right_arrow_icon" />-->
-
                 <!--                </RelativeLayout>-->
             </RelativeLayout>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -379,22 +330,20 @@
                 android:padding="15dp"
                 android:radius="20dp"
                 android:id="@+id/RL_deleteProfile"
-
                 >
-
                 <!-- Delete Profile -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
-
                     <ImageView
                         android:id="@+id/deleteProfileIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/remove" />
+                        android:src="@drawable/baseline_delete_24" />
+                    android:src="@drawable/remove" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -405,22 +354,18 @@
                         android:text="Delete Profile"
                         android:textColor="#1E1616"
                         android:textStyle="bold" />
-
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/right_arrow_icon" />
-
                 </RelativeLayout>
-
                 <!-- TextSize -->
                 <!--                <RelativeLayout-->
                 <!--                    android:layout_width="match_parent"-->
                 <!--                    android:layout_height="wrap_content"-->
                 <!--                    android:layout_marginTop="10dp">-->
-
                 <!--                    <ImageView-->
                 <!--                        android:id="@+id/textSizeIcon"-->
                 <!--                        android:layout_width="50dp"-->
@@ -428,7 +373,6 @@
                 <!--                        android:background="@drawable/round_back_night_mode"-->
                 <!--                        android:padding="15dp"-->
                 <!--                        android:src="@drawable/text" />-->
-
                 <!--                    <TextView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
@@ -438,22 +382,18 @@
                 <!--                        android:text="Text Size"-->
                 <!--                        android:textColor="#1E1616"-->
                 <!--                        android:textStyle="bold" />-->
-
                 <!--                    <ImageView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
                 <!--                        android:layout_alignParentEnd="true"-->
                 <!--                        android:layout_centerVertical="true"-->
                 <!--                        android:src="@drawable/right_arrow_icon" />-->
-
                 <!--                </RelativeLayout>-->
-
                 <!--                &lt;!&ndash; language &ndash;&gt;-->
                 <!--                <RelativeLayout-->
                 <!--                    android:layout_width="match_parent"-->
                 <!--                    android:layout_height="wrap_content"-->
                 <!--                    android:layout_marginTop="10dp">-->
-
                 <!--                    <ImageView-->
                 <!--                        android:id="@+id/languageIcon"-->
                 <!--                        android:layout_width="50dp"-->
@@ -461,7 +401,6 @@
                 <!--                        android:background="@drawable/round_back_private_account"-->
                 <!--                        android:padding="15dp"-->
                 <!--                        android:src="@drawable/lanuage" />-->
-
                 <!--                    <TextView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
@@ -471,17 +410,14 @@
                 <!--                        android:text="language"-->
                 <!--                        android:textColor="#1E1616"-->
                 <!--                        android:textStyle="bold" />-->
-
                 <!--                    <ImageView-->
                 <!--                        android:layout_width="wrap_content"-->
                 <!--                        android:layout_height="wrap_content"-->
                 <!--                        android:layout_alignParentEnd="true"-->
                 <!--                        android:layout_centerVertical="true"-->
                 <!--                        android:src="@drawable/right_arrow_icon" />-->
-
                 <!--                </RelativeLayout>-->
             </RelativeLayout>
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
