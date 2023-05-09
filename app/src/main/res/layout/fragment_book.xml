@@ -20,7 +20,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/imageViewPager_Card"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
 
@@ -32,13 +32,11 @@
             card_view:cardElevation="8dp">
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/imageViewPager"
+                android:id="@+id/imageViewPage"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-
                 android:background="@color/white"
-
                 />
 
         </androidx.cardview.widget.CardView>
