@@ -1,5 +1,6 @@
 package com.gssproductions.boiimela;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -9,8 +10,12 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -35,29 +40,26 @@ public class BaseActivity extends AppCompatActivity {
 
         bottom_nav =  findViewById(R.id.bottom_nav);
 
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
 
-//        drawerLayout = findViewById(R.id.drawer_layout);
-//        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close)
-//        {
-//
-//            /** Called when a drawer has settled in a completely closed state. */
-//            public void onDrawerClosed(View view) {
-//                super.onDrawerClosed(view);
-//                drawerLayout.closeDrawer(GravityCompat.START);
-//                // Do whatever you want here
-//            }
-//
-//            /** Called when a drawer has settled in a completely open state. */
-//            public void onDrawerOpened(View drawerView) {
-//                super.onDrawerOpened(drawerView);
-//                drawerLayout.bringToFront();
-//                // Do whatever you want here
-//            }
-//        };
-//
-//
-//        navigationView = findViewById(R.id.navmenu);
-//        navigationView.setNavigationItemSelectedListener(this);
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        FirebaseDatabase.getInstance().getReference()
+                                .child("tokens")
+                                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                .child("token")
+                                .setValue(token);
+
+                    }
+                });
 
 
         bottom_nav.setOnItemSelectedListener(item -> {

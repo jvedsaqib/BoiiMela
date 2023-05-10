@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.text.format.DateFormat;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -64,6 +65,8 @@ public class UserChatFragment extends Fragment {
     String SELL_CHAT_DB_LOC = "";
 
     String BUY_PATH, SELL_PATH, MODE, message="";
+
+    String userToken;
 
     public UserChatFragment() {
         // Required empty public constructor
@@ -165,6 +168,7 @@ public class UserChatFragment extends Fragment {
 
         sendFab.setOnClickListener(v -> {
             inputMsg = view.findViewById(R.id.inputMsg);
+            String msg = inputMsg.getText().toString();
 
             FirebaseDatabase.getInstance()
                     .getReference()
@@ -187,6 +191,24 @@ public class UserChatFragment extends Fragment {
                     ));
 
             inputMsg.setText("");
+
+
+                System.out.println(SELL_CHAT_DB_LOC.substring(5, 33));
+                System.out.println(BUY_CHAT_DB_LOC.substring(5, 33));
+
+                if(BUY_CHAT_DB_LOC.substring(5, 33).equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+                    System.out.println("Notification sent to - "+SELL_CHAT_DB_LOC.substring(5, 33));
+                    sendNotification(SELL_CHAT_DB_LOC.substring(5, 33),
+                            FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
+                            msg);
+                }
+                else if(SELL_CHAT_DB_LOC.substring(5, 33).equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+                    System.out.println("Notification sent to - "+BUY_CHAT_DB_LOC.substring(5, 33));
+                    sendNotification(BUY_CHAT_DB_LOC.substring(5, 33),
+                            FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
+                            msg);
+                }
+
         });
 
 
@@ -257,6 +279,44 @@ public class UserChatFragment extends Fragment {
             }
         };
         msgList.setAdapter(adapter);
+    }
+
+
+    public void sendNotification(String uid, String name, String msg){
+        FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child("tokens")
+                .child(uid)
+                .child("token")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        userToken = snapshot.getValue(String.class);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                FCMRequest fcmRequest = new FCMRequest(userToken,
+                        "New Message",
+                        name+" : "+msg,
+                        getContext(),
+                        getActivity());
+                fcmRequest.sendNotification();
+
+            }
+        }, 3000);
+
     }
 
 }
