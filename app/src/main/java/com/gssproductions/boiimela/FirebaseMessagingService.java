@@ -11,13 +11,20 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Vibrator;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.RemoteMessage;
 
+import org.json.JSONObject;
+
+import java.util.Map;
+
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService{
+
+    String body = "";
 
 
     @Override
@@ -37,18 +44,9 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         long[] pattern = {100, 300, 300, 300};
         v.vibrate(pattern, -1);
 
-//        int resourceImage = getResources().getIdentifier(message
-//                .getNotification()
-//                .getIcon(), "drawable", getPackageName());
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "100");
 
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-//            builder.setSmallIcon(resourceImage);
-//
-//        else{
-//            builder.setSmallIcon(resourceImage);
-//        }
 
         Intent resultIntent = new Intent(this, BaseActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, resultIntent, PendingIntent.FLAG_MUTABLE);
@@ -57,10 +55,22 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 //        builder.setContentTitle(message.getNotification().getTitle());
 //        builder.setContentText(message.getNotification().getBody());
 
-        builder.setContentTitle("Hey");
+        try
+        {
+            Map<String, String> params = message.getData();
+            JSONObject object = new JSONObject(params);
+            // Log.e("JSON_OBJECT", object.toString());
+
+            body = object.get("body").toString();
+
+        }catch (Exception e){
+
+        }
+
+        builder.setContentTitle("Chat Alert!");
         builder.setContentText("You have a new message.");
         builder.setContentIntent(pendingIntent);
-        builder.setStyle(new NotificationCompat.BigTextStyle().bigText("Hello"));
+        builder.setStyle(new NotificationCompat.BigTextStyle().bigText(body));
         builder.setAutoCancel(true);
         builder.setSmallIcon(R.drawable.icon);
         builder.setPriority(Notification.PRIORITY_MAX);
@@ -70,6 +80,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                 (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            System.out.println("Inside IF");
             String channelId = "chat";
             NotificationChannel channel = new NotificationChannel(
                     channelId,

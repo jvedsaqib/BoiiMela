@@ -2,9 +2,13 @@ package com.gssproductions.boiimela;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
@@ -33,13 +37,20 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth authProfile;
     private static final String TAG="LoginActivity";
 
+    private final int POST_NOTIFICATION = 110;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // getSupportActionBar().hide();
 
-        Toast.makeText(LoginActivity.this, "you can log in now", Toast.LENGTH_SHORT).show();
+        if (ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(LoginActivity.this, "Hello There", Toast.LENGTH_SHORT).show();
+        }else{
+            requestNotificationPermission();
+        }
 
         editTextLoginEmail=findViewById(R.id.editText_login_email);
         editTextLoginPwd=findViewById(R.id.editText_login_pwd);
@@ -141,4 +152,27 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+    private void requestNotificationPermission(){
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.POST_NOTIFICATIONS)){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.POST_NOTIFICATIONS}, POST_NOTIFICATION);
+        }else{
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.POST_NOTIFICATIONS}, POST_NOTIFICATION);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(requestCode == POST_NOTIFICATION){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            }
+        }
+
+    }
+
+
 }

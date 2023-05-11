@@ -42,6 +42,9 @@ public class FCMRequest {
         JSONObject notificationObject = new JSONObject();
         JSONObject messageObject = new JSONObject();
         try {
+            System.out.println("Title -> " + title);
+            System.out.println("Body -> " + message);
+
             messageObject.put("title", title);
             messageObject.put("body", message);
             notificationObject.put("to", deviceToken);

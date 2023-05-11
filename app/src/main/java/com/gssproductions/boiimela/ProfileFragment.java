@@ -3,6 +3,7 @@ package com.gssproductions.boiimela;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -194,9 +195,26 @@ public class ProfileFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.sign_out){
-            FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(getActivity(), LoginActivity.class));
-            getActivity().finish();
+
+            FirebaseDatabase.getInstance()
+                    .getReference()
+                    .child("tokens")
+                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .removeValue();
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                    getActivity().finish();
+
+                }
+            }, 2000);
+
+
             return true;
         }
 
