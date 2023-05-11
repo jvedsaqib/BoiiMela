@@ -51,261 +51,312 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/RL_marquee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/welcome_logo"
+
+            >
+
+            <TextView
+                android:id="@+id/tv_banner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="A cheesy banner here please that is not fitting within the screen........"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/category_layout"
             android:background="@color/primary"
-            android:layout_below="@id/welcome_logo"
+            android:layout_below="@id/RL_marquee"
             android:layout_marginTop="30dp"
 
             >
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/category_academics_card"
-                android:layout_margin="30dp"
-                android:layout_alignParentStart="true"
-                >
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/category_academics"
-
-                    >
-
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="90dp"
-                        android:id="@+id/academics_iv"
-                        android:background="@drawable/white_curcle"
-                        android:src="@drawable/menu_book_24"
-
-                        />
-
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:text="Academics"
-                        android:textSize="25dp"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:layout_below="@id/academics_iv"
-                        />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/category_StoryBook_card"
-
-                android:layout_alignParentEnd="true"
-                android:layout_margin="30dp"
+                android:id="@+id/RL_row1_cat"
 
                 >
-                <RelativeLayout
+
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/category_storyBook"
+                    android:id="@+id/category_academics_card"
+                    android:layout_margin="30dp"
+                    android:layout_alignParentStart="true"
 
                     >
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="90dp"
-                        android:id="@+id/storyBook_iv"
-
-                        android:src="@drawable/menu_book_24"
-
-                        />
-
-                    <TextView
-                        android:layout_width="150dp"
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/category_academics"
 
-                        android:text="Story Book"
-                        android:textSize="25dp"
-                        android:textColor="@color/black"
-                        android:gravity="center"
+                        >
 
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="90dp"
+                            android:id="@+id/academics_iv"
+                            android:src="@drawable/academics"
 
-                        android:layout_below="@id/storyBook_iv"
+                            />
 
-                        />
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="Academics"
+                            android:textSize="25dp"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:layout_below="@id/academics_iv"
+                            />
 
-                </RelativeLayout>
+                    </RelativeLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/category_novel_card"
-                android:layout_margin="30dp"
-                android:layout_alignParentStart="true"
-                android:layout_below="@id/category_academics_card"
-                >
-                <RelativeLayout
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/category_novel"
+                    android:id="@+id/category_StoryBook_card"
+
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="30dp"
 
                     >
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="90dp"
-                        android:id="@+id/novel_iv"
-
-                        android:src="@drawable/menu_book_24"
-
-                        />
-
-                    <TextView
-                        android:layout_width="150dp"
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/category_storyBook"
 
-                        android:text="Novel"
-                        android:textSize="25dp"
-                        android:textColor="@color/black"
-                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="90dp"
+                            android:id="@+id/storyBook_iv"
+
+                            android:src="@drawable/sauron"
+
+                            />
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+
+                            android:text="Story Book"
+                            android:textSize="25dp"
+                            android:textColor="@color/black"
+                            android:gravity="center"
 
 
-                        android:layout_below="@id/novel_iv"
+                            android:layout_below="@id/storyBook_iv"
 
-                        />
+                            />
 
-                </RelativeLayout>
+                    </RelativeLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/category_Fiction_card"
-
-                android:layout_alignParentEnd="true"
-                android:layout_margin="30dp"
-                android:layout_below="@id/category_StoryBook_card"
-
-                >
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/category_fiction"
-
-                    >
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="90dp"
-                        android:id="@+id/fiction_iv"
-
-                        android:src="@drawable/menu_book_24"
-
-                        />
-
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-
-                        android:text="Fiction"
-                        android:textSize="25dp"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-
-
-                        android:layout_below="@id/fiction_iv"
-
-                        />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/category_Journal_card"
-                android:layout_margin="30dp"
-                android:layout_alignParentStart="true"
-                android:layout_below="@id/category_novel_card"
-                >
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/category_journal"
-
-                    >
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="90dp"
-                        android:id="@+id/journal_iv"
-
-                        android:src="@drawable/menu_book_24"
-
-                        />
-
-                    <TextView
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-
-                        android:text="Journal"
-                        android:textSize="25dp"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-
-
-                        android:layout_below="@id/journal_iv"
-
-                        />
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/category_Biography_card"
-
-                android:layout_alignParentEnd="true"
-                android:layout_margin="30dp"
-                android:layout_below="@id/category_Fiction_card"
+                android:id="@+id/RL_row2_cat"
+                android:layout_below="@id/RL_row1_cat"
 
                 >
-                <RelativeLayout
+
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/category_biography"
+                    android:id="@+id/category_novel_card"
+                    android:layout_margin="30dp"
+                    android:layout_alignParentStart="true"
+                    >
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/category_novel"
+
+                        >
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="90dp"
+                            android:id="@+id/novel_iv"
+
+                            android:src="@drawable/novel"
+
+                            />
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+
+                            android:text="Novel"
+                            android:textSize="25dp"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+
+
+                            android:layout_below="@id/novel_iv"
+
+                            />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/category_Fiction_card"
+
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="30dp"
 
                     >
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="90dp"
-                        android:id="@+id/biography_iv"
-
-                        android:src="@drawable/menu_book_24"
-
-                        />
-
-                    <TextView
-                        android:layout_width="150dp"
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/category_fiction"
 
-                        android:text="Biography"
-                        android:textSize="25dp"
-                        android:textColor="@color/black"
-                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="90dp"
+                            android:id="@+id/fiction_iv"
+
+                            android:src="@drawable/fiction3"
+
+                            />
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+
+                            android:text="Fiction"
+                            android:textSize="25dp"
+                            android:textColor="@color/black"
+                            android:gravity="center"
 
 
-                        android:layout_below="@id/biography_iv"
+                            android:layout_below="@id/fiction_iv"
 
-                        />
+                            />
 
-                </RelativeLayout>
+                    </RelativeLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/RL_row3_cat"
+                android:layout_below="@id/RL_row2_cat"
+                >
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/category_manga_card"
+                    android:layout_margin="30dp"
+                    android:layout_alignParentStart="true"
+                    >
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/category_manga"
+
+                        >
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="94dp"
+                            android:id="@+id/manga_iv"
+
+                            android:src="@drawable/manga1"
+
+                            />
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+
+                            android:text="Comic/Manga"
+                            android:textSize="23dp"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+
+
+                            android:layout_below="@id/manga_iv"
+
+                            />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/category_Biography_card"
+
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="30dp"
+
+                    >
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/category_biography"
+
+                        >
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="90dp"
+                            android:id="@+id/biography_iv"
+
+                            android:src="@drawable/bio1"
+
+                            />
+
+                        <TextView
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+
+                            android:text="Biography"
+                            android:textSize="25dp"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+
+
+                            android:layout_below="@id/biography_iv"
+
+                            />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
 
         </RelativeLayout>
 

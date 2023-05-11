@@ -444,6 +444,8 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                 FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
                 false,
                 UUID.randomUUID().toString().substring(0, 12));
+
+
         if(filePath.size() >= 3){
             for(int i = 0; i < 3; i++){
                 if(filePath.isEmpty()){
@@ -467,13 +469,15 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
 
                                     dwnldUrl.addOnSuccessListener(uri -> {
                                         Log.d("Image Url #" + finalI, uri.toString());
-                                        FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()+"/"+ob.getTitle()+"/imgUrl"+finalI).setValue(uri.toString());
-
+                                        FirebaseDatabase.getInstance()
+                                                .getReference("bookData")
+                                                .child(ob.getUid()+"/"+ob.getTitle()+"/imgUrl"+finalI)
+                                                .setValue(uri.toString());
                                     });
 
 //                                FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
                                     pd.dismiss();
-                                    Toast.makeText(UploadActivity.this, "Upload Done! #"+finalI, Toast.LENGTH_SHORT).show();
+                                    // Toast.makeText(UploadActivity.this, "Upload Done! #"+finalI, Toast.LENGTH_SHORT).show();
 //                                startActivity(new Intent(UploadActivity.this, BaseActivity.class));
 //                                finish();
                                 }
@@ -511,7 +515,8 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                     pd.setTitle("Uploading Data");
                     pd.show();
 
-                    StorageReference ref = storageDbRef.child("bookImage/"+ ob.getUid()+"/"+ ob.getTitle()+"/" + UUID.randomUUID().toString());
+                    StorageReference ref = storageDbRef
+                            .child("bookImage/"+ ob.getUid()+"/"+ ob.getTitle()+"/" + UUID.randomUUID().toString());
 
                     int finalI = i;
                     ref.putFile(filePath.get(i)).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -528,7 +533,7 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
 
 //                                FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
                                     pd.dismiss();
-                                    Toast.makeText(UploadActivity.this, "Upload Done! #"+finalI, Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(UploadActivity.this, "Upload Done! #"+finalI, Toast.LENGTH_SHORT).show();
 //                                startActivity(new Intent(UploadActivity.this, BaseActivity.class));
 //                                finish();
                                 }

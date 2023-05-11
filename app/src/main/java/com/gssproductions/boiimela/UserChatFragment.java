@@ -164,6 +164,21 @@ public class UserChatFragment extends Fragment {
                                     FirebaseAuth.getInstance().getCurrentUser().getEmail(),
                                     FirebaseAuth.getInstance().getCurrentUser().getDisplayName()
                             ));
+
+            if(BUY_CHAT_DB_LOC.substring(5, 33).equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+                System.out.println("Notification sent to - "+SELL_CHAT_DB_LOC.substring(5, 33));
+                sendNotification(SELL_CHAT_DB_LOC.substring(5, 33),
+                        FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
+                        message);
+            }
+            else if(SELL_CHAT_DB_LOC.substring(5, 33).equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+                System.out.println("Notification sent to - "+BUY_CHAT_DB_LOC.substring(5, 33));
+                sendNotification(BUY_CHAT_DB_LOC.substring(5, 33),
+                        FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
+                        message);
+            }
+
+
         }
 
         sendFab.setOnClickListener(v -> {
