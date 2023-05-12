@@ -101,7 +101,7 @@
                         android:layout_height="50dp"
                         android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/edittextcursor" />
+                        android:src="@drawable/edit" />
                     android:src="@drawable/edit" />
 
                     <TextView
@@ -243,7 +243,7 @@
                         android:layout_height="50dp"
                         android:background="@drawable/grey"
                         android:padding="15dp"
-                        android:src="@drawable/phonecall" />
+                        android:src="@drawable/phone" />
                     android:src="@drawable/contact" />
 
                     <TextView
