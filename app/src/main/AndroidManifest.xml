@@ -3,11 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:name=".UserSettings"
@@ -19,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BoiiMela"
         tools:targetApi="31">
+        <activity
+            android:name=".AboutActivity"
+            android:exported="false" />
         <activity
             android:name=".Contact_us"
             android:exported="false" />
@@ -76,11 +77,9 @@
             </intent-filter>
         </service>
 
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="100" />
-
     </application>
 
 </manifest>
