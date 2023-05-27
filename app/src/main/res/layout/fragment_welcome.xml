@@ -97,7 +97,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/category_academics_card"
-                    android:layout_margin="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="10dp"
                     android:layout_alignParentStart="true"
 
                     >
@@ -109,7 +110,7 @@
                         >
 
                         <ImageView
-                            android:layout_width="150dp"
+                            android:layout_width="180dp"
                             android:layout_height="90dp"
                             android:id="@+id/academics_iv"
                             android:src="@drawable/academics"
@@ -136,7 +137,8 @@
                     android:id="@+id/category_StoryBook_card"
 
                     android:layout_alignParentEnd="true"
-                    android:layout_margin="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="10dp"
 
                     >
                     <RelativeLayout
@@ -146,7 +148,7 @@
 
                         >
                         <ImageView
-                            android:layout_width="150dp"
+                            android:layout_width="180dp"
                             android:layout_height="90dp"
                             android:id="@+id/storyBook_iv"
 
@@ -186,7 +188,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/category_novel_card"
-                    android:layout_margin="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="10dp"
                     android:layout_alignParentStart="true"
                     >
                     <RelativeLayout
@@ -196,7 +199,7 @@
 
                         >
                         <ImageView
-                            android:layout_width="150dp"
+                            android:layout_width="180dp"
                             android:layout_height="90dp"
                             android:id="@+id/novel_iv"
 
@@ -228,7 +231,8 @@
                     android:id="@+id/category_Fiction_card"
 
                     android:layout_alignParentEnd="true"
-                    android:layout_margin="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="10dp"
 
                     >
                     <RelativeLayout
@@ -238,7 +242,7 @@
 
                         >
                         <ImageView
-                            android:layout_width="150dp"
+                            android:layout_width="180dp"
                             android:layout_height="90dp"
                             android:id="@+id/fiction_iv"
 
@@ -278,7 +282,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/category_manga_card"
-                    android:layout_margin="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="10dp"
                     android:layout_alignParentStart="true"
                     >
                     <RelativeLayout
@@ -288,7 +293,7 @@
 
                         >
                         <ImageView
-                            android:layout_width="150dp"
+                            android:layout_width="180dp"
                             android:layout_height="94dp"
                             android:id="@+id/manga_iv"
 
@@ -320,7 +325,8 @@
                     android:id="@+id/category_Biography_card"
 
                     android:layout_alignParentEnd="true"
-                    android:layout_margin="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="10dp"
 
                     >
                     <RelativeLayout
@@ -330,7 +336,7 @@
 
                         >
                         <ImageView
-                            android:layout_width="150dp"
+                            android:layout_width="180dp"
                             android:layout_height="90dp"
                             android:id="@+id/biography_iv"
 
