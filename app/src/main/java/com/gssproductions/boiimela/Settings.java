@@ -81,6 +81,13 @@ public class Settings extends AppCompatActivity {
         });
 
         RL_aboutUs = findViewById(R.id.RL_aboutUs);
+        RL_aboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Settings.this,AboutActivity.class);
+                startActivity(intent);
+            }
+        });
         RL_contactUs = findViewById(R.id.RL_contactUs);
 
 //        RL_aboutUs.setOnClickListener(v ->{
