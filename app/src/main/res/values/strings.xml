@@ -20,4 +20,10 @@
     <string name="send_your_message" />
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="about1">We, Saqib, Gourab, and Swarnadeep, are filled with immense gratitude as we reflect upon the journey of developing our Android application. It has been a labor of love, an endeavor that pushed us to learn, grow, and overcome challenges. Throughout this process, we witnessed the power of collaboration, as each of us brought our unique skills and perspectives to the table. From conceptualizing the app to designing its user interface, from implementing complex features to testing and refining, we embraced every step with dedication and enthusiasm. Today, as we see our creation come to life, we are grateful for the opportunity to make a positive impact through technology and bring value to users\' lives.</string>
+
+    <string name="about2">Saqib, Gourab, and Swarnadeep are incredibly grateful for the opportunity to develop our Android application. It has been a rewarding journey, filled with learning and growth. We appreciate the chance to make a difference through technology and are proud of the app we\'ve created together.</string>
+
+
 </resources>
