@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/primary"
+
         >
 
         <RelativeLayout
@@ -17,6 +17,7 @@
             android:id="@+id/welcome_logo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
+
             >
 
             <TextView
@@ -80,7 +81,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/category_layout"
-            android:background="@color/primary"
             android:layout_below="@id/RL_marquee"
             android:layout_marginTop="30dp"
 
