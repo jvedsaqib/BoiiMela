@@ -18,17 +18,7 @@
 <!--        android:layout_centerInParent="true"-->
 <!--        android:gravity="center"-->
 
-<!--        />-->
 
-<!--    <ImageView-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-
-<!--        android:src="@drawable/icon_construction"-->
-<!--        android:layout_below="@id/under_construction"-->
-<!--        android:layout_centerHorizontal="true"-->
-
-<!--        />-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ad_recycler"
         android:layout_width="match_parent"

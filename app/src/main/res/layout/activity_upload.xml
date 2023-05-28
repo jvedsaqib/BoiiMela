@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -26,14 +26,14 @@
                 android:id="@+id/textView_password_reset_head"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:layout_marginTop="50dp"
                 android:text="Enter your book details"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -46,8 +46,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
             android:background="@drawable/border"
-            android:padding="15dp"
-            >
+            android:padding="15dp">
 
             <RelativeLayout
                 android:id="@+id/RL_Title"
@@ -63,25 +62,25 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/tag"/>
+                    android:src="@drawable/tag" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tV_Title"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_toEndOf="@+id/img_Title"-->
-<!--                    android:padding="6dp"-->
-<!--                    android:text="Title"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textColor="@color/black"/>-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tV_Title"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_toEndOf="@+id/img_Title"-->
+                <!--                    android:padding="6dp"-->
+                <!--                    android:text="Title"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    android:textColor="@color/black"/>-->
 
-<!--                <View-->
-<!--                    android:id="@+id/div_title"-->
-<!--                    android:layout_width="250dp"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_below="@+id/tV_Title"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:background="@android:color/darker_gray"/>-->
+                <!--                <View-->
+                <!--                    android:id="@+id/div_title"-->
+                <!--                    android:layout_width="250dp"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:layout_below="@+id/tV_Title"-->
+                <!--                    android:layout_centerHorizontal="true"-->
+                <!--                    android:background="@android:color/darker_gray"/>-->
 
                 <EditText
                     android:id="@+id/etTitle"
@@ -106,9 +105,9 @@
                 android:id="@+id/RL_Author"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/RL_Title"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/border"
-                android:layout_below="@+id/RL_Title">
+                android:background="@drawable/border">
 
                 <ImageView
                     android:id="@+id/img_Author"
@@ -117,25 +116,25 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/profile"/>
+                    android:src="@drawable/profile" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tV_Author"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_toEndOf="@+id/img_Author"-->
-<!--                    android:padding="6dp"-->
-<!--                    android:text="Author Name"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textColor="@color/black"/>-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tV_Author"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_toEndOf="@+id/img_Author"-->
+                <!--                    android:padding="6dp"-->
+                <!--                    android:text="Author Name"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    android:textColor="@color/black"/>-->
 
-<!--                <View-->
-<!--                    android:id="@+id/div_author"-->
-<!--                    android:layout_width="250dp"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_below="@+id/tV_Author"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:background="@android:color/darker_gray"/>-->
+                <!--                <View-->
+                <!--                    android:id="@+id/div_author"-->
+                <!--                    android:layout_width="250dp"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:layout_below="@+id/tV_Author"-->
+                <!--                    android:layout_centerHorizontal="true"-->
+                <!--                    android:background="@android:color/darker_gray"/>-->
 
                 <EditText
                     android:id="@+id/etAuthorName"
@@ -160,9 +159,9 @@
                 android:id="@+id/RL_Publisher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/RL_Author"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/border"
-                android:layout_below="@+id/RL_Author">
+                android:background="@drawable/border">
 
                 <ImageView
                     android:id="@+id/img_Publisher"
@@ -171,25 +170,25 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/publisher"/>
+                    android:src="@drawable/publisher" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tV_Publisher"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_toEndOf="@+id/img_Publisher"-->
-<!--                    android:padding="6dp"-->
-<!--                    android:text="Publisher"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textColor="@color/black"/>-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tV_Publisher"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_toEndOf="@+id/img_Publisher"-->
+                <!--                    android:padding="6dp"-->
+                <!--                    android:text="Publisher"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    android:textColor="@color/black"/>-->
 
-<!--                <View-->
-<!--                    android:id="@+id/div_publisher"-->
-<!--                    android:layout_width="250dp"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_below="@+id/tV_Publisher"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:background="@android:color/darker_gray"/>-->
+                <!--                <View-->
+                <!--                    android:id="@+id/div_publisher"-->
+                <!--                    android:layout_width="250dp"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:layout_below="@+id/tV_Publisher"-->
+                <!--                    android:layout_centerHorizontal="true"-->
+                <!--                    android:background="@android:color/darker_gray"/>-->
 
                 <EditText
                     android:id="@+id/etPublisherName"
@@ -214,9 +213,9 @@
                 android:id="@+id/RL_Book_Cover"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/RL_Publisher"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/border"
-                android:layout_below="@+id/RL_Publisher">
+                android:background="@drawable/border">
 
                 <TextView
                     android:id="@+id/tV_Bookcover"
@@ -224,15 +223,15 @@
                     android:layout_height="wrap_content"
                     android:padding="6dp"
                     android:text="Book Cover"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupCoverType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_below="@id/tV_Bookcover"
+                    android:layout_margin="10dp"
 
 
                     >
@@ -243,31 +242,31 @@
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
                         android:text="Hard Cover"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/PaperBackRadioButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
-                        android:textSize="16sp"
-                        android:text="Paperback" />
+                        android:text="Paperback"
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/SoftCoverRadioButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
-                        android:textSize="16sp"
-                        android:text="Soft Cover" />
+                        android:text="Soft Cover"
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/NoCoverRadioButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
-                        android:textSize="16sp"
-                        android:text="No Cover" />
+                        android:text="No Cover"
+                        android:textSize="16sp" />
 
                 </RadioGroup>
 
@@ -277,9 +276,9 @@
                 android:id="@+id/RL_condition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/RL_Book_Cover"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/border"
-                android:layout_below="@+id/RL_Book_Cover">
+                android:background="@drawable/border">
 
                 <TextView
                     android:id="@+id/tV_condition"
@@ -287,15 +286,15 @@
                     android:layout_height="wrap_content"
                     android:padding="6dp"
                     android:text="Book Condition"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupBookCondition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_below="@id/tV_condition"
+                    android:layout_margin="10dp"
 
 
                     >
@@ -306,7 +305,7 @@
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
                         android:text="Good (Book is in a good condition with all pages attached)"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/OldConditionRadioButton"
@@ -314,7 +313,7 @@
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
                         android:text="Old (Book is old and might have some pages missing)"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/NewConditionRadioButton"
@@ -322,7 +321,7 @@
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
                         android:text="New (Book is new)"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                 </RadioGroup>
 
@@ -332,9 +331,9 @@
                 android:id="@+id/RL_Category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/RL_condition"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/border"
-                android:layout_below="@+id/RL_condition">
+                android:background="@drawable/border">
 
                 <ImageView
                     android:id="@+id/img_category"
@@ -342,8 +341,7 @@
                     android:layout_height="30dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    />
+                    android:layout_marginRight="10dp" />
 
                 <TextView
                     android:id="@+id/tV_Category"
@@ -352,15 +350,15 @@
                     android:layout_toEndOf="@+id/img_category"
                     android:padding="6dp"
                     android:text="Category"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <RadioGroup
                     android:id="@+id/radioGroupBookCategory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
                     android:layout_below="@id/tV_Category"
+                    android:layout_margin="10dp"
 
                     >
 
@@ -370,7 +368,7 @@
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
                         android:text="Academics"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/StoryBookCategoryRadioButton"
@@ -378,7 +376,7 @@
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
                         android:text="Story Book"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/NovelCategoryRadioButton"
@@ -386,7 +384,7 @@
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
                         android:text="Novel"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/BiographyCategoryRadioButton"
@@ -394,7 +392,7 @@
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
                         android:text="Biography"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/FictionCategoryRadioButton"
@@ -402,15 +400,15 @@
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
                         android:text="Fiction"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/JournalCategoryRadioButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
-                        android:text="Journal"
-                        android:textSize="16sp"/>
+                        android:text="Comic/Manga"
+                        android:textSize="16sp" />
 
                 </RadioGroup>
 
@@ -418,12 +416,12 @@
                     android:id="@+id/tV_otherCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/radioGroupBookCategory"
+                    android:layout_marginStart="10dp"
                     android:padding="6dp"
                     android:text="Other Category"
-                    android:layout_marginStart="10dp"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
-                    android:layout_below="@id/radioGroupBookCategory"/>
+                    android:textStyle="bold" />
 
                 <View
                     android:id="@+id/div_othercategory"
@@ -431,11 +429,11 @@
                     android:layout_height="1dp"
                     android:layout_below="@+id/tV_otherCategory"
                     android:layout_marginStart="10dp"
-                    android:background="@android:color/darker_gray"/>
+                    android:background="@android:color/darker_gray" />
 
                 <EditText
                     android:id="@+id/etCategory"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tV_otherCategory"
                     android:layout_marginStart="10dp"
@@ -449,16 +447,16 @@
                     android:padding="6dp"
                     android:textCursorDrawable="@drawable/edittextcursor"
                     android:textSize="15sp" />
-                
+
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/RL_Description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/RL_Category"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/border"
-                android:layout_below="@+id/RL_Category">
+                android:background="@drawable/border">
 
                 <ImageView
                     android:id="@+id/img_Description"
@@ -467,25 +465,25 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/baseline_description_24"/>
+                    android:src="@drawable/baseline_description_24" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tV_Description"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_toEndOf="@+id/img_Description"-->
-<!--                    android:padding="6dp"-->
-<!--                    android:text="Description"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textColor="@color/black"/>-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tV_Description"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_toEndOf="@+id/img_Description"-->
+                <!--                    android:padding="6dp"-->
+                <!--                    android:text="Description"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    android:textColor="@color/black"/>-->
 
-<!--                <View-->
-<!--                    android:id="@+id/div_des"-->
-<!--                    android:layout_width="250dp"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_below="@+id/tV_Description"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:background="@android:color/darker_gray"/>-->
+                <!--                <View-->
+                <!--                    android:id="@+id/div_des"-->
+                <!--                    android:layout_width="250dp"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:layout_below="@+id/tV_Description"-->
+                <!--                    android:layout_centerHorizontal="true"-->
+                <!--                    android:background="@android:color/darker_gray"/>-->
 
                 <EditText
                     android:id="@+id/etDescription"
@@ -510,9 +508,9 @@
                 android:id="@+id/RL_Price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/RL_Description"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/border"
-                android:layout_below="@+id/RL_Description">
+                android:background="@drawable/border">
 
                 <ImageView
                     android:id="@+id/img_Price"
@@ -521,25 +519,25 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/currency_rupee_24"/>
+                    android:src="@drawable/currency_rupee_24" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tV_Price"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_toEndOf="@+id/img_Price"-->
-<!--                    android:padding="6dp"-->
-<!--                    android:text="Price (Rs)"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textColor="@color/black"/>-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tV_Price"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_toEndOf="@+id/img_Price"-->
+                <!--                    android:padding="6dp"-->
+                <!--                    android:text="Price (Rs)"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    android:textColor="@color/black"/>-->
 
-<!--                <View-->
-<!--                    android:id="@+id/div_price"-->
-<!--                    android:layout_width="250dp"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_below="@+id/tV_Price"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:background="@android:color/darker_gray"/>-->
+                <!--                <View-->
+                <!--                    android:id="@+id/div_price"-->
+                <!--                    android:layout_width="250dp"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:layout_below="@+id/tV_Price"-->
+                <!--                    android:layout_centerHorizontal="true"-->
+                <!--                    android:background="@android:color/darker_gray"/>-->
 
                 <EditText
                     android:id="@+id/etPrice"
@@ -564,9 +562,9 @@
                 android:id="@+id/RL_Phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/RL_Price"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/border"
-                android:layout_below="@+id/RL_Price">
+                android:background="@drawable/border">
 
                 <ImageView
                     android:id="@+id/img_Phone"
@@ -575,25 +573,25 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/phone"/>
+                    android:src="@drawable/phone" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tV_Phone"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_toEndOf="@+id/img_Phone"-->
-<!--                    android:padding="6dp"-->
-<!--                    android:text="Phone"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textColor="@color/black"/>-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tV_Phone"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_toEndOf="@+id/img_Phone"-->
+                <!--                    android:padding="6dp"-->
+                <!--                    android:text="Phone"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    android:textColor="@color/black"/>-->
 
-<!--                <View-->
-<!--                    android:id="@+id/div_phone"-->
-<!--                    android:layout_width="250dp"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_below="@+id/tV_Phone"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:background="@android:color/darker_gray"/>-->
+                <!--                <View-->
+                <!--                    android:id="@+id/div_phone"-->
+                <!--                    android:layout_width="250dp"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:layout_below="@+id/tV_Phone"-->
+                <!--                    android:layout_centerHorizontal="true"-->
+                <!--                    android:background="@android:color/darker_gray"/>-->
 
                 <EditText
                     android:id="@+id/etPhoneNumber"
@@ -618,9 +616,9 @@
                 android:id="@+id/RL_Address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/RL_Phone"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/border"
-                android:layout_below="@+id/RL_Phone">
+                android:background="@drawable/border">
 
                 <ImageView
                     android:id="@+id/img_Address"
@@ -629,25 +627,25 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/location"/>
+                    android:src="@drawable/location" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/tV_Address"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_toEndOf="@+id/img_Address"-->
-<!--                    android:padding="6dp"-->
-<!--                    android:text="Address"-->
-<!--                    android:textStyle="bold"-->
-<!--                    android:textColor="@color/black"/>-->
+                <!--                <TextView-->
+                <!--                    android:id="@+id/tV_Address"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_toEndOf="@+id/img_Address"-->
+                <!--                    android:padding="6dp"-->
+                <!--                    android:text="Address"-->
+                <!--                    android:textStyle="bold"-->
+                <!--                    android:textColor="@color/black"/>-->
 
-<!--                <View-->
-<!--                    android:id="@+id/div_address"-->
-<!--                    android:layout_width="250dp"-->
-<!--                    android:layout_height="1dp"-->
-<!--                    android:layout_below="@+id/tV_Address"-->
-<!--                    android:layout_centerHorizontal="true"-->
-<!--                    android:background="@android:color/darker_gray"/>-->
+                <!--                <View-->
+                <!--                    android:id="@+id/div_address"-->
+                <!--                    android:layout_width="250dp"-->
+                <!--                    android:layout_height="1dp"-->
+                <!--                    android:layout_below="@+id/tV_Address"-->
+                <!--                    android:layout_centerHorizontal="true"-->
+                <!--                    android:background="@android:color/darker_gray"/>-->
 
                 <EditText
                     android:id="@+id/etAddress"
@@ -672,9 +670,9 @@
                 android:id="@+id/RL_Photo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/RL_Address"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/border"
-                android:layout_below="@+id/RL_Address">
+                android:background="@drawable/border">
 
 
                 <TextView
@@ -683,18 +681,17 @@
                     android:layout_height="wrap_content"
                     android:padding="6dp"
                     android:text="[Only 3 photos will be uploaded]"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
                 <ImageSwitcher
                     android:id="@+id/imageView"
                     android:layout_width="200dp"
                     android:layout_height="250dp"
-                    android:background="#eeeeff"
-                    android:layout_centerHorizontal="true"
                     android:layout_below="@id/tV_Photo"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
-                    />
+                    android:background="#eeeeff" />
 
                 <ImageButton
                     android:id="@+id/arrow_right"
@@ -710,35 +707,32 @@
                     android:id="@+id/arrow_left"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/arrow_left"
                     android:layout_below="@id/imageView"
                     android:layout_alignStart="@id/imageView"
                     android:layout_marginTop="20dp"
-                    />
+                    android:src="@drawable/arrow_left" />
 
                 <Button
                     android:id="@+id/btnSelectImage"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Select\nImage"
-                    android:background="@drawable/grey"
+                    android:layout_below="@id/arrow_left"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="40dp"
-                    android:layout_below="@id/arrow_left"
                     android:layout_marginTop="20dp"
-                    />
+                    android:background="@drawable/grey"
+                    android:text="Select\nImage" />
 
                 <Button
                     android:id="@+id/btnClearImage"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:text="Clear\nImage"
-                    android:background="@drawable/grey"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="40dp"
                     android:layout_below="@id/arrow_left"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="20dp"
-                    />
+                    android:layout_marginEnd="40dp"
+                    android:background="@drawable/grey"
+                    android:text="Clear\nImage" />
 
             </RelativeLayout>
 
@@ -746,15 +740,14 @@
                 android:id="@+id/btnUploadData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upload"
-                android:background="@drawable/grey"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@id/RL_Photo"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                />
+                android:background="@drawable/grey"
+                android:text="Upload" />
 
         </RelativeLayout>
 
     </LinearLayout>
 </ScrollView>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</RelativeLayout>
