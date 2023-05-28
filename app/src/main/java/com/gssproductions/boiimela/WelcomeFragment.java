@@ -193,7 +193,7 @@ public class WelcomeFragment extends Fragment {
             AppCompatActivity activity = (AppCompatActivity) getContext();
             activity.getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_layout, new HomeFragment("Journal", true))
+                    .replace(R.id.fragment_layout, new HomeFragment("Comic/Manga", true))
                     .addToBackStack(null).commit();
         });
 
