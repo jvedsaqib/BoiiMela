@@ -9,7 +9,7 @@
     <ScrollView android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LoginActivity"
-        android:background="@color/light_blue"
+        android:background="@color/light_gray"
         >
 
         <LinearLayout
@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:orientation="vertical"
-                android:background="@color/teal_250">
+                android:background="@color/napbar">
 
                 <TextView
                     android:id="@+id/textView_login_head"
@@ -66,35 +66,18 @@
                         android:layout_width="35dp"
                         android:layout_height="35dp"
                         android:id="@+id/imageViewEmail"
-                        android:src="@drawable/email"
+                        android:src="@drawable/ic_email"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"/>
-
-                    <TextView
-                        android:id="@+id/textView_login_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="6dp"
-                        android:text="Email*"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:layout_toEndOf="@id/imageViewEmail"/>
-
-                    <View
-                        android:layout_width="250dp"
-                        android:layout_height="1dp"
-                        android:id="@+id/divider_email"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@id/textView_login_email"
-                        android:background="@android:color/darker_gray"/>
 
                     <EditText
                         android:id="@+id/editText_login_email"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/textView_login_email"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@id/imageViewEmail"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="-36dp"
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/imageViewEmail"
                         android:background="@android:color/transparent"
@@ -123,30 +106,13 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"/>
 
-                    <TextView
-                        android:id="@+id/textView_login_pwd"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/imageViewPwd"
-                        android:padding="6dp"
-                        android:text="Password*"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"/>
-
-                    <View
-                        android:layout_width="250dp"
-                        android:layout_height="1dp"
-                        android:id="@+id/divider_pwd"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@id/textView_login_pwd"
-                        android:background="@android:color/darker_gray"/>
-
                     <EditText
                         android:id="@+id/editText_login_pwd"
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/textView_login_pwd"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@id/imageViewPwd"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="-36dp"
                         android:layout_marginBottom="10dp"
                         android:layout_toEndOf="@id/imageViewPwd"
                         android:background="@android:color/transparent"
@@ -159,13 +125,13 @@
 
                     <ImageView
                         android:id="@+id/imageView_show_hide_pwd"
-                        android:layout_below="@+id/textView_login_pwd"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
+                        android:layout_below="@+id/imageViewPwd"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginRight="10dp"
-                         />
+                        android:layout_marginTop="-36dp"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginRight="10dp" />
 
                 </RelativeLayout>
 
@@ -177,7 +143,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginLeft="70dp"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/bottom_nap"
+                    android:background="@drawable/grey"
                     android:text="Login"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
@@ -195,6 +161,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:text="Do not have an\n account?"
+                        android:textColor="@color/black"
                         android:textAlignment="center" />
 
                     <TextView
@@ -224,6 +191,7 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginLeft="20dp"
                         android:text="Forgot your password?"
+                        android:textColor="@color/black"
                         android:textAlignment="center" />
 
                     <TextView
