@@ -739,11 +739,68 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/map_location_layout"
+
+            android:layout_below="@+id/seller_detials_layout"
+
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/map_location_card"
+
+                card_view:cardBackgroundColor="#eeeeff"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="20dp"
+                android:layout_margin="16dp"
+                android:layout_centerHorizontal="true"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ad posted at "
+                        android:textColor="@color/black"
+                        android:layout_marginStart="10dp"
+                        />
+
+                    <ImageView
+                        android:id="@+id/iv_ad_map"
+                        android:layout_width="400dp"
+                        android:layout_height="220dp"
+
+                        android:src="@drawable/map_view"
+
+                        android:layout_below="@id/tv_map"
+
+                        />
+
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button_layout"
 
-            android:layout_below="@+id/seller_detials_layout"
+            android:layout_below="@+id/map_location_layout"
             android:layout_centerHorizontal="true"
             >
 
