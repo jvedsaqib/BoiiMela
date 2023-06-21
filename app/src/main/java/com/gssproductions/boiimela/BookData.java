@@ -10,6 +10,8 @@ public class BookData implements Serializable {
             coverType, condition, category, otherCategory,
             title, uid, seller_name, adUID;
 
+    double latitude, longitude;
+
     Boolean isSold = false;
 
     public String getAddress() {
@@ -154,5 +156,21 @@ public class BookData implements Serializable {
 
     public void setAdUID(String adUID) {
         this.adUID = adUID;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }

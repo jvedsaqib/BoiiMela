@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,6 +58,7 @@ public class BookFragment extends Fragment implements Serializable {
     EditText et_offer_price;
     RelativeLayout offer_layout;
 
+    ImageView iv_ad_map;
 
     String[] imgUrls;
 
@@ -113,6 +115,16 @@ public class BookFragment extends Fragment implements Serializable {
 
         book_title = view.findViewById(R.id.book_title);
         book_title.setText(ob.getTitle());
+
+        iv_ad_map = view.findViewById(R.id.iv_ad_map);
+        iv_ad_map.setOnClickListener(v -> {
+            String strUri = "http://maps.google.com/maps?q=loc:" + ob.getLatitude() + "," + ob.getLongitude() + " (" + ob.getTitle() + ")";
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(strUri));
+
+            intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+
+            startActivity(intent);
+        });
 
         book_price = view.findViewById(R.id.book_price);
         book_price.setText(ob.getPrice());
