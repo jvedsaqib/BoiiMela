@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
@@ -25,6 +26,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -119,7 +121,7 @@ public class BookFragment extends Fragment implements Serializable {
         iv_ad_map = view.findViewById(R.id.iv_ad_map);
         iv_ad_map.setOnClickListener(v -> {
             String strUri = "http://maps.google.com/maps?q=loc:" + ob.getLatitude() + "," + ob.getLongitude() + " (" + ob.getTitle() + ")";
-            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(strUri));
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(strUri));
 
             intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
 
