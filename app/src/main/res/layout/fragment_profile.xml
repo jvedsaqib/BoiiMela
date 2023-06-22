@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/napbar"
+            android:background="@color/primary"
             app:menu="@menu/navigation_menu"
             app:showAsAction="always"/>
 
@@ -189,12 +189,17 @@
 
             >
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="350dp"
                 android:layout_height="200dp"
                 android:elevation="10dp"
+                app:cardElevation="10dp"
+                android:layout_marginBottom="10dp"
                 android:layout_centerHorizontal="true"
                 app:cardCornerRadius="10dp"
+
+                app:strokeColor="@color/cream"
+                app:strokeWidth="1dp"
 
                 >
 
@@ -312,7 +317,7 @@
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </RelativeLayout>
 

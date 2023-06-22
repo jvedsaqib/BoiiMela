@@ -4,23 +4,23 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.PermissionChecker;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
-import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +29,6 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
@@ -39,11 +38,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -267,6 +263,8 @@ class UploadDataUserDetails{
 }
 public class UploadActivity extends AppCompatActivity implements Serializable {
 
+    private int GPSoff = 0;
+
     String cover, condition, category, otherCategory;
     EditText etTitle, etAuthorName, etPublisherName, etDescription, etPrice, etPhoneNumber, etAddress, etCategory;
     RadioGroup radioGroupCoverType, radioGroupBookCondition, radioGroupBookCategory;
@@ -305,6 +303,32 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_upload);
         // getSupportActionBar().hide();
 
+        try {
+            GPSoff = Settings.Secure.getInt(getContentResolver(), Settings.Secure.LOCATION_MODE);
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (GPSoff == 0) {
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+            AlertDialog.Builder builder = alertDialogBuilder
+                    .setTitle("Location is disabled")
+                    .setMessage("This page requires your location, please turn it on.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            {
+                                Intent onGPS = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                startActivity(onGPS);
+                            }
+                        }
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.setCancelable(true);
+            alertDialog.setCanceledOnTouchOutside(false);
+
+            alertDialog.show();
+        }
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 

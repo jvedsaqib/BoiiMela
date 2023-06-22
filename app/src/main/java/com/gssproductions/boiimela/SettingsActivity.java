@@ -1,23 +1,18 @@
 package com.gssproductions.boiimela;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
-import com.google.firebase.auth.FirebaseAuth;
 
-public class Settings extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
 
     private View parentView;
@@ -48,7 +43,7 @@ public class Settings extends AppCompatActivity {
         RL_editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Settings.this,UpdateProfileActivity.class);
+                Intent intent=new Intent(SettingsActivity.this,UpdateProfileActivity.class);
                 startActivity(intent);
             }
         });
@@ -58,7 +53,7 @@ public class Settings extends AppCompatActivity {
         RL_deleteProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Settings.this,DeleteProfileActivity.class);
+                Intent intent=new Intent(SettingsActivity.this,DeleteProfileActivity.class);
                 startActivity(intent);
             }
         });
@@ -68,7 +63,7 @@ public class Settings extends AppCompatActivity {
         security.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Settings.this, SecurityActivity.class);
+                Intent intent=new Intent(SettingsActivity.this, SecurityActivity.class);
                 startActivity(intent);
             }
         });
@@ -76,7 +71,7 @@ public class Settings extends AppCompatActivity {
 
         back_to_frag_btn = findViewById(R.id.back_to_frag_btn);
         back_to_frag_btn.setOnClickListener(click ->{
-            startActivity(new Intent(Settings.this, BaseActivity.class));
+            startActivity(new Intent(SettingsActivity.this, BaseActivity.class));
             finish();
         });
 
@@ -84,19 +79,19 @@ public class Settings extends AppCompatActivity {
         RL_aboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Settings.this,AboutActivity.class);
+                Intent intent=new Intent(SettingsActivity.this,AboutActivity.class);
                 startActivity(intent);
             }
         });
         RL_contactUs = findViewById(R.id.RL_contactUs);
 
 //        RL_aboutUs.setOnClickListener(v ->{
-//            Intent intent=new Intent(Settings.this, aboutUs.class);
+//            Intent intent=new Intent(SettingsActivity.this, aboutUs.class);
 //            startActivity(intent);
 //        });
 
         RL_contactUs.setOnClickListener(v -> {
-            Intent intent=new Intent(Settings.this, Contact_us.class);
+            Intent intent=new Intent(SettingsActivity.this, Contact_us.class);
             startActivity(intent);
         });
 
