@@ -18,6 +18,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -264,6 +265,7 @@ class UploadDataUserDetails{
 public class UploadActivity extends AppCompatActivity implements Serializable {
 
     private int GPSoff = 0;
+    boolean checkOk;
 
     String cover, condition, category, otherCategory;
     EditText etTitle, etAuthorName, etPublisherName, etDescription, etPrice, etPhoneNumber, etAddress, etCategory;
@@ -397,7 +399,51 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
         });
 
         btnUploadData.setOnClickListener(view -> {
-            uploadData();
+            checkOk = true;
+
+            if(etTitle.getText().toString().isEmpty()){
+                etTitle.setError("Can't be empty!");
+                checkOk = false;
+            }
+            if(etAuthorName.getText().toString().isEmpty()){
+                etAuthorName.setError("Can't be empty!");
+                checkOk = false;
+            }
+            if(etPublisherName.getText().toString().isEmpty()){
+                etPublisherName.setError("Can't be empty!");
+                checkOk = false;
+            }
+            if(etPrice.getText().toString().isEmpty()){
+                etPrice.setError("Can't be empty!");
+                checkOk = false;
+            }
+            if(etPhoneNumber.getText().toString().isEmpty()){
+                etPhoneNumber.setError("Can't be empty!");
+                checkOk = false;
+            }
+            if(etAddress.getText().toString().isEmpty()){
+                etAddress.setError("Can't be empty!");
+                checkOk = false;
+            }
+
+            if(checkOk && canUpload) {
+                ProgressDialog pdUpload = new ProgressDialog(UploadActivity.this);
+                Handler uploadHandler = new Handler();
+
+                pdUpload.setTitle("Uploading Data");
+                pdUpload.setMessage("Your ad is being uploaded.");
+                pdUpload.show();
+
+                uploadHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pdUpload.dismiss();
+                        startActivity(new Intent(UploadActivity.this, BaseActivity.class));
+                    }
+                }, 10000);
+                uploadData();
+            }
+
         });
 
         btnClearImage.setOnClickListener(v ->{
@@ -504,21 +550,6 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
     }
 
     private void uploadData() {
-//        ProgressDialog pdUpload = new ProgressDialog(UploadActivity.this);
-//        Handler uploadHandler = new Handler();
-//
-//        uploadHandler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//
-//                pdUpload.setTitle("Uploading Data");
-//                pdUpload.show();
-//
-//            }
-//        }, 10000);
-//
-//        pdUpload.dismiss();
         int checkedId = radioGroupCoverType.getCheckedRadioButtonId();
         radioButtonCoverType = findViewById(checkedId);
         cover = radioButtonCoverType.getText().toString();
@@ -555,7 +586,6 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                 latitude,
                 longitude);
 
-
         if(filePath.size() >= 3){
             for(int i = 0; i < 3; i++){
                 if(filePath.isEmpty()){
@@ -564,9 +594,9 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                     break;
                 }
                 if(filePath.get(i) != null){
-                    ProgressDialog pd = new ProgressDialog(this);
-                    pd.setTitle("Uploading Data");
-                    pd.show();
+//                    ProgressDialog pd = new ProgressDialog(this);
+//                    pd.setTitle("Uploading Data");
+//                    pd.show();
 
                     StorageReference ref = storageDbRef.child("bookImage/"+ ob.getUid()+"/"+ ob.getTitle()+"/" + UUID.randomUUID().toString());
 
@@ -586,7 +616,7 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                                     });
 
 //                                FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
-                                    pd.dismiss();
+//                                    pd.dismiss();
                                     // Toast.makeText(UploadActivity.this, "Upload Done! #"+finalI, Toast.LENGTH_SHORT).show();
 //                                startActivity(new Intent(UploadActivity.this, BaseActivity.class));
 //                                finish();
@@ -596,7 +626,7 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    pd.dismiss();
+//                                    pd.dismiss();
                                     Toast.makeText(UploadActivity.this, "Upload Failed!" + " " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             })
@@ -604,7 +634,7 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                                 @Override
                                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                                     double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                                    pd.setMessage("Uploaded " + (int)progress + "%");
+//                                    pd.setMessage("Uploaded " + (int)progress + "%");
                                 }
                             });
                 }
@@ -621,9 +651,9 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                     break;
                 }
                 if(filePath.get(i) != null){
-                    ProgressDialog pd = new ProgressDialog(this);
-                    pd.setTitle("Uploading Data");
-                    pd.show();
+//                    ProgressDialog pd = new ProgressDialog(this);
+//                    pd.setTitle("Uploading Data");
+//                    pd.show();
 
                     StorageReference ref = storageDbRef
                             .child("bookImage/"+ ob.getUid()+"/"+ ob.getTitle()+"/" + UUID.randomUUID().toString());
@@ -637,12 +667,16 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
 
                                     dwnldUrl.addOnSuccessListener(uri -> {
                                         Log.d("Image Url #" + finalI, uri.toString());
-                                        FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()+"/"+ob.getTitle()+"/imgUrl"+finalI).setValue(uri.toString());
+                                        FirebaseDatabase
+                                                .getInstance()
+                                                .getReference("bookData")
+                                                .child(ob.getUid()+"/"+ob.getTitle()+"/imgUrl"+finalI)
+                                                .setValue(uri.toString());
 
                                     });
 
 //                                FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
-                                    pd.dismiss();
+//                                    pd.dismiss();
                                     //Toast.makeText(UploadActivity.this, "Upload Done! #"+finalI, Toast.LENGTH_SHORT).show();
 //                                startActivity(new Intent(UploadActivity.this, BaseActivity.class));
 //                                finish();
@@ -652,7 +686,7 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    pd.dismiss();
+//                                    pd.dismiss();
                                     Toast.makeText(UploadActivity.this, "Upload Failed!" + " " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             })
@@ -660,7 +694,7 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                                 @Override
                                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                                     double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                                    pd.setMessage("Uploaded " + (int)progress + "%");
+//                                    pd.setMessage("Uploaded " + (int)progress + "%");
                                 }
                             });
                 }
@@ -670,13 +704,14 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                 }
             }
         }
+
         if(canUpload){
             Log.d("ob before" ,ob.getLatitude() +" "+ ob.getLongitude());
             ob.setLatitude(latitude);
             ob.setLongitude(longitude);
             Log.d("ob after" ,ob.getLatitude() +" "+ ob.getLongitude());
             FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
-            startActivity(new Intent(UploadActivity.this, BaseActivity.class));
+//            startActivity(new Intent(UploadActivity.this, BaseActivity.class));
         }
     }
 

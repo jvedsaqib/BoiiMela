@@ -1,5 +1,8 @@
 package com.gssproductions.boiimela;
 
+import android.app.AlertDialog;
+import android.content.ContextWrapper;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +28,7 @@ import java.util.ArrayList;
 
 public class MyAdsFragment extends Fragment {
 
+    private int GPSoff = 0;
     FloatingActionButton fab_upload;
 
     RecyclerView myAdsRecycler;
@@ -95,12 +100,40 @@ public class MyAdsFragment extends Fragment {
         fab_upload = view.findViewById(R.id.fab_upload);
 
         fab_upload.setOnClickListener(v -> {
-            if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
-                startActivity(new Intent(getActivity(), UploadActivity.class));
-                getActivity().finish();
+
+            try {
+                GPSoff = Settings.Secure.getInt(getContext().getContentResolver(), Settings.Secure.LOCATION_MODE);
+            } catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
             }
-            else{
-                Toast.makeText(getContext(), "Please verify your email", Toast.LENGTH_LONG).show();
+            if (GPSoff == 0) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+
+                AlertDialog.Builder builder = alertDialogBuilder
+                        .setTitle("Location is disabled")
+                        .setMessage("This page requires your location, please turn it on.")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                {
+                                    Intent onGPS = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                    startActivity(onGPS);
+                                }
+                            }
+                        });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.setCancelable(true);
+                alertDialog.setCanceledOnTouchOutside(false);
+
+                alertDialog.show();
+            } else{
+                if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                    startActivity(new Intent(getActivity(), UploadActivity.class));
+                    getActivity().finish();
+                }
+                else{
+                    Toast.makeText(getContext(), "Please verify your email", Toast.LENGTH_LONG).show();
+                }
             }
 
         });
