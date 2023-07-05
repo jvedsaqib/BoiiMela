@@ -20,7 +20,7 @@ public class FCMRequest {
 
 
     private static final String FCM_API = "https://fcm.googleapis.com/fcm/send";
-    private static final String SERVER_KEY = "";
+    private static final String SERVER_KEY = "AAAA4VsmF2U:APA91bH8ffmk0F5GNmzjhKwioIvyuBXP6Vb2Hqg0ozfNuRYsQeEgt8rDSID45oB62sLgHkorf0TRu2-qIfy4ysgm05-5sti20ukYEAhZ0C7Vl8_8Pk8VYy6dtLLlbKRUsQFpMX4kdk6F";
 
     String deviceToken, title,
             message;
