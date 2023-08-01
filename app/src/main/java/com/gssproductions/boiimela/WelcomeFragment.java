@@ -29,7 +29,7 @@ public class WelcomeFragment extends Fragment {
 
     private final int[] academicsImg = {R.drawable.academics, R.drawable.academics2};
     private final int[] novelImg = {R.drawable.novel, R.drawable.novel2};
-    private final int[] bioImg = {R.drawable.bio1, R.drawable.bio2};
+    private final int[] bioImg = {R.drawable.bio1};
 
     private final String[] quotesArr = {"A reader lives a thousand lives before he dies . . . The man who never reads lives only one. - George R.R. Martin (American novelist and short-story writer, screenwriter, and television producer.)",
                                         "Until I feared I would lose it, I never loved to read. One does not love breathing. - Harper Lee (American novelist is best known for her 1960 novel To Kill a Mockingbird)",

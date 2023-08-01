@@ -41,7 +41,7 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
 
@@ -50,7 +50,7 @@
 
             card_view:cardBackgroundColor="#eeeeff"
             app:cardElevation="8dp"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="4dp"
             android:layout_margin="16dp"
             android:layout_centerHorizontal="true"
 
@@ -71,7 +71,7 @@
 
                 />
 
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
 
         <RelativeLayout
@@ -84,7 +84,7 @@
 
             >
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -93,7 +93,7 @@
 
                 card_view:cardBackgroundColor="@color/white"
                 app:cardElevation="8dp"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="10dp"
                 android:layout_margin="16dp"
 
                 tools:ignore="NotSibling">
@@ -121,7 +121,7 @@
                         android:layout_marginStart="2dp"
                         android:layout_marginTop="2dp"
 
-                        android:layout_marginEnd="2dp"
+                        android:layout_marginEnd="7dp"
                         android:layout_marginBottom="2dp"
                         android:layout_toRightOf="@id/currency_imageView"
                         android:text="Book Price"
@@ -130,7 +130,7 @@
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -145,7 +145,7 @@
 
                 />
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -154,7 +154,7 @@
                 android:layout_toRightOf="@id/book_price_card"
                 card_view:cardBackgroundColor="@color/white"
                 app:cardElevation="8dp"
-                app:cardCornerRadius="20dp"
+                app:cardCornerRadius="10dp"
                 android:layout_margin="16dp"
 
                 tools:ignore="NotSibling">
@@ -184,7 +184,7 @@
                         android:layout_marginStart="2dp"
                         android:layout_marginTop="2dp"
 
-                        android:layout_marginEnd="2dp"
+                        android:layout_marginEnd="7dp"
                         android:layout_marginBottom="2dp"
                         android:layout_toRightOf="@id/cover_imageView"
                         android:text="Cover Type"
@@ -193,7 +193,7 @@
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </RelativeLayout>
 
@@ -739,11 +739,68 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/map_location_layout"
+
+            android:layout_below="@+id/seller_detials_layout"
+
+            >
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="400dp"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/map_location_card"
+
+                card_view:cardBackgroundColor="#eeeeff"
+                app:cardElevation="8dp"
+                app:cardCornerRadius="20dp"
+                android:layout_margin="16dp"
+                android:layout_centerHorizontal="true"
+
+                >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_map"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ad posted at "
+                        android:textColor="@color/black"
+                        android:layout_marginStart="10dp"
+                        />
+
+                    <ImageView
+                        android:id="@+id/iv_ad_map"
+                        android:layout_width="400dp"
+                        android:layout_height="220dp"
+
+                        android:src="@drawable/map_view"
+
+                        android:layout_below="@id/tv_map"
+
+                        />
+
+
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button_layout"
 
-            android:layout_below="@+id/seller_detials_layout"
+            android:layout_below="@+id/map_location_layout"
             android:layout_centerHorizontal="true"
             >
 
@@ -783,11 +840,10 @@
             android:layout_marginTop="20dp"
             >
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_offer_price"
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/white_curcle"
+            android:layout_height="45dp"
             android:hint="Book Price"
             android:textColor="@color/black"
 

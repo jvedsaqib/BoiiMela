@@ -2,17 +2,26 @@ package com.gssproductions.boiimela;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.PermissionChecker;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
-import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,10 +30,11 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -36,8 +46,11 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 class UploadDataUserDetails{
@@ -61,16 +74,12 @@ class UploadDataUserDetails{
 
     private String adUID;
 
+    private double latitude, longitude;
+
     public UploadDataUserDetails() {
     }
 
-    public UploadDataUserDetails(String uid,
-                                 String title, String authorName, String publisherName,
-                                 String description, String address,
-                                 String price, String phoneNumber,
-                                 String coverType, String condition, String category, String otherCategory,
-                                 String imgUrl0, String imgUrl1, String imgUrl2,
-                                 String seller_name, Boolean isSold, String adUID) {
+    public UploadDataUserDetails(String uid, String title, String authorName, String publisherName, String description, String address, String price, String phoneNumber, String coverType, String condition, String category, String otherCategory, String imgUrl0, String imgUrl1, String imgUrl2, String seller_name, Boolean isSold, String adUID, double latitude, double longitude) {
         this.uid = uid;
         this.title = title;
         this.authorName = authorName;
@@ -89,6 +98,8 @@ class UploadDataUserDetails{
         this.seller_name = seller_name;
         this.isSold = isSold;
         this.adUID = adUID;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getUid() {
@@ -234,8 +245,27 @@ class UploadDataUserDetails{
     public void setAdUID(String adUID) {
         this.adUID = adUID;
     }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 }
 public class UploadActivity extends AppCompatActivity implements Serializable {
+
+    private int GPSoff = 0;
+    boolean checkOk;
 
     String cover, condition, category, otherCategory;
     EditText etTitle, etAuthorName, etPublisherName, etDescription, etPrice, etPhoneNumber, etAddress, etCategory;
@@ -263,6 +293,10 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
 
     Boolean canUpload = true;
 
+    FusedLocationProviderClient fusedLocationProviderClient;
+    private final static int REQUEST_CODE = 100;
+    double longitude, latitude;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -270,6 +304,66 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_upload);
         // getSupportActionBar().hide();
+
+        try {
+            GPSoff = Settings.Secure.getInt(getContentResolver(), Settings.Secure.LOCATION_MODE);
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (GPSoff == 0) {
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+            AlertDialog.Builder builder = alertDialogBuilder
+                    .setTitle("Location is disabled")
+                    .setMessage("This page requires your location, please turn it on.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            {
+                                Intent onGPS = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                startActivity(onGPS);
+                            }
+                        }
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.setCancelable(true);
+            alertDialog.setCanceledOnTouchOutside(false);
+
+            alertDialog.show();
+        }
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            fusedLocationProviderClient.getLastLocation()
+                    .addOnSuccessListener(new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null){
+                                Geocoder geocoder = new Geocoder(UploadActivity.this, Locale.getDefault());
+
+                                try {
+                                    List<Address> addressList = geocoder.getFromLocation(location.getLatitude(),
+                                            location.getLongitude(), 1);
+
+                                    latitude = addressList.get(0).getLatitude();
+                                    longitude = addressList.get(0).getLongitude();
+                                    Log.d("Location ", latitude + " ---- " + longitude);
+
+
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        }
+                    });
+        }else {
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)){
+                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+            }else{
+                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_CODE);
+            }
+        }
 
         filePath = new ArrayList<Uri>();
 
@@ -305,7 +399,51 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
         });
 
         btnUploadData.setOnClickListener(view -> {
-            uploadData();
+            checkOk = true;
+
+            if(etTitle.getText().toString().isEmpty()){
+                etTitle.setError("Can't be empty!");
+                checkOk = false;
+            }
+            if(etAuthorName.getText().toString().isEmpty()){
+                etAuthorName.setError("Can't be empty!");
+                checkOk = false;
+            }
+            if(etPublisherName.getText().toString().isEmpty()){
+                etPublisherName.setError("Can't be empty!");
+                checkOk = false;
+            }
+            if(etPrice.getText().toString().isEmpty()){
+                etPrice.setError("Can't be empty!");
+                checkOk = false;
+            }
+            if(etPhoneNumber.getText().toString().isEmpty()){
+                etPhoneNumber.setError("Can't be empty!");
+                checkOk = false;
+            }
+            if(etAddress.getText().toString().isEmpty()){
+                etAddress.setError("Can't be empty!");
+                checkOk = false;
+            }
+
+            if(checkOk && canUpload) {
+                ProgressDialog pdUpload = new ProgressDialog(UploadActivity.this);
+                Handler uploadHandler = new Handler();
+
+                pdUpload.setTitle("Uploading Data");
+                pdUpload.setMessage("Your ad is being uploaded.");
+                pdUpload.show();
+
+                uploadHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pdUpload.dismiss();
+                        startActivity(new Intent(UploadActivity.this, BaseActivity.class));
+                    }
+                }, 10000);
+                uploadData();
+            }
+
         });
 
         btnClearImage.setOnClickListener(v ->{
@@ -412,7 +550,6 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
     }
 
     private void uploadData() {
-
         int checkedId = radioGroupCoverType.getCheckedRadioButtonId();
         radioButtonCoverType = findViewById(checkedId);
         cover = radioButtonCoverType.getText().toString();
@@ -428,6 +565,8 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
         otherCategory = etCategory.getText().toString();
 
 
+
+        Log.d("Location before uploading", latitude + " ---- " + longitude);
         ob = new UploadDataUserDetails(FirebaseAuth.getInstance().getCurrentUser().getUid(),
                 etTitle.getText().toString(),
                 etAuthorName.getText().toString(),
@@ -443,8 +582,9 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                 "","","",
                 FirebaseAuth.getInstance().getCurrentUser().getDisplayName(),
                 false,
-                UUID.randomUUID().toString().substring(0, 12));
-
+                UUID.randomUUID().toString().substring(0, 12),
+                latitude,
+                longitude);
 
         if(filePath.size() >= 3){
             for(int i = 0; i < 3; i++){
@@ -454,9 +594,9 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                     break;
                 }
                 if(filePath.get(i) != null){
-                    ProgressDialog pd = new ProgressDialog(this);
-                    pd.setTitle("Uploading Data");
-                    pd.show();
+//                    ProgressDialog pd = new ProgressDialog(this);
+//                    pd.setTitle("Uploading Data");
+//                    pd.show();
 
                     StorageReference ref = storageDbRef.child("bookImage/"+ ob.getUid()+"/"+ ob.getTitle()+"/" + UUID.randomUUID().toString());
 
@@ -476,7 +616,7 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                                     });
 
 //                                FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
-                                    pd.dismiss();
+//                                    pd.dismiss();
                                     // Toast.makeText(UploadActivity.this, "Upload Done! #"+finalI, Toast.LENGTH_SHORT).show();
 //                                startActivity(new Intent(UploadActivity.this, BaseActivity.class));
 //                                finish();
@@ -486,7 +626,7 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    pd.dismiss();
+//                                    pd.dismiss();
                                     Toast.makeText(UploadActivity.this, "Upload Failed!" + " " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             })
@@ -494,7 +634,7 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                                 @Override
                                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                                     double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                                    pd.setMessage("Uploaded " + (int)progress + "%");
+//                                    pd.setMessage("Uploaded " + (int)progress + "%");
                                 }
                             });
                 }
@@ -511,9 +651,9 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                     break;
                 }
                 if(filePath.get(i) != null){
-                    ProgressDialog pd = new ProgressDialog(this);
-                    pd.setTitle("Uploading Data");
-                    pd.show();
+//                    ProgressDialog pd = new ProgressDialog(this);
+//                    pd.setTitle("Uploading Data");
+//                    pd.show();
 
                     StorageReference ref = storageDbRef
                             .child("bookImage/"+ ob.getUid()+"/"+ ob.getTitle()+"/" + UUID.randomUUID().toString());
@@ -527,12 +667,16 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
 
                                     dwnldUrl.addOnSuccessListener(uri -> {
                                         Log.d("Image Url #" + finalI, uri.toString());
-                                        FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()+"/"+ob.getTitle()+"/imgUrl"+finalI).setValue(uri.toString());
+                                        FirebaseDatabase
+                                                .getInstance()
+                                                .getReference("bookData")
+                                                .child(ob.getUid()+"/"+ob.getTitle()+"/imgUrl"+finalI)
+                                                .setValue(uri.toString());
 
                                     });
 
 //                                FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
-                                    pd.dismiss();
+//                                    pd.dismiss();
                                     //Toast.makeText(UploadActivity.this, "Upload Done! #"+finalI, Toast.LENGTH_SHORT).show();
 //                                startActivity(new Intent(UploadActivity.this, BaseActivity.class));
 //                                finish();
@@ -542,7 +686,7 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    pd.dismiss();
+//                                    pd.dismiss();
                                     Toast.makeText(UploadActivity.this, "Upload Failed!" + " " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             })
@@ -550,7 +694,7 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                                 @Override
                                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                                     double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                                    pd.setMessage("Uploaded " + (int)progress + "%");
+//                                    pd.setMessage("Uploaded " + (int)progress + "%");
                                 }
                             });
                 }
@@ -560,9 +704,28 @@ public class UploadActivity extends AppCompatActivity implements Serializable {
                 }
             }
         }
+
         if(canUpload){
+            Log.d("ob before" ,ob.getLatitude() +" "+ ob.getLongitude());
+            ob.setLatitude(latitude);
+            ob.setLongitude(longitude);
+            Log.d("ob after" ,ob.getLatitude() +" "+ ob.getLongitude());
             FirebaseDatabase.getInstance().getReference("bookData").child(ob.getUid()).child(ob.getTitle()).setValue(ob);
-            startActivity(new Intent(UploadActivity.this, BaseActivity.class));
+//            startActivity(new Intent(UploadActivity.this, BaseActivity.class));
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+
+        if(requestCode == REQUEST_CODE){
+            if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+            }
+        }
+
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }

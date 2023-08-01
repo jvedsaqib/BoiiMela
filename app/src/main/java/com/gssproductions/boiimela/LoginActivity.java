@@ -38,6 +38,9 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG="LoginActivity";
 
     private final int POST_NOTIFICATION = 110;
+    private final int ACCESS_FINE_LOCATION = 111;
+
+    private final int CALL_PHONE = 112;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,18 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this, "Hello There", Toast.LENGTH_SHORT).show();
         }else{
             requestNotificationPermission();
+        }
+
+        if (ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        }else{
+            requestLocationPermission();
+        }
+
+        if (ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+        }else{
+            requestCallPermission();
         }
 
         editTextLoginEmail=findViewById(R.id.editText_login_email);
@@ -157,9 +172,27 @@ public class LoginActivity extends AppCompatActivity {
 
     private void requestNotificationPermission(){
         if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.POST_NOTIFICATIONS)){
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.POST_NOTIFICATIONS}, POST_NOTIFICATION);
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.POST_NOTIFICATIONS,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.CALL_PHONE}, POST_NOTIFICATION);
         }else{
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.POST_NOTIFICATIONS}, POST_NOTIFICATION);
+        }
+    }
+
+    private void requestLocationPermission(){
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, ACCESS_FINE_LOCATION);
+        }else{
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, ACCESS_FINE_LOCATION);
+        }
+    }
+
+    private void requestCallPermission(){
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CALL_PHONE}, CALL_PHONE);
+        }else{
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CALL_PHONE}, CALL_PHONE);
         }
     }
 
@@ -168,6 +201,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if(requestCode == POST_NOTIFICATION){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            }
+        }
+
+        if(requestCode == ACCESS_FINE_LOCATION){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            }
+        }
+
+        if(requestCode == CALL_PHONE){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
             }
         }
